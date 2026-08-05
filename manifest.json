@@ -1,7 +1,7 @@
 {
-  "name": "面試易 EasyIn - 職場離線教練",
+  "name": "EasyIn - Offline Interview Companion",
   "short_name": "EasyIn",
-  "description": "100% Offline, Privacy-First Interview & Written Test Companion",
+  "description": "100% Offline, Privacy-First Interview & Written Test Companion for Hong Kong Professionals",
   "start_url": "./index.html",
   "display": "standalone",
   "background_color": "#f8fafc",
