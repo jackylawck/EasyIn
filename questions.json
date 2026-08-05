@@ -2,16 +2,10 @@
   {
     "id": "q_001",
     "type": "interview",
-    "category": {
-      "zh": "情境與危機處理",
-      "en": "Crisis & Scenario Management"
-    },
-    "difficulty": 3,
+    "category": { "zh": "危機處理", "en": "Crisis Management" },
+    "difficulty": 4,
     "target_levels": ["junior", "mid_level", "senior"],
-    "philosophy_tags": [
-      { "zh": "第一性原理", "en": "First Principles" },
-      { "zh": "成長型思維", "en": "Growth Mindset" }
-    ],
+    "philosophy_tags": [{ "zh": "第一性原理", "en": "First Principles" }],
     "title": {
       "zh": "當專案進度嚴重落後，你如何向相關利益者（Stakeholders）說明並解決？",
       "en": "When a project is severely delayed, how do you communicate with stakeholders and resolve it?"
@@ -23,51 +17,863 @@
     "panic_mode": {
       "timer": 10,
       "safe_landing_script": {
-        "zh": "呢個問題好有挑戰性。請畀我 10 秒鐘整理思維，我想從『損害控管』同『替代方案』兩個方向去回應...",
+        "zh": "這是一個很有挑戰性的問題。請給我 10 秒鐘整理思維，我想從『損害控管』與『替代方案』兩個方向來回應...",
         "en": "That is a great question. Please give me 10 seconds to organize my thoughts on damage control and contingency plans..."
       }
     },
     "levels": {
       "junior": {
         "hiring_manager_os": {
-          "zh": "「我預咗你會遇到困難，但我最怕你隱瞞不報，爆鍋先講。」",
-          "en": "\"I expect you to face challenges, but I fear you hiding them until it's too late.\""
+          "zh": "「我預期你會遇到困難，但我最擔心你隱瞞不報、直到問題不可收拾才說明。」",
+          "en": "\"I expect challenges, but I fear you hiding them until it's too late.\""
         },
-        "focus": {
-          "zh": "及時通報與執行指令",
-          "en": "Timely Reporting & Execution"
-        },
+        "focus": { "zh": "及時通報與執行指令", "en": "Reporting & Execution" },
         "script": {
-          "zh": "我會先盤點手上受影響的工作，整理成簡短清單，第一時間向主管匯報，並提出我可以加班或調整優先順序的兩個選項供主管決策。",
-          "en": "I will audit my affected tasks, prepare a concise summary, report to my manager immediately, and offer options such as prioritizing tasks or working overtime."
+          "zh": "我會先盤點受影響的工作並整理成清單，第一時間向主管匯報，並提供加班或調整優先順序的選項供主管決策。",
+          "en": "I will audit affected tasks, prepare a summary, report to my manager immediately, and offer options such as prioritizing tasks."
         }
       },
       "mid_level": {
         "hiring_manager_os": {
-          "zh": "「我唔想聽你報告壞消息，我要聽你的補救方案跟所需的資源。」",
+          "zh": "「我不想只聽你報告壞消息，我要聽你的補救方案與所需的資源。」",
           "en": "\"Don't just bring me bad news; bring me mitigation plans and resource requirements.\""
         },
-        "focus": {
-          "zh": "資源調配與範疇取捨 (Trade-offs)",
-          "en": "Resource Allocation & Scope Trade-offs"
-        },
+        "focus": { "zh": "資源調配與範疇取捨 (Trade-offs)", "en": "Resource Allocation & Scope Trade-offs" },
         "script": {
-          "zh": "我會評估延誤的瓶頸，向 Stakeholder 提出兩個方案：一是削減 20% 非核心功能以按時交付；二是增加資源延後一週，並分析利弊。",
+          "zh": "我會評估延誤的瓶頸，向 Stakeholders 提出兩個方案：一是削減 20% 非核心功能以按時交付；二是增加資源延後一週，並分析利弊。",
           "en": "I will evaluate the bottlenecks and offer stakeholders two options: reduce 20% non-core scope for on-time delivery, or add resources to defer by a week."
         }
       },
       "senior": {
         "hiring_manager_os": {
           "zh": "「你能不能站在公司商業利益的角度止血？事後如何建立體制防止再發生？」",
-          "en": "\"Can you mitigate risks from a business ROI perspective and establish systems to prevent recurrence?\""
+          "en": "\"Can you mitigate risks from a business ROI perspective and prevent recurrence?\""
         },
-        "focus": {
-          "zh": "商業風險控管與制度復盤 (Post-mortem)",
-          "en": "Business Risk Control & Systemic Post-mortem"
-        },
+        "focus": { "zh": "商業風險控管與制度復盤", "en": "Business Risk Control & Post-mortem" },
         "script": {
-          "zh": "我會親自與高層 Stakeholder 對齊商業影響，重新排定優先順序以保住核心商業價值；同時啟動備用資源止血，並在事後進行團隊復盤，更新 SOP。",
-          "en": "I will align with senior stakeholders to protect core business value, deploy contingency resources, and conduct a post-mortem to update our SOPs."
+          "zh": "我會親自與高層對齊商業影響，重新排定優先順序以保住核心商業價值；同時啟動備用資源止血，並在事後進行復盤與更新 SOP。",
+          "en": "I will align with senior stakeholders to protect core business value, deploy contingency resources, and conduct a post-mortem to update SOPs."
+        }
+      }
+    }
+  },
+  {
+    "id": "q_002",
+    "type": "interview",
+    "category": { "zh": "團隊衝突", "en": "Conflict Resolution" },
+    "difficulty": 3,
+    "target_levels": ["junior", "mid_level", "senior"],
+    "philosophy_tags": [{ "zh": "利他之心", "en": "Altruism & Win-Win" }],
+    "title": {
+      "zh": "當你與同事/上司對專案方向有嚴重分歧，你會如何處理？",
+      "en": "When you have a major disagreement with a teammate or manager on project direction, how do you handle it?"
+    },
+    "intent": {
+      "zh": "考驗 EQ、溝通技巧，以及是否以公司利益為重（對事不對人）。",
+      "en": "Tests EQ, communication skills, and whether you prioritize company goals over personal ego."
+    },
+    "panic_mode": {
+      "timer": 10,
+      "safe_landing_script": {
+        "zh": "處理分歧最重要的是『對事不對人』。請給我幾秒鐘整理我解決衝突的三個步驟...",
+        "en": "Handling disagreement is about focusing on goals, not egos. Allow me a few seconds to organize my 3-step approach..."
+      }
+    },
+    "levels": {
+      "junior": {
+        "hiring_manager_os": {
+          "zh": "「我想看你是一味頂撞，還是懂得傾聽與服從決策。」",
+          "en": "\"I want to see if you argue stubbornly or listen and follow decisions smoothly.\""
+        },
+        "focus": { "zh": "積極聆聽與尋求共識", "en": "Active Listening & Alignment" },
+        "script": {
+          "zh": "我會先私下了解對方背後的考量並以客觀數據討論。若最終無法達成共識，我會尊重主管的最終決定並全力配合執行。",
+          "en": "I will seek to understand their rationale privately and discuss using objective data. If unresolved, I respect and execute the manager's final decision."
+        }
+      },
+      "mid_level": {
+        "hiring_manager_os": {
+          "zh": "「展現你的影響力，試著在不依賴上司介入的情況下，透過協商達成共識。」",
+          "en": "\"Show your influence. Try to reach a consensus through negotiation without relying on your manager's intervention.\""
+        },
+        "focus": { "zh": "尋求雙贏與方案協商", "en": "Seeking Win-Win & Negotiation" },
+        "script": {
+          "zh": "我會發起討論，重點擺在『如何共同達成專案目標』，並主動尋求方案折衷點，確保最終決策能兼顧雙方核心關切。",
+          "en": "I will initiate a discussion focusing on achieving project goals together, actively seeking compromise points to address key concerns of both sides."
+        }
+      },
+      "senior": {
+        "hiring_manager_os": {
+          "zh": "「你如何平衡專案品質與團隊關係？是否懂得用數據說服人？」",
+          "en": "\"How do you balance project quality and team relationships? Can you persuade using data?\""
+        },
+        "focus": { "zh": "數據驅動與小規模測試 (A/B Testing)", "en": "Data-driven Alignment & Small-scale Testing" },
+        "script": {
+          "zh": "我會將爭議轉化為可量化的假設，建議進行小規模測試，用真實數據說服 Stakeholders，避免無謂的主觀爭辯。",
+          "en": "I turn arguments into quantifiable hypotheses and propose small-scale pilot tests to rely on real data rather than subjective opinions."
+        }
+      }
+    }
+  },
+  {
+    "id": "q_003",
+    "type": "interview",
+    "category": { "zh": "自我反省", "en": "Self-Reflection" },
+    "difficulty": 3,
+    "target_levels": ["junior", "mid_level", "senior"],
+    "philosophy_tags": [{ "zh": "成長型思維", "en": "Growth Mindset" }],
+    "title": {
+      "zh": "請分享一次你做錯決定，導致專案失敗或損失的經歷。",
+      "en": "Tell me about a time you made a wrong decision that led to project failure or loss."
+    },
+    "intent": {
+      "zh": "考驗抗壓性、責任感，以及是否有『復盤 (Post-mortem)』與持續改善的能力。",
+      "en": "Tests resilience, accountability, and the habit of post-mortem reflection."
+    },
+    "panic_mode": {
+      "timer": 10,
+      "safe_landing_script": {
+        "zh": "犯錯是學習的過程。請給我十秒鐘，我分享一個我早期從中獲得極大成長的經驗...",
+        "en": "Mistakes are learning opportunities. Give me ten seconds to share an early experience that taught me a valuable lesson..."
+      }
+    },
+    "levels": {
+      "junior": {
+        "hiring_manager_os": {
+          "zh": "「我不怕你犯錯，我最怕你推卸責任。」",
+          "en": "\"I don't mind mistakes; I mind blaming others.\""
+        },
+        "focus": { "zh": "勇於承擔與即時補救", "en": "Accountability & Prompt Remediation" },
+        "script": {
+          "zh": "我曾低估任務複雜度導致延誤。當時我第一時間承認錯誤，連夜與團隊制定補救方案，確保交付品質。",
+          "en": "I once underestimated task complexity causing delay. I immediately owned the error and worked with the team on a quick workaround."
+        }
+      },
+      "mid_level": {
+        "hiring_manager_os": {
+          "zh": "「承認錯誤之餘，我更在乎你如何從中總結經驗，並調整後續的執行流程。」",
+          "en": "\"Beyond admitting mistakes, I care about how you summarize learnings and adjust execution workflows.\""
+        },
+        "focus": { "zh": "經驗總結與流程調整", "en": "Learnings & Workflow Adjustments" },
+        "script": {
+          "zh": "那次失誤讓我意識到風險評估不足。事後我重新檢視工作流程，並在未來的專案中預留額外的緩衝時間與檢核點。",
+          "en": "That mistake made me realize the gap in my risk assessment. Afterwards, I reviewed my workflow and introduced buffer time and checkpoints for future projects."
+        }
+      },
+      "senior": {
+        "hiring_manager_os": {
+          "zh": "「你有沒有將這個教訓轉化為制度，避免公司再犯？」",
+          "en": "\"Did you turn that lesson into a system to prevent future failures company-wide?\""
+        },
+        "focus": { "zh": "系統性復盤與組織進化", "en": "Systemic Post-mortem & Organizational Evolution" },
+        "script": {
+          "zh": "事後我帶領團隊進行深度復盤，並建立了審查 Checklist 制度。自此之後，團隊未再發生同類錯誤。",
+          "en": "I led a post-mortem and instituted a review checklist system. Since then, the team has had zero recurring errors of this type."
+        }
+      }
+    }
+  },
+  {
+    "id": "q_004",
+    "type": "written",
+    "category": { "zh": "情境書寫/公文", "en": "Written Communication" },
+    "difficulty": 4,
+    "target_levels": ["junior", "mid_level", "senior"],
+    "philosophy_tags": [{ "zh": "孫子兵法", "en": "Strategic Empathy" }],
+    "title": {
+      "zh": "【筆試】客戶提出不合理的預算與交期要求，請寫一封拒絕信並維護良好關係。",
+      "en": "[Written Test] A client demands an unrealistic budget and deadline. Write a refusal email while maintaining a good relationship."
+    },
+    "intent": {
+      "zh": "考驗專業底線、談判技巧，以及商業書信的條理性與 EQ。",
+      "en": "Tests professional boundaries, negotiation skills, EQ, and structured writing."
+    },
+    "panic_mode": {
+      "timer": 10,
+      "safe_landing_script": {
+        "zh": "寫這類信的核心是：『先感謝、後說明客觀限制、最後給予 Option A 與 B 選擇』...",
+        "en": "The key structure for this email is: Acknowledge -> Explain Objective Constraints -> Provide Options A & B..."
+      }
+    },
+    "levels": {
+      "junior": {
+        "hiring_manager_os": {
+          "zh": "「看你語氣是否太生硬，或是盲目答應公司做不到的事。」",
+          "en": "\"Let's see if your tone is overly blunt or if you blindly agree to impossible terms.\""
+        },
+        "focus": { "zh": "禮貌拒絕與清晰說明理由", "en": "Polite Refusal & Clear Reasoning" },
+        "script": {
+          "zh": "感謝您的查詢。為確保專案品質與資安標準，我們無法在現有預算與時間內完成。若有調整空間，我們非常樂意進一步討論。",
+          "en": "Thank you for reaching out. To ensure quality and security standards, we cannot meet the request under current constraints, but welcome further discussion if parameters adjust."
+        }
+      },
+      "mid_level": {
+        "hiring_manager_os": {
+          "zh": "「你需要在維持公司利潤的前提下，展現合作誠意並引導對方調整期望。」",
+          "en": "\"Show willingness to cooperate while safeguarding company margins by guiding their expectations.\""
+        },
+        "focus": { "zh": "維護底線與引導期望", "en": "Safeguarding Margins & Expectation Management" },
+        "script": {
+          "zh": "感謝您的提議。基於目前的市場成本與品質要求，該預算確實無法涵蓋完整範疇。我們建議調整階段目標，優先交付核心模組以符合您的時間表。",
+          "en": "Thank you for the proposal. Based on current cost and quality requirements, the budget cannot cover the full scope. We suggest adjusting milestones to deliver core modules first."
+        }
+      },
+      "senior": {
+        "hiring_manager_os": {
+          "zh": "「高階人員不會只說不行，而是會給予商業上可行的替代方案。」",
+          "en": "\"Seniors don't just say no; they offer viable strategic alternatives.\""
+        },
+        "focus": { "zh": "商業談判與替代方案 (Trade-offs)", "en": "Commercial Negotiation & Trade-offs" },
+        "script": {
+          "zh": "感謝您的信任。為確保交付品質，我們提供兩個替代方案：方案 A 為按時交付但調整範疇；方案 B 為維持完整範疇但調整時間。建議本週開會對齊優先順序。",
+          "en": "Thank you for your trust. To safeguard quality, we offer two options: Option A (on-time delivery with scaled-back scope) or Option B (full scope with adjusted timeline). Let's schedule a brief call to align."
+        }
+      }
+    }
+  },
+  {
+    "id": "q_005",
+    "type": "interview",
+    "category": { "zh": "職涯熱情", "en": "Career Growth" },
+    "difficulty": 2,
+    "target_levels": ["junior", "mid_level", "senior"],
+    "philosophy_tags": [{ "zh": "成長型思維", "en": "Growth Mindset" }],
+    "title": {
+      "zh": "你平時如何保持自己在所屬領域的專業技能與知識與時俱進？",
+      "en": "How do you keep your professional skills and industry knowledge up to date?"
+    },
+    "intent": {
+      "zh": "考驗主動學習能力、對行業的熱情，以及是否具備自主進化（Self-driven）的習慣。",
+      "en": "Tests self-driven learning habits, passion for the industry, and adaptability."
+    },
+    "panic_mode": {
+      "timer": 10,
+      "safe_landing_script": {
+        "zh": "分享學習習慣時，重點是『輸入 (Input)』加『輸出 (Output/實踐)』...",
+        "en": "When sharing learning habits, focus on both Information Input and Practical Output..."
+      }
+    },
+    "levels": {
+      "junior": {
+        "hiring_manager_os": {
+          "zh": "「我想知道你下班後會不會主動學習，還是需要人鞭策。」",
+          "en": "\"I want to know if you learn proactively or only when pushed.\""
+        },
+        "focus": { "zh": "多元學習管道與習慣", "en": "Proactive Learning Channels" },
+        "script": {
+          "zh": "我習慣訂閱業界權威電子報與 Podcast，每週花 3-5 小時研讀最新案例，並將技巧應用於日常工作中。",
+          "en": "I subscribe to industry newsletters and podcasts, spending 3-5 hours weekly studying cases and applying learnings to my daily work."
+        }
+      },
+      "mid_level": {
+        "hiring_manager_os": {
+          "zh": "「除了自我學習，我希望能看到你將新知識轉化為改善實際工作效率的行動。」",
+          "en": "\"Beyond self-learning, I want to see you translate knowledge into actions that boost efficiency.\""
+        },
+        "focus": { "zh": "知識轉化與效率提升", "en": "Knowledge Translation & Efficiency Gain" },
+        "script": {
+          "zh": "我會持續追蹤新工具與產業趨勢，並在評估可行性後引進至個人或小組的工作流程中，以實際提升專案的交付品質。",
+          "en": "I track new tools and industry trends, evaluating feasibility before introducing them into team workflows to tangibly improve delivery quality."
+        }
+      },
+      "senior": {
+        "hiring_manager_os": {
+          "zh": "「高階人員不只自己學，還會將知識帶入團隊，建立影響力。」",
+          "en": "\"Seniors don't just learn individually; they share knowledge to elevate the team and industry.\""
+        },
+        "focus": { "zh": "知識共享與團隊賦能", "en": "Knowledge Sharing & Team Empowerment" },
+        "script": {
+          "zh": "除了個人吸收趨勢，我每月會舉辦團隊內部知識分享會，並撰寫實戰文章，透過『以教為學』帶動團隊升級。",
+          "en": "Besides personal research, I host monthly internal knowledge-sharing sessions and write articles to elevate team capability through teaching."
+        }
+      }
+    }
+  },
+  {
+    "id": "q_006",
+    "type": "interview",
+    "category": { "zh": "需求釐清與溝通", "en": "Requirement Elicitation" },
+    "difficulty": 3,
+    "target_levels": ["junior", "mid_level", "senior"],
+    "philosophy_tags": [{ "zh": "第一性原理", "en": "First Principles" }],
+    "title": {
+      "zh": "當上司或客戶給出的需求非常模糊時，你會如何處理？",
+      "en": "When a manager or client provides very ambiguous requirements, how do you handle it?"
+    },
+    "intent": {
+      "zh": "考驗需求釐清能力、主動溝通技巧及避免重做成本的商業意識。",
+      "en": "Tests the ability to clarify requirements, proactive communication, and awareness of avoiding rework costs."
+    },
+    "panic_mode": {
+      "timer": 10,
+      "safe_landing_script": {
+        "zh": "應對模糊需求的核心是『先收窄範圍』。請容許我用十秒鐘整理一下我的釐清步驟...",
+        "en": "The core of handling ambiguous requests is to 'narrow the scope first'. Please allow me 10 seconds to organize my clarification steps..."
+      }
+    },
+    "levels": {
+      "junior": {
+        "hiring_manager_os": {
+          "zh": "「我希望看到你不會憑空猜測，而是懂得提出具體問題來確認細節。」",
+          "en": "\"I want to see that you don't just guess blindly, but ask specific questions to confirm details.\""
+        },
+        "focus": { "zh": "主動發問與確認指令", "en": "Proactive Questioning & Confirmation" },
+        "script": {
+          "zh": "我會先根據自己的理解，列出 3 至 5 個具體的確認問題，並以電郵或簡短會議向上司/客戶逐一釐清，確保雙方期望一致後才開始動工。",
+          "en": "I will list 3 to 5 specific questions based on my understanding, and clarify them with the manager/client via email or a quick sync to ensure alignment before starting work."
+        }
+      },
+      "mid_level": {
+        "hiring_manager_os": {
+          "zh": "「我不需要你只帶著問題來找我，我需要你帶著初步方案（Options）來讓我做選擇。」",
+          "en": "\"Don't just bring me questions; bring me preliminary options to choose from.\""
+        },
+        "focus": { "zh": "提供原型與引導式選擇", "en": "Prototyping & Guided Choices" },
+        "script": {
+          "zh": "我會利用過往經驗，快速草擬兩個不同方向的初步方案（Option A 與 Option B），並帶著這些草案與對方討論。讓他們在具體框架下做出選擇，能更有效收窄模糊地帶。",
+          "en": "I will draft two preliminary directions (Option A and B) based on past experience and present them for discussion. Letting them choose within a concrete framework effectively narrows the ambiguity."
+        }
+      },
+      "senior": {
+        "hiring_manager_os": {
+          "zh": "「客戶有時連自己想要什麼都不知道。你具備挖掘背後真實商業痛點的能力嗎？」",
+          "en": "\"Sometimes clients don't know what they want. Can you uncover their underlying business pain points?\""
+        },
+        "focus": { "zh": "挖掘商業目的與重新定義需求", "en": "Uncovering Business Goals & Redefining Scope" },
+        "script": {
+          "zh": "我會暫時放下表面需求，轉而詢問他們『最終想解決什麼商業問題』或『核心 KPI 是什麼』。當釐清了底層的商業目的後，我會以專業角度為他們重新定義並規劃最合適的解決方案。",
+          "en": "I will look past the surface request and ask what ultimate business problem they aim to solve or what the core KPI is. Once the underlying business goal is clear, I will professionally redefine and architect the most suitable solution for them."
+        }
+      }
+    }
+  },
+  {
+    "id": "q_007",
+    "type": "interview",
+    "category": { "zh": "時間管理與取捨", "en": "Time Management & Prioritization" },
+    "difficulty": 4,
+    "target_levels": ["junior", "mid_level", "senior"],
+    "philosophy_tags": [{ "zh": "孫子兵法", "en": "Strategic Prioritization" }],
+    "title": {
+      "zh": "手上有三個高優先級任務，但時間只夠完成一個，你會如何抉擇？",
+      "en": "You have three high-priority tasks but only time to complete one. How do you choose?"
+    },
+    "intent": {
+      "zh": "考驗時間管理、資源調配及與利益相關者談判的能力。",
+      "en": "Tests time management, resource allocation, and negotiation skills with stakeholders."
+    },
+    "panic_mode": {
+      "timer": 10,
+      "safe_landing_script": {
+        "zh": "處理資源衝突的核心是『透明度』與『影響力評估』。請給我幾秒鐘梳理一下我的判斷標準...",
+        "en": "Handling resource conflicts requires transparency and impact assessment. Give me a few seconds to organize my evaluation criteria..."
+      }
+    },
+    "levels": {
+      "junior": {
+        "hiring_manager_os": {
+          "zh": "「遇到超載情況，懂得及時舉手求助，遠勝於默默超時工作最後卻未能達標。」",
+          "en": "\"When overloaded, raising a flag for help is far better than working silently and failing to deliver.\""
+        },
+        "focus": { "zh": "及時匯報與尋求指示", "en": "Timely Escalation & Seeking Direction" },
+        "script": {
+          "zh": "我會立刻整理這三個任務的現狀，並向主管如實匯報時間上的瓶頸，請求主管根據部門的最新目標，指示哪一個任務需要優先執行。",
+          "en": "I will summarize the status of all three tasks, transparently report the time constraints to my manager, and ask for their direction on which task to prioritize based on the department's latest goals."
+        }
+      },
+      "mid_level": {
+        "hiring_manager_os": {
+          "zh": "「我期望你能獨立評估急迫性與重要性，並提出有邏輯的排序建議。」",
+          "en": "\"I expect you to independently assess urgency vs. importance and provide a logical recommendation.\""
+        },
+        "focus": { "zh": "影響力評估與協商", "en": "Impact Assessment & Negotiation" },
+        "script": {
+          "zh": "我會運用艾森豪矩陣（Eisenhower Matrix）分析這三個任務對業務的實際影響與依賴關係。我會主動向 Stakeholders 建議優先完成價值最高的一個，並為另外兩個任務協商新的交付期。",
+          "en": "I will use the Eisenhower Matrix to analyze the actual business impact and dependencies of these tasks. I will proactively propose to stakeholders that we prioritize the most valuable one, and negotiate new deadlines for the other two."
+        }
+      },
+      "senior": {
+        "hiring_manager_os": {
+          "zh": "「高階管理者需要解決『資源短缺』的根本問題，而不是只做任務排序。」",
+          "en": "\"Senior leaders must solve the root cause of resource shortage, not just prioritize tasks.\""
+        },
+        "focus": { "zh": "跨部門資源調度與戰略對齊", "en": "Cross-functional Resource Allocation & Strategic Alignment" },
+        "script": {
+          "zh": "我會將這三個任務與公司的季度戰略（OKRs）進行對齊，確定最核心的任務親自跟進。同時，我會迅速調動跨部門資源或外包團隊接手其餘工作，確保整體商業價值不受影響。",
+          "en": "I will align the tasks with the company's quarterly OKRs and personally oversee the most critical one. Simultaneously, I will rapidly mobilize cross-functional resources or outsourced teams to handle the rest, ensuring no loss in overall business value."
+        }
+      }
+    }
+  },
+  {
+    "id": "q_008",
+    "type": "interview",
+    "category": { "zh": "團隊協作與領導", "en": "Teamwork & Leadership" },
+    "difficulty": 3,
+    "target_levels": ["junior", "mid_level", "senior"],
+    "philosophy_tags": [
+      { "zh": "成長型思維", "en": "Growth Mindset" },
+      { "zh": "利他之心", "en": "Altruism" }
+    ],
+    "title": {
+      "zh": "團隊中有一位同事表現持續未達標，影響了專案進度，你會如何處理？",
+      "en": "A team member is consistently underperforming, affecting project progress. How do you handle it?"
+    },
+    "intent": {
+      "zh": "考驗團隊協作、同理心及困難對話（Difficult Conversations）的處理技巧。",
+      "en": "Tests teamwork, empathy, and the ability to navigate difficult conversations."
+    },
+    "panic_mode": {
+      "timer": 10,
+      "safe_landing_script": {
+        "zh": "處理人事問題的核心是『先理解，後協助』。請給我十秒鐘梳理溝通的層次...",
+        "en": "The core of handling personnel issues is 'understand first, assist later'. Give me 10 seconds to structure the communication layers..."
+      }
+    },
+    "levels": {
+      "junior": {
+        "hiring_manager_os": {
+          "zh": "「守好本分最重要。不要越權干涉，但也不要任由專案被拖垮。」",
+          "en": "\"Do your part first. Don't overstep, but don't let the project sink either.\""
+        },
+        "focus": { "zh": "自我管理與適當上報", "en": "Self-management & Appropriate Escalation" },
+        "script": {
+          "zh": "我會先確保自己的部分如期完成，並在日常協作中友善地詢問他是否遇到困難。如果情況持續影響整體進度，我會在不帶個人情緒的前提下，將客觀進度向主管反映。",
+          "en": "I will ensure my own tasks are completed on time and politely ask if they are facing any blockers. If the situation persists and affects the overall progress, I will objectively report the status to my manager without personal bias."
+        }
+      },
+      "mid_level": {
+        "hiring_manager_os": {
+          "zh": "「展現你的非職權領導力（Lateral Leadership），主動協助隊友渡過難關。」",
+          "en": "\"Show your lateral leadership by proactively helping a teammate overcome hurdles.\""
+        },
+        "focus": { "zh": "同理心溝通與實質協助", "en": "Empathetic Communication & Practical Support" },
+        "script": {
+          "zh": "我會私下約他喝杯咖啡，了解他是遇到了技術瓶頸還是個人問題。如果是技術困難，我會主動與他進行結對工作（Pairing）或分享相關資源，協助他重回正軌。",
+          "en": "I would invite them for a private coffee chat to understand if they are facing technical bottlenecks or personal issues. If it's technical, I will proactively pair with them or share resources to help them get back on track."
+        }
+      },
+      "senior": {
+        "hiring_manager_os": {
+          "zh": "「你需要具備教練（Coach）思維，找出根本原因並建立長效的績效改善機制。」",
+          "en": "\"You need a coaching mindset to identify the root cause and establish long-term performance improvement mechanisms.\""
+        },
+        "focus": { "zh": "根本原因分析與績效輔導", "en": "Root Cause Analysis & Performance Coaching" },
+        "script": {
+          "zh": "我會將問題拆解為『能力（Skill）』或『意願（Will）』的缺失。若是能力問題，我會為他安排培訓與明確的短期目標；若是意願問題，我會釐清其職業期望，必要時與 HR 介入制定績效改善計畫（PIP）。",
+          "en": "I will diagnose whether it is a gap in 'Skill' or 'Will'. If it's skill, I will arrange training and set clear short-term goals. If it's will, I will clarify their career expectations and, if necessary, involve HR to initiate a Performance Improvement Plan (PIP)."
+        }
+      }
+    }
+  },
+  {
+    "id": "q_009",
+    "type": "written",
+    "category": { "zh": "危機公關與書寫", "en": "Crisis PR & Written Communication" },
+    "difficulty": 4,
+    "target_levels": ["junior", "mid_level", "senior"],
+    "philosophy_tags": [{ "zh": "第一性原理", "en": "First Principles" }],
+    "title": {
+      "zh": "【筆試】客戶因系統故障導致資料遺失而大發雷霆，請撰寫一封官方致歉與跟進電郵。",
+      "en": "[Written Test] A client is furious due to data loss from a system failure. Write an official apology and follow-up email."
+    },
+    "intent": {
+      "zh": "考驗危機公關處理、文字安撫技巧、承擔責任的態度及解決問題的專業度。",
+      "en": "Tests crisis PR handling, empathetic writing, accountability, and professional problem-solving skills."
+    },
+    "panic_mode": {
+      "timer": 10,
+      "safe_landing_script": {
+        "zh": "危機電郵的黃金框架是：承認事實 -> 說明現狀 -> 承諾補救時間表。請容許我整理一下措辭...",
+        "en": "The golden framework for crisis emails is: Acknowledge facts -> Explain current status -> Commit to a timeline. Allow me to refine the phrasing..."
+      }
+    },
+    "levels": {
+      "junior": {
+        "hiring_manager_os": {
+          "zh": "「語氣必須誠懇，不要找藉口或推卸責任給第三方。」",
+          "en": "\"The tone must be sincere. Do not make excuses or blame third parties.\""
+        },
+        "focus": { "zh": "誠懇致歉與資訊通報", "en": "Sincere Apology & Information Escalation" },
+        "script": {
+          "zh": "致 [客戶名稱]：對於本次系統故障造成的資料遺失，我們深表歉意。我們非常理解這對您的業務造成的困擾。目前已將情況列為最高緊急級別，技術團隊正在全力搶修，我們將盡快為您更新進度。",
+          "en": "Dear [Client], We sincerely apologize for the data loss caused by the system failure. We deeply understand the disruption this has caused. We have escalated this to the highest priority, and our technical team is actively working on it. We will update you shortly."
+        }
+      },
+      "mid_level": {
+        "hiring_manager_os": {
+          "zh": "「客戶生氣是因為缺乏安全感，你需要提供明確的排查進度與時間表。」",
+          "en": "\"Clients are angry because they lack security. You need to provide a clear investigation status and timeline.\""
+        },
+        "focus": { "zh": "提供具體時間表與排查方向", "en": "Providing Clear Timelines & Investigation Vectors" },
+        "script": {
+          "zh": "致 [客戶名稱]：我們對此次故障致上最深的歉意。技術團隊目前已鎖定伺服器節點問題，正在進行備份資料復原測試。我們承諾將於今天下午 2:00 前為您提供詳細的診斷報告及預計修復時間，感謝您的耐心。",
+          "en": "Dear [Client], Please accept our deepest apologies. Our tech team has isolated the server node issue and is testing backup data restoration. We commit to providing a detailed diagnostic report and estimated resolution time by 2:00 PM today. Thank you for your patience."
+        }
+      },
+      "senior": {
+        "hiring_manager_os": {
+          "zh": "「除了修復眼前的問題，高階主管必須能重建客戶信任，將危機轉化為展現專業的契機。」",
+          "en": "\"Besides fixing the immediate issue, a senior leader must rebuild trust, turning a crisis into an opportunity to show professionalism.\""
+        },
+        "focus": { "zh": "全面補救方案與長期預防機制", "en": "Comprehensive Mitigation & Long-term Prevention" },
+        "script": {
+          "zh": "致 [客戶名稱]：對於此次嚴重故障，我代表公司向您鄭重致歉。我們已啟動災難復原程序，預計可於 4 小時內恢復 95% 的資料。為彌補您的損失，我們將豁免本月服務費。事後我將親自向您提交完整的事故復盤報告（RCA），並承諾引入多重異地備份機制，確保此類事件絕不重演。",
+          "en": "Dear [Client], On behalf of the company, I sincerely apologize for this severe outage. We have initiated disaster recovery and expect to restore 95% of data within 4 hours. To compensate for the disruption, we will waive this month's fee. Afterwards, I will personally present a comprehensive Root Cause Analysis (RCA) and implement multi-region backup mechanisms to guarantee this never happens again."
+        }
+      }
+    }
+  },
+  {
+    "id": "q_010",
+    "type": "interview",
+    "category": { "zh": "變革管理與向上溝通", "en": "Change Management & Upward Communication" },
+    "difficulty": 4,
+    "target_levels": ["junior", "mid_level", "senior"],
+    "philosophy_tags": [{ "zh": "成長型思維", "en": "Growth Mindset" }],
+    "title": {
+      "zh": "如果你發現一個新技術或流程可以大幅提升效率，你會如何說服管理層採用？",
+      "en": "If you discover a new tech or process that greatly improves efficiency, how do you convince management to adopt it?"
+    },
+    "intent": {
+      "zh": "考驗變革管理（Change Management）、商業簡報技巧及向上管理的影響力。",
+      "en": "Tests change management, business presentation skills, and the impact of upward management."
+    },
+    "panic_mode": {
+      "timer": 10,
+      "safe_landing_script": {
+        "zh": "說服管理層的核心不在於技術有多炫，而在於能『節省多少成本』或『增加多少利潤』。請給我幾秒鐘整理我的商業提案...",
+        "en": "Convincing management is not about how cool the tech is, but how much cost it saves or profit it generates. Let me organize my business pitch..."
+      }
+    },
+    "levels": {
+      "junior": {
+        "hiring_manager_os": {
+          "zh": "「有熱忱是好事，但在提議前，請確保你已經做足了功課，而不是只丟出一個點子。」",
+          "en": "\"Enthusiasm is good, but make sure you've done your homework before proposing, rather than just throwing out an idea.\""
+        },
+        "focus": { "zh": "資料蒐集與可行性分析", "en": "Data Collection & Feasibility Analysis" },
+        "script": {
+          "zh": "我會先進行資料搜集，整理出新技術的優缺點對比、業界成功案例以及所需的學習資源。然後，我會準備一份簡短的總結報告，向主管請教是否值得在團隊內進一步探討。",
+          "en": "I will conduct research to compile a pros/cons comparison, industry success cases, and required learning resources. Then, I will prepare a brief summary report and ask my manager if it's worth exploring further within the team."
+        }
+      },
+      "mid_level": {
+        "hiring_manager_os": {
+          "zh": "「數據勝於雄辯（Data speaks louder than words）。用實際結果來說服我。」",
+          "en": "\"Data speaks louder than words. Persuade me with actual results.\""
+        },
+        "focus": { "zh": "概念驗證 (PoC) 與數據展示", "en": "Proof of Concept (PoC) & Data Presentation" },
+        "script": {
+          "zh": "我會在不影響日常工作的前提下，利用業餘時間製作一個小規模的概念驗證（PoC）。當我能用具體數據證明新流程可以節省團隊 20% 的工時後，我會帶著這份實測數據向管理層進行簡報。",
+          "en": "Without affecting daily tasks, I will build a small-scale Proof of Concept (PoC). Once I can prove with concrete data that the new process saves 20% of team hours, I will present these empirical findings to management."
+        }
+      },
+      "senior": {
+        "hiring_manager_os": {
+          "zh": "「除了技術可行性，高階管理者必須能回答：導入成本多少？過渡期的風險如何轉移？」",
+          "en": "\"Beyond technical feasibility, a senior leader must answer: What is the adoption cost, and how do we mitigate transition risks?\""
+        },
+        "focus": { "zh": "投資回報率 (ROI) 與全面導入戰略", "en": "ROI Analysis & Comprehensive Roll-out Strategy" },
+        "script": {
+          "zh": "我會提交一份完整的商業提案，內容包含預期的投資回報率（ROI）、導入成本估算，以及風險緩解計畫。我會建議分階段導入（Phased Roll-out），並設立先導小組（Pilot Team），確保變革過程平穩且帶來實質的商業增長。",
+          "en": "I will submit a complete business proposal including projected ROI, adoption cost estimates, and risk mitigation plans. I would recommend a phased roll-out with a pilot team to ensure the transition is smooth and delivers tangible business growth."
+        }
+      }
+    }
+  },
+  {
+    "id": "q_011",
+    "type": "interview",
+    "category": { "zh": "專案管理與應變", "en": "Project Management & Adaptability" },
+    "difficulty": 4,
+    "target_levels": ["junior", "mid_level", "senior"],
+    "philosophy_tags": [
+      { "zh": "敏捷思維", "en": "Agile Mindset" },
+      { "zh": "第一性原理", "en": "First Principles" }
+    ],
+    "title": {
+      "zh": "專案即將上線，但高層突然要求加入全新功能，你會如何應對？",
+      "en": "The project is about to launch, but senior management suddenly requests a new feature. How do you respond?"
+    },
+    "intent": {
+      "zh": "評估變更管理（Change Management）、影響力分析與向上談判能力。",
+      "en": "Evaluates change management, impact analysis, and upward negotiation skills."
+    },
+    "panic_mode": {
+      "timer": 10,
+      "safe_landing_script": {
+        "zh": "面對突發需求，最忌立刻拒絕或盲目答應。請容許我用十秒鐘整理我的評估框架...",
+        "en": "When facing sudden requests, avoid immediate rejection or blind acceptance. Allow me 10 seconds to structure my assessment framework..."
+      }
+    },
+    "levels": {
+      "junior": {
+        "hiring_manager_os": {
+          "zh": "「我不想看到你驚慌失措，請確保你能清晰傳達這個變更對你目前工作的具體影響。」",
+          "en": "\"Don't panic. Make sure you can clearly communicate how this change impacts your current workload.\""
+        },
+        "focus": { "zh": "通報影響與確認優先順序", "en": "Reporting Impact & Confirming Priorities" },
+        "script": {
+          "zh": "我會先記錄新功能的具體需求，並向主管匯報這將如何影響我手上的現有任務。我會請示主管，是否需要暫停原定工作來優先處理這項新要求。",
+          "en": "I will note the specific requirements of the new feature and report to my manager how it affects my current tasks. I will ask if I should pause existing work to prioritize this request."
+        }
+      },
+      "mid_level": {
+        "hiring_manager_os": {
+          "zh": "「你需要扮演守門員（Gatekeeper），用數據告訴高層『代價是什麼』，並提供折衷方案。」",
+          "en": "\"Act as a gatekeeper. Use data to show management the 'cost' and provide compromise solutions.\""
+        },
+        "focus": { "zh": "影響評估與階段性發佈 (Phased Release)", "en": "Impact Assessment & Phased Release" },
+        "script": {
+          "zh": "我會快速評估新功能對時程與資源的影響。如果會嚴重延誤上線，我會建議採用『階段性發佈』：先按原定計畫推出核心版本，並將新功能列入下一次迭代（Phase 2），以平衡商業需求與專案穩定性。",
+          "en": "I will quickly assess the impact on the timeline and resources. If it causes severe delays, I will propose a 'phased release': launching the core version as planned and including the new feature in Phase 2 to balance business needs and stability."
+        }
+      },
+      "senior": {
+        "hiring_manager_os": {
+          "zh": "「高階主管必須釐清這項變更背後的『商業戰略動機』，確保資源投入能帶來最大投資回報。」",
+          "en": "\"A senior leader must clarify the 'strategic business motive' behind the change to ensure maximum ROI.\""
+        },
+        "focus": { "zh": "商業價值對齊與資源重組", "en": "Business Value Alignment & Resource Reallocation" },
+        "script": {
+          "zh": "我會直接與高層對齊：這個新功能是為了解決什麼緊急的商業痛點？如果其 ROI 確實高於如期上線的價值，我會重新調配跨部門資源並重新設定市場預期；否則，我會以數據說服高層維持原判。",
+          "en": "I will align directly with senior management: What urgent business pain point does this solve? If its ROI genuinely outweighs an on-time launch, I will reallocate cross-functional resources and reset market expectations. Otherwise, I will use data to persuade them to stay the course."
+        }
+      }
+    }
+  },
+  {
+    "id": "q_012",
+    "type": "interview",
+    "category": { "zh": "跨部門協作", "en": "Cross-functional Collaboration" },
+    "difficulty": 4,
+    "target_levels": ["junior", "mid_level", "senior"],
+    "philosophy_tags": [{ "zh": "利他之心", "en": "Win-Win Mindset" }],
+    "title": {
+      "zh": "你的專案依賴另一個部門的資源，但對方的 KPI 與你的目標有衝突，你會如何推進？",
+      "en": "Your project relies on another department, but their KPIs conflict with yours. How do you proceed?"
+    },
+    "intent": {
+      "zh": "考驗橫向領導力（Lateral Leadership）、利益對齊與雙贏談判技巧。",
+      "en": "Tests lateral leadership, goal alignment, and win-win negotiation skills."
+    },
+    "panic_mode": {
+      "timer": 10,
+      "safe_landing_script": {
+        "zh": "解決部門衝突的關鍵在於『尋找共同利益』。請給我幾秒鐘思考如何設計一個雙贏方案...",
+        "en": "The key to resolving departmental conflicts is finding mutual interests. Give me a few seconds to think about a win-win scenario..."
+      }
+    },
+    "levels": {
+      "junior": {
+        "hiring_manager_os": {
+          "zh": "「不要與其他部門起衝突，遇到無法解決的僵局應及時上報。」",
+          "en": "\"Don't create friction with other departments. Escalate appropriately when hitting a deadlock.\""
+        },
+        "focus": { "zh": "釐清衝突點與適當上報", "en": "Clarifying Conflicts & Escalation" },
+        "script": {
+          "zh": "我會先與對方部門的窗口溝通，了解他們目前的任務優先級與痛點。如果確認雙方目標確實存在不可調和的衝突，我會整理具體情況向我的主管匯報，請求更高級別的協調。",
+          "en": "I will communicate with the other department's point of contact to understand their priorities and pain points. If there is an irreconcilable conflict, I will summarize the situation and report to my manager to seek higher-level coordination."
+        }
+      },
+      "mid_level": {
+        "hiring_manager_os": {
+          "zh": "「展現你的影響力，試著在不依賴上司介入的情況下，透過協商達成共識。」",
+          "en": "\"Show your influence. Try to reach a consensus through negotiation without relying on your manager's intervention.\""
+        },
+        "focus": { "zh": "尋找共同利益與資源交換", "en": "Finding Mutual Benefits & Resource Exchange" },
+        "script": {
+          "zh": "我會主動發起會議，不談『我的需求』，而是探討『這個專案能如何幫助他們達成 KPI』。如果需要，我會提議資源交換，或者在專案設計上做出讓步，確保方案對雙方都有利。",
+          "en": "I will initiate a meeting, focusing not on 'my needs' but on 'how this project can help achieve their KPIs'. If necessary, I will propose a resource exchange or make concessions in the project design to ensure a mutually beneficial outcome."
+        }
+      },
+      "senior": {
+        "hiring_manager_os": {
+          "zh": "「系統性的 KPI 衝突需要由上而下解決，你能否推動戰略層面的重新對齊？」",
+          "en": "\"Systemic KPI conflicts require top-down resolution. Can you drive strategic realignment?\""
+        },
+        "focus": { "zh": "戰略對齊與推動高層決策", "en": "Strategic Alignment & Driving Executive Decisions" },
+        "script": {
+          "zh": "這種衝突通常源於公司戰略未完全對齊。我會將此視為一個系統性問題，整理一份商業影響分析，拉攏雙方部門主管進行對話，推動高層重新審視並調整激勵機制，確保全公司的努力方向一致。",
+          "en": "Such conflicts usually stem from misaligned company strategies. I will treat this as a systemic issue, prepare a business impact analysis, bring department heads together, and push executives to realign incentives to ensure company-wide cohesion."
+        }
+      }
+    }
+  },
+  {
+    "id": "q_013",
+    "type": "written",
+    "category": { "zh": "書面提案與說服", "en": "Written Proposal & Persuasion" },
+    "difficulty": 5,
+    "target_levels": ["junior", "mid_level", "senior"],
+    "philosophy_tags": [{ "zh": "第一性原理", "en": "First Principles" }],
+    "title": {
+      "zh": "【筆試】請撰寫一封電郵給日理萬機的高層，爭取一筆預算以升級現有系統。",
+      "en": "[Written Test] Write an email to a busy executive requesting a budget to upgrade an existing system."
+    },
+    "intent": {
+      "zh": "考驗精準表達（Elevator Pitch）、投資回報率 (ROI) 分析及商業書信邏輯。",
+      "en": "Tests concise communication (Elevator Pitch), ROI analysis, and business writing logic."
+    },
+    "panic_mode": {
+      "timer": 10,
+      "safe_landing_script": {
+        "zh": "寫給高層的電郵必須遵循『結論先行 (BLUF)』原則。請給我十秒鐘構思電郵結構...",
+        "en": "Emails to executives must follow the BLUF (Bottom Line Up Front) principle. Give me 10 seconds to structure the email..."
+      }
+    },
+    "levels": {
+      "junior": {
+        "hiring_manager_os": {
+          "zh": "「郵件必須簡潔，清楚列出當前痛點以及升級後的好處。」",
+          "en": "\"The email must be concise, clearly listing current pain points and the benefits of the upgrade.\""
+        },
+        "focus": { "zh": "痛點描述與清晰訴求", "en": "Describing Pain Points & Clear Requests" },
+        "script": {
+          "zh": "主旨：關於升級現有客戶管理系統的預算申請\n\n您好，由於現有系統經常當機，導致團隊每週浪費約 10 小時進行手動修復。為提升運營效率，我希望能申請一筆預算升級系統。附件為初步的方案細節，希望能與您進一步討論。謝謝。",
+          "en": "Subject: Budget Request for CRM System Upgrade\n\nHi [Name], The current system's frequent crashes cause the team to waste roughly 10 hours weekly on manual fixes. To improve efficiency, I am requesting a budget to upgrade the system. Details are attached. I look forward to discussing this further. Thank you."
+        }
+      },
+      "mid_level": {
+        "hiring_manager_os": {
+          "zh": "「高層沒時間看長篇大論，你需要直接給出金額、預期效益與具體時間表。」",
+          "en": "\"Executives lack time for essays. Provide the amount, expected benefits, and timeline directly.\""
+        },
+        "focus": { "zh": "結論先行與具體解決方案", "en": "Bottom Line Up Front (BLUF) & Concrete Solutions" },
+        "script": {
+          "zh": "主旨：申請 $X 萬系統升級預算，預期提升 30% 處理效率\n\n您好，為解決近期系統延遲導致的客訴問題，我提議撥款 $X 萬升級現有架構。此升級預計能在兩個月內完成，並為團隊節省 30% 的工時，成本將於半年內回本。詳情請見附件商業論證 (Business Case)，期待您的審批。",
+          "en": "Subject: Budget Request for $X Upgrade - Expected 30% Efficiency Gain\n\nHi [Name], To resolve recent customer complaints caused by system latency, I propose a $X budget to upgrade our architecture. The upgrade will take two months, save 30% in team hours, and pay for itself within six months. Please see the attached Business Case for approval."
+        }
+      },
+      "senior": {
+        "hiring_manager_os": {
+          "zh": "「你需要將技術升級翻譯成『商業語言』：不升級的風險是什麼？投資回報率 (ROI) 是多少？」",
+          "en": "\"Translate technical upgrades into business language: What is the risk of doing nothing? What is the ROI?\""
+        },
+        "focus": { "zh": "商業影響 (ROI) 與風險緩解", "en": "Business Impact (ROI) & Risk Mitigation" },
+        "script": {
+          "zh": "主旨：【需審批】系統升級預算申請 - 預計降低 15% 客戶流失率\n\n您好，現有系統架構已無法支撐 Q3 的業務增長目標，若維持現狀，預估將面臨每月 $Y 萬的潛在營收流失風險。為此，我申請 $X 萬預算進行全面升級。該方案具備 150% 的首年 ROI，並已規劃零停機 (Zero Downtime) 轉移策略。附件為詳細的財務預測與風險緩解計畫，懇請審批。",
+          "en": "Subject: [Approval Required] System Upgrade Budget - Projected 15% Reduction in Churn\n\nHi [Name], Our current architecture cannot support Q3 growth targets. Inaction risks a potential monthly revenue loss of $Y. I am requesting $X to overhaul the system. This yields a 150% Year-1 ROI with a zero-downtime migration strategy. Attached are the financial projections and risk mitigation plans for your approval."
+        }
+      }
+    }
+  },
+  {
+    "id": "q_014",
+    "type": "interview",
+    "category": { "zh": "風險管理", "en": "Risk Management" },
+    "difficulty": 4,
+    "target_levels": ["junior", "mid_level", "senior"],
+    "philosophy_tags": [{ "zh": "第一性原理", "en": "First Principles" }],
+    "title": {
+      "zh": "在產品發佈前夕，你發現了一個可能影響用戶體驗的缺陷，但延遲發佈會引發公關危機，你會如何決策？",
+      "en": "Right before a launch, you discover a flaw affecting user experience, but delaying will cause a PR crisis. How do you decide?"
+    },
+    "intent": {
+      "zh": "考驗在極端壓力下的決策邏輯、風險權衡 (Trade-offs) 與誠信。",
+      "en": "Tests decision-making logic under pressure, risk trade-offs, and integrity."
+    },
+    "panic_mode": {
+      "timer": 10,
+      "safe_landing_script": {
+        "zh": "這是經典的『兩難困境』。請給我幾秒鐘，我會依據缺陷的嚴重程度來制定不同情境的應對策略...",
+        "en": "This is a classic dilemma. Give me a few seconds to outline scenario-based strategies depending on the severity of the flaw..."
+      }
+    },
+    "levels": {
+      "junior": {
+        "hiring_manager_os": {
+          "zh": "「絕不能隱瞞。我需要你第一時間提供準確的資訊，讓管理層做決定。」",
+          "en": "\"Never cover it up. I need you to provide accurate information immediately so management can decide.\""
+        },
+        "focus": { "zh": "即時通報與提供事實", "en": "Immediate Escalation & Providing Facts" },
+        "script": {
+          "zh": "我絕對不會隱瞞。我會立刻收集該缺陷觸發的條件與影響範圍，第一時間向專案經理與主管通報，並配合技術團隊測試修復方案，交由管理層定奪是否延遲發佈。",
+          "en": "I will never hide it. I will immediately gather facts on trigger conditions and impact scope, escalate to the project manager, and assist the tech team in testing fixes so management can decide whether to delay."
+        }
+      },
+      "mid_level": {
+        "hiring_manager_os": {
+          "zh": "「提出問題的同時，請準備好緊急的降級方案或熱修復 (Hotfix) 計畫。」",
+          "en": "\"When raising the issue, have an emergency downgrade or hotfix plan ready.\""
+        },
+        "focus": { "zh": "損害控管與應變方案", "en": "Damage Control & Contingency Planning" },
+        "script": {
+          "zh": "我會快速評估該缺陷是否屬於『致命層級』。如果是，我會強烈建議延遲發佈並啟動公關預案；若只是體驗瑕疵，我會建議如期發佈，但同時準備好上線後的熱修復 (Hotfix) 補丁，並在內部準備好客服應對指引。",
+          "en": "I will assess if the flaw is 'critical'. If so, I strongly recommend delaying and triggering PR protocols. If it's a minor UX glitch, I suggest launching as planned but preparing a post-launch hotfix and briefing customer service with response guidelines."
+        }
+      },
+      "senior": {
+        "hiring_manager_os": {
+          "zh": "「在商業聲譽與法律風險之間，你需要具備全盤的戰略眼光來調度各部門。」",
+          "en": "\"Between business reputation and legal risk, you need a holistic strategic vision to coordinate departments.\""
+        },
+        "focus": { "zh": "全面危機管理與內外溝通戰略", "en": "Comprehensive Crisis Management & Comm Strategy" },
+        "script": {
+          "zh": "這是一場商業風險評估。我會立即召集技術、公關與法務主管召開緊急會議。若缺陷涉及資安或合規，必須無條件延遲發佈，並親自主導對外的透明溝通以保護長期品牌聲譽；若僅是功能受限，我會採取『Beta 試運行』名義降級發佈，既守住承諾也管理好市場預期。",
+          "en": "This is a business risk assessment. I will immediately convene Tech, PR, and Legal heads. If it's a security/compliance flaw, we delay unconditionally, and I will lead transparent external communication to protect long-term brand equity. If it's a functional limitation, I will launch it as a 'Beta' release, keeping our promise while managing market expectations."
+        }
+      }
+    }
+  },
+  {
+    "id": "q_015",
+    "type": "interview",
+    "category": { "zh": "人才培育與領導", "en": "Talent Development & Leadership" },
+    "difficulty": 3,
+    "target_levels": ["junior", "mid_level", "senior"],
+    "philosophy_tags": [
+      { "zh": "同理心", "en": "Empathy" },
+      { "zh": "成長型思維", "en": "Growth Mindset" }
+    ],
+    "title": {
+      "zh": "團隊中有一位新入職的員工遲遲未能適應工作節奏，你會如何協助他？",
+      "en": "A new hire is struggling to adapt to the work pace. How do you assist them?"
+    },
+    "intent": {
+      "zh": "考驗同理心、輔導技巧 (Coaching) 及建立團隊知識庫的能力。",
+      "en": "Tests empathy, coaching skills, and the ability to build team knowledge bases."
+    },
+    "panic_mode": {
+      "timer": 10,
+      "safe_landing_script": {
+        "zh": "協助新人的核心步驟是『診斷問題』與『給予明確目標』。請容許我用幾秒鐘梳理我的輔導流程...",
+        "en": "The core of assisting new hires is diagnosing the problem and providing clear goals. Allow me a few seconds to outline my coaching process..."
+      }
+    },
+    "levels": {
+      "junior": {
+        "hiring_manager_os": {
+          "zh": "「展現你的團隊精神，主動伸出援手，但不要因此拖累自己的進度。」",
+          "en": "\"Show team spirit by reaching out, but don't let it derail your own progress.\""
+        },
+        "focus": { "zh": "分享經驗與友善支援", "en": "Sharing Experience & Friendly Support" },
+        "script": {
+          "zh": "我會主動關心他，分享我自己當初剛入職時的適應經驗與筆記，讓他感到被接納。同時，在不影響我自身工作的範圍內，針對他不熟悉的工具或流程提供快速解答。",
+          "en": "I would proactively check in, share my own early onboarding experiences and notes to make him feel welcome. Within limits that don't affect my own work, I will provide quick answers regarding tools or processes he's unfamiliar with."
+        }
+      },
+      "mid_level": {
+        "hiring_manager_os": {
+          "zh": "「你需要扮演導師 (Mentor) 的角色，提供結構化的指導與階段性反饋。」",
+          "en": "\"You need to act as a mentor, providing structured guidance and milestone feedback.\""
+        },
+        "focus": { "zh": "結構化輔導與結對工作", "en": "Structured Mentorship & Pair Work" },
+        "script": {
+          "zh": "我會與他進行一對一交流，找出是『專業技能』還是『公司流程』的瓶頸。接著，我會為他拆解任務，設定較小的短期里程碑，並安排結對工作 (Pairing) 來及時糾正錯誤，幫助他建立自信。",
+          "en": "I will have a 1-on-1 to identify if the bottleneck is 'technical skill' or 'company processes'. Then, I will break down tasks, set small short-term milestones, and arrange pair work to provide immediate correction and build their confidence."
+        }
+      },
+      "senior": {
+        "hiring_manager_os": {
+          "zh": "「新人無法適應，往往是公司的入職流程 (Onboarding) 出了問題，你能否從根本解決？」",
+          "en": "\"When new hires struggle, it's often a systemic onboarding flaw. Can you fix the root cause?\""
+        },
+        "focus": { "zh": "優化入職流程與團隊梯隊建設", "en": "Optimizing Onboarding & Building Talent Pipeline" },
+        "script": {
+          "zh": "除了親自輔導該名員工，我會退一步審視這是否暴露出我們部門 Onboarding 流程的缺陷。我會推動建立標準化的知識庫 (Wiki) 與『學長姐制度 (Buddy System)』，確保未來的每一位新人都能更平滑地融入團隊。",
+          "en": "Beyond coaching the individual, I will step back to assess if this exposes a flaw in our department's onboarding process. I will push to establish a standardized Wiki and a Buddy System to ensure every future new hire integrates smoothly into the team."
         }
       }
     }
