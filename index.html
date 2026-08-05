@@ -82,23 +82,23 @@
   <div id="filter-status"></div>
   <div id="app">Loading...</div>
 
-  <!-- ISO / AIGP 合規 & 隱私宣告 Footer -->
-  <footer style="margin-top: 40px; padding: 20px; background: #0f172a; color: #94a3b8; border-radius: 8px; font-size: 0.8rem; line-height: 1.5;">
-    <div style="display: flex; gap: 12px; align-items: center; margin-bottom: 10px; flex-wrap: wrap;">
-      <span style="color: #22c55e; font-weight: bold;">🔒 100% Offline & Client-Side PWA</span>
-      <span style="color: #38bdf8; font-weight: bold;">🛡️ Zero Data Retention (ZDR)</span>
-      <span style="color: #a855f7; font-weight: bold;">⚖️ ISO 42001 & EU AI Act Guardrails</span>
-      <button onclick="purgeAllUserData()" style="background:#dc2626; color:#fff; border:none; padding:3px 8px; border-radius:4px; font-size:0.75rem; cursor:pointer; font-weight:bold;">
-        🗑️ 一鍵銷毀所有本機數據 (Data Purge)
-      </button>
-    </div>
-    <p style="margin: 0;">
-      <strong>Architecture & Compliance Notice:</strong><br>
-      • <strong>Zero Telemetry:</strong> 無後端伺服器 (No Backend Server)，零 Cookie、零 Analytics 追蹤碼。<br>
-      • <strong>Data Sovereignty:</strong> 本機微型稽核記錄僅包含隨機時間戳 (Timestamp Only)，絕不收集任何個人識別資訊 (PII)。<br>
-      • <strong>AI Governance (AIGP):</strong> 本系統所有等級比對與互動腳本僅為靜態資料庫 (Static Database Matching) 之對照範例，不構成任何形式之自動化個人評估、資格認定或錄取保證。
-    </p>
-  </footer>
+  <!-- 合規 & 隱私宣告 Footer -->
+<footer style="margin-top: 40px; padding: 20px; background: #0f172a; color: #94a3b8; border-radius: 8px; font-size: 0.8rem; line-height: 1.5;">
+  <div style="display: flex; gap: 12px; align-items: center; margin-bottom: 10px; flex-wrap: wrap;">
+    <span style="color: #22c55e; font-weight: bold;">🔒 100% Offline & Client-Side PWA</span>
+    <span style="color: #38bdf8; font-weight: bold;">🛡️ Zero Data Retention (ZDR)</span>
+    <span style="color: #a855f7; font-weight: bold;">📄 Static Rule-Based Architecture</span>
+    <button onclick="purgeAllUserData()" style="background:#dc2626; color:#fff; border:none; padding:3px 8px; border-radius:4px; font-size:0.75rem; cursor:pointer; font-weight:bold;">
+      🗑️ 一鍵銷毀所有本機數據 (Data Purge)
+    </button>
+  </div>
+  <p style="margin: 0;">
+    <strong>Architecture & Privacy Compliance Statement:</strong><br>
+    • <strong>Deterministic Architecture:</strong> 本系統為 100% 靜態檢索工具（Non-AI / Rule-based System），不涉及生成式 AI 模型、自動化個人評估或演算法決策。<br>
+    • <strong>Zero Telemetry & Data Sovereignty:</strong> 無後端伺服器 (No Backend Server)，零 Cookie、零 第三方 Analytics 追蹤碼。所有操作僅儲存於您的本機瀏覽器 (<code style="color:#f43f5e;">localStorage</code>)。<br>
+    • <strong>Privacy-by-Design:</strong> 完全符合 GDPR「數據極小化 (Data Minimization)」與「被遺忘權 (Right to be Forgotten)」原則。
+  </p>
+</footer>
 </div>
 
 <!-- 考牌模式 Modal -->
