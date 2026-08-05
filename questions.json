@@ -1,0 +1,75 @@
+[
+  {
+    "id": "q_001",
+    "type": "interview",
+    "category": {
+      "zh": "情境與危機處理",
+      "en": "Crisis & Scenario Management"
+    },
+    "difficulty": 3,
+    "target_levels": ["junior", "mid_level", "senior"],
+    "philosophy_tags": [
+      { "zh": "第一性原理", "en": "First Principles" },
+      { "zh": "成長型思維", "en": "Growth Mindset" }
+    ],
+    "title": {
+      "zh": "當專案進度嚴重落後，你如何向相關利益者（Stakeholders）說明並解決？",
+      "en": "When a project is severely delayed, how do you communicate with stakeholders and resolve it?"
+    },
+    "intent": {
+      "zh": "考驗危機處理、誠實度以及是否具備主動溝通的擔當。",
+      "en": "Tests crisis management, honesty, and proactive communication."
+    },
+    "panic_mode": {
+      "timer": 10,
+      "safe_landing_script": {
+        "zh": "呢個問題好有挑戰性。請畀我 10 秒鐘整理思維，我想從『損害控管』同『替代方案』兩個方向去回應...",
+        "en": "That is a great question. Please give me 10 seconds to organize my thoughts on damage control and contingency plans..."
+      }
+    },
+    "levels": {
+      "junior": {
+        "hiring_manager_os": {
+          "zh": "「我預咗你會遇到困難，但我最怕你隱瞞不報，爆鍋先講。」",
+          "en": "\"I expect you to face challenges, but I fear you hiding them until it's too late.\""
+        },
+        "focus": {
+          "zh": "及時通報與執行指令",
+          "en": "Timely Reporting & Execution"
+        },
+        "script": {
+          "zh": "我會先盤點手上受影響的工作，整理成簡短清單，第一時間向主管匯報，並提出我可以加班或調整優先順序的兩個選項供主管決策。",
+          "en": "I will audit my affected tasks, prepare a concise summary, report to my manager immediately, and offer options such as prioritizing tasks or working overtime."
+        }
+      },
+      "mid_level": {
+        "hiring_manager_os": {
+          "zh": "「我唔想聽你報告壞消息，我要聽你的補救方案跟所需的資源。」",
+          "en": "\"Don't just bring me bad news; bring me mitigation plans and resource requirements.\""
+        },
+        "focus": {
+          "zh": "資源調配與範疇取捨 (Trade-offs)",
+          "en": "Resource Allocation & Scope Trade-offs"
+        },
+        "script": {
+          "zh": "我會評估延誤的瓶頸，向 Stakeholder 提出兩個方案：一是削減 20% 非核心功能以按時交付；二是增加資源延後一週，並分析利弊。",
+          "en": "I will evaluate the bottlenecks and offer stakeholders two options: reduce 20% non-core scope for on-time delivery, or add resources to defer by a week."
+        }
+      },
+      "senior": {
+        "hiring_manager_os": {
+          "zh": "「你能不能站在公司商業利益的角度止血？事後如何建立體制防止再發生？」",
+          "en": "\"Can you mitigate risks from a business ROI perspective and establish systems to prevent recurrence?\""
+        },
+        "focus": {
+          "zh": "商業風險控管與制度復盤 (Post-mortem)",
+          "en": "Business Risk Control & Systemic Post-mortem"
+        },
+        "script": {
+          "zh": "我會親自與高層 Stakeholder 對齊商業影響，重新排定優先順序以保住核心商業價值；同時啟動備用資源止血，並在事後進行團隊復盤，更新 SOP。",
+          "en": "I will align with senior stakeholders to protect core business value, deploy contingency resources, and conduct a post-mortem to update our SOPs."
+        }
+      }
+    }
+  }
+]
