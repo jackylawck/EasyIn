@@ -1,11 +1,11 @@
 <!DOCTYPE html>
-<html lang="zh-HK">
+<html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>面試易 EasyIn - 離線職場教練</title>
+  <title>EasyIn - Offline Interview & Written Test Companion</title>
   
-  <!-- PWA & 隱私合規標頭 -->
+  <!-- PWA & Privacy Compliance Header -->
   <link rel="manifest" href="manifest.json">
   <meta name="theme-color" content="#2563eb">
 
@@ -22,7 +22,7 @@
     .container { max-width: 850px; margin: 0 auto; }
     .top-bar { display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px; flex-wrap: wrap; gap: 10px; }
     
-    /* 篩選與模式控制列 */
+    /* Control Bar */
     .filter-bar { display: flex; gap: 10px; margin-bottom: 20px; flex-wrap: wrap; align-items: center; background: #fff; padding: 12px; border-radius: 8px; box-shadow: 0 1px 3px rgba(0,0,0,0.05); }
     .select-input { padding: 8px; border-radius: 6px; border: 1px solid #cbd5e1; font-size: 0.9rem; background: #fff; color: var(--text); font-weight: bold; }
     
@@ -30,7 +30,7 @@
     .btn-lang { background: #e2e8f0; color: #334155; }
     .btn-challenge { background: var(--warning); color: #fff; }
     
-    /* 卡片樣式 */
+    /* Card Styling */
     .card { background: var(--card-bg); border-radius: 12px; padding: 24px; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1); margin-bottom: 20px; }
     .tag { display: inline-block; background: #e0e7ff; color: #4338ca; padding: 4px 10px; border-radius: 6px; font-size: 0.85rem; font-weight: bold; margin-right: 6px; border: none; cursor: pointer; transition: 0.2s; }
     .tag:hover { background: #c7d2fe; }
@@ -41,14 +41,14 @@
     .panic-btn { background: #fef2f2; color: var(--accent); border: 1px solid #fecaca; margin-top: 15px; width: 100%; padding: 10px; border-radius: 6px; font-weight: bold; cursor: pointer; }
     .panic-box { display: none; background: #1e293b; color: #fff; padding: 15px; border-radius: 8px; margin-top: 10px; }
     
-    /* 單題切換導航控制 */
+    /* Navigation Bar */
     .pagination-bar { display: flex; justify-content: space-between; align-items: center; margin-top: 15px; padding-top: 15px; border-top: 1px solid #e2e8f0; }
     .nav-btn { padding: 8px 16px; background: #3b82f6; color: #fff; border: none; border-radius: 6px; cursor: pointer; font-weight: bold; }
     .nav-btn:disabled { background: #cbd5e1; cursor: not-allowed; }
 
     .filter-banner { background: #dbeafe; color: #1e40af; padding: 10px 15px; border-radius: 8px; margin-bottom: 20px; display: flex; justify-content: space-between; align-items: center; }
     
-    /* 考牌模式 Modal */
+    /* Challenge Modal */
     .modal { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.6); justify-content: center; align-items: center; z-index: 1000; }
     .modal-content { background: #fff; padding: 30px; border-radius: 12px; max-width: 600px; width: 90%; max-height: 80vh; overflow-y: auto; }
   </style>
@@ -57,24 +57,24 @@
 
 <div class="container">
   <div class="top-bar">
-    <h1 style="margin:0;">💡 EasyIn 面試易</h1>
+    <h1 style="margin:0;" id="app-title">💡 EasyIn</h1>
     <div>
-      <button class="btn btn-challenge" onclick="startChallengeMode()">🎯 考牌 Mode</button>
-      <button class="btn btn-lang" onclick="toggleLanguage()">🌐 English / 中文</button>
+      <button class="btn btn-challenge" id="btn-challenge" onclick="startChallengeMode()">🎯 Challenge Mode</button>
+      <button class="btn btn-lang" id="btn-lang" onclick="toggleLanguage()">🌐 English / 中文</button>
     </div>
   </div>
 
-  <!-- 種類選單與顯示模式控制條 -->
+  <!-- Filter & Control Bar -->
   <div class="filter-bar">
     <div>
-      <label style="font-size:0.85rem; font-weight:bold; color:#64748b;">📂 種類 (Category): </label>
+      <label style="font-size:0.85rem; font-weight:bold; color:#64748b;" id="label-category">📂 Category: </label>
       <select id="category-select" class="select-input" onchange="onCategoryChange(this.value)">
-        <option value="ALL">所有種類 (All Categories)</option>
+        <option value="ALL">All Categories</option>
       </select>
     </div>
 
     <div style="margin-left: auto; display: flex; align-items: center; gap: 8px;">
-      <label style="font-size:0.85rem; font-weight:bold; color:#64748b;">🎴 逐題刷題模式: </label>
+      <label style="font-size:0.85rem; font-weight:bold; color:#64748b;" id="label-single-mode">🎴 Single Question Mode: </label>
       <input type="checkbox" id="single-mode-toggle" checked onchange="toggleSingleMode(this.checked)" style="width: 18px; height: 18px; cursor: pointer;">
     </div>
   </div>
@@ -82,41 +82,88 @@
   <div id="filter-status"></div>
   <div id="app">Loading...</div>
 
-  <!-- 合規 & 隱私宣告 Footer -->
-<footer style="margin-top: 40px; padding: 20px; background: #0f172a; color: #94a3b8; border-radius: 8px; font-size: 0.8rem; line-height: 1.5;">
-  <div style="display: flex; gap: 12px; align-items: center; margin-bottom: 10px; flex-wrap: wrap;">
-    <span style="color: #22c55e; font-weight: bold;">🔒 100% Offline & Client-Side PWA</span>
-    <span style="color: #38bdf8; font-weight: bold;">🛡️ Zero Data Retention (ZDR)</span>
-    <span style="color: #a855f7; font-weight: bold;">📄 Static Rule-Based Architecture</span>
-    <button onclick="purgeAllUserData()" style="background:#dc2626; color:#fff; border:none; padding:3px 8px; border-radius:4px; font-size:0.75rem; cursor:pointer; font-weight:bold;">
-      🗑️ 一鍵銷毀所有本機數據 (Data Purge)
-    </button>
-  </div>
-  <p style="margin: 0;">
-    <strong>Architecture & Privacy Compliance Statement:</strong><br>
-    • <strong>Deterministic Architecture:</strong> 本系統為 100% 靜態檢索工具（Non-AI / Rule-based System），不涉及生成式 AI 模型、自動化個人評估或演算法決策。<br>
-    • <strong>Zero Telemetry & Data Sovereignty:</strong> 無後端伺服器 (No Backend Server)，零 Cookie、零 第三方 Analytics 追蹤碼。所有操作僅儲存於您的本機瀏覽器 (<code style="color:#f43f5e;">localStorage</code>)。<br>
-    • <strong>Privacy-by-Design:</strong> 完全符合 GDPR「數據極小化 (Data Minimization)」與「被遺忘權 (Right to be Forgotten)」原則。
-  </p>
-</footer>
+  <!-- ISO / Privacy Compliance Footer -->
+  <footer style="margin-top: 40px; padding: 20px; background: #0f172a; color: #94a3b8; border-radius: 8px; font-size: 0.8rem; line-height: 1.5;">
+    <div style="display: flex; gap: 12px; align-items: center; margin-bottom: 10px; flex-wrap: wrap;">
+      <span style="color: #22c55e; font-weight: bold;">🔒 100% Offline & Client-Side PWA</span>
+      <span style="color: #38bdf8; font-weight: bold;">🛡️ Zero Data Retention (ZDR)</span>
+      <span style="color: #a855f7; font-weight: bold;">📄 Static Rule-Based Architecture</span>
+      <button onclick="purgeAllUserData()" id="btn-purge" style="background:#dc2626; color:#fff; border:none; padding:3px 8px; border-radius:4px; font-size:0.75rem; cursor:pointer; font-weight:bold;">
+        🗑️ Purge All Local Data (ZDR)
+      </button>
+    </div>
+    <p style="margin: 0;" id="footer-notice">
+      <strong>Architecture & Privacy Compliance Statement:</strong><br>
+      • <strong>Deterministic Architecture:</strong> Static reference tool (Non-AI / Rule-based System) with zero automated decision-making.<br>
+      • <strong>Zero Telemetry:</strong> No backend server, zero cookies, zero third-party analytics tracking code.<br>
+      • <strong>Privacy-by-Design:</strong> Fully compliant with GDPR data minimization and right-to-be-forgotten principles.
+    </p>
+  </footer>
 </div>
 
-<!-- 考牌模式 Modal -->
+<!-- Challenge Modal -->
 <div class="modal" id="challenge-modal">
   <div class="modal-content" id="challenge-content"></div>
 </div>
 
 <script>
   let questionsData = [];
-  let currentLang = 'zh';
+  let currentLang = 'en'; // Default to English
   let activeTagFilter = null;
   let activeCategoryFilter = 'ALL';
   
-  // 逐題模式控制參數
   let isSingleMode = true;
   let currentIndex = 0;
 
-  // 註冊 Service Worker 實現 100% PWA 離線運行
+  // Dictionary for UI Translations
+  const uiText = {
+    en: {
+      title: "💡 EasyIn",
+      btnLang: "🌐 English / 中文",
+      challengeBtn: "🎯 Challenge Mode",
+      categoryLabel: "📂 Category: ",
+      allCategories: "All Categories",
+      singleModeLabel: "🎴 Single Question Mode: ",
+      intent: "Intent: ",
+      os: "Hiring Manager OS: ",
+      script: "Script: ",
+      panicBtn: "🆘 Panic Button",
+      panicTitle: "⏱️ 10s Safe Landing Script:",
+      prev: "← Previous",
+      next: "Next →",
+      activeStrategy: "Active Strategy: ",
+      clearFilter: "Clear Filter",
+      noQuestions: "No questions found for the selected category or strategy.",
+      purgeBtn: "🗑️ Purge All Local Data (ZDR)",
+      footerNotice: "<strong>Architecture & Privacy Compliance Statement:</strong><br>• <strong>Deterministic Architecture:</strong> Static reference tool (Non-AI / Rule-based System) with zero automated decision-making.<br>• <strong>Zero Telemetry:</strong> No backend server, zero cookies, zero third-party analytics tracking code.<br>• <strong>Privacy-by-Design:</strong> Fully compliant with GDPR data minimization and right-to-be-forgotten principles.",
+      purgeConfirm: "⚠️ Permanently purge all local data? (This will clear caches and local logs)",
+      purgeDone: "✅ All local caches and logs have been permanently purged."
+    },
+    zh: {
+      title: "💡 EasyIn 面試易",
+      btnLang: "🌐 English / 中文",
+      challengeBtn: "🎯 考牌 Mode",
+      categoryLabel: "📂 種類 (Category): ",
+      allCategories: "所有種類 (All Categories)",
+      singleModeLabel: "🎴 逐題刷題模式: ",
+      intent: "考官真意：",
+      os: "考官內心 OS：",
+      script: "應答腳本：",
+      panicBtn: "🆘 救命掣 (Panic Button)",
+      panicTitle: "⏱️ 10秒降落台詞：",
+      prev: "← 上一題",
+      next: "下一題 →",
+      activeStrategy: "目前心法篩選：",
+      clearFilter: "清除篩選",
+      noQuestions: "沒有找到相關種類或心法的題目。",
+      purgeBtn: "🗑️ 一鍵銷毀所有本機數據 (Data Purge)",
+      footerNotice: "<strong>架構與隱私合規聲明：</strong><br>• <strong>確定性架構：</strong> 本系統為 100% 靜態檢索工具（Non-AI / Rule-based），不涉及自動化個人評估或演算法決策。<br>• <strong>零數據追蹤：</strong> 無後端伺服器 (No Backend Server)，零 Cookie、零第三方 Analytics 追蹤碼。<br>• <strong>隱私即設計：</strong> 完全符合 GDPR「數據極小化」與「被遺忘權」原則。",
+      purgeConfirm: "⚠️ 確定徹底銷毀所有本機數據？（將清除所有快取與本地紀錄）",
+      purgeDone: "✅ 所有本機快取及動作日誌已徹底銷毀。"
+    }
+  };
+
+  // Register Service Worker
   if ('serviceWorker' in navigator) {
     navigator.serviceWorker.register('./sw.js')
       .then(() => console.log('EasyIn: 100% Offline Ready'))
@@ -127,6 +174,7 @@
     try {
       const res = await fetch('questions.json');
       questionsData = await res.json();
+      updateStaticUI();
       populateCategories();
       renderApp();
     } catch (e) {
@@ -134,10 +182,20 @@
     }
   }
 
-  // 自動提煉 JSON 內的所有種類 (Category) 動態填充下拉選單
+  function updateStaticUI() {
+    const t = uiText[currentLang];
+    document.getElementById('app-title').innerText = t.title;
+    document.getElementById('btn-challenge').innerText = t.challengeBtn;
+    document.getElementById('label-category').innerText = t.categoryLabel;
+    document.getElementById('label-single-mode').innerText = t.singleModeLabel;
+    document.getElementById('btn-purge').innerText = t.purgeBtn;
+    document.getElementById('footer-notice').innerHTML = t.footerNotice;
+  }
+
   function populateCategories() {
     const select = document.getElementById('category-select');
     const categories = new Set();
+    const t = uiText[currentLang];
     
     questionsData.forEach(q => {
       if (q.category && q.category[currentLang]) {
@@ -145,7 +203,7 @@
       }
     });
 
-    select.innerHTML = `<option value="ALL">${currentLang === 'zh' ? '所有種類 (All Categories)' : 'All Categories'}</option>`;
+    select.innerHTML = `<option value="ALL">${t.allCategories}</option>`;
     categories.forEach(cat => {
       select.innerHTML += `<option value="${cat}">${cat}</option>`;
     });
@@ -153,15 +211,15 @@
   }
 
   function toggleLanguage() {
-    currentLang = currentLang === 'zh' ? 'en' : 'zh';
-    document.querySelector('.btn-challenge').innerText = `🎯 ${currentLang === 'zh' ? '考牌 Mode' : 'Challenge Mode'}`;
+    currentLang = currentLang === 'en' ? 'zh' : 'en';
+    updateStaticUI();
     populateCategories();
     renderApp();
   }
 
   function onCategoryChange(catValue) {
     activeCategoryFilter = catValue;
-    currentIndex = 0; // 重置到第一頁
+    currentIndex = 0;
     renderApp();
   }
 
@@ -171,7 +229,6 @@
     renderApp();
   }
 
-  // 動態難度計算器
   function calculateDynamicDifficulty(q) {
     const jLength = q.levels.junior.script[currentLang].length;
     const sLength = q.levels.senior.script[currentLang].length;
@@ -193,7 +250,6 @@
     renderApp();
   }
 
-  // 取得經 Filter 過後的題目資料
   function getFilteredData() {
     return questionsData.filter(q => {
       const matchTag = activeTagFilter ? q.philosophy_tags.some(t => t.zh === activeTagFilter) : true;
@@ -206,13 +262,13 @@
     const app = document.getElementById('app');
     const filterStatus = document.getElementById('filter-status');
     const displayData = getFilteredData();
+    const t = uiText[currentLang];
 
-    // 處理 Banner 提示
     if (activeTagFilter) {
       filterStatus.innerHTML = `
         <div class="filter-banner">
-          <span>🧘 ${currentLang === 'zh' ? '目前心法篩選：' : 'Active Strategy:'} <strong>${activeTagFilter}</strong> (${displayData.length})</span>
-          <button class="btn" style="background:#fff; color:#1e40af;" onclick="clearFilter()">${currentLang === 'zh' ? '清除心法篩選' : 'Clear Strategy'}</button>
+          <span>🧘 ${t.activeStrategy} <strong>${activeTagFilter}</strong> (${displayData.length})</span>
+          <button class="btn" style="background:#fff; color:#1e40af;" onclick="clearFilter()">${t.clearFilter}</button>
         </div>
       `;
     } else {
@@ -220,11 +276,10 @@
     }
 
     if (displayData.length === 0) {
-      app.innerHTML = `<div class="card"><p>${currentLang === 'zh' ? '沒有找到相關種類或心法的題目。' : 'No questions found for the selected category/strategy.'}</p></div>`;
+      app.innerHTML = `<div class="card"><p>${t.noQuestions}</p></div>`;
       return;
     }
 
-    // 判斷是「單題模式」還是「列表模式」
     let renderList = displayData;
     if (isSingleMode) {
       if (currentIndex >= displayData.length) currentIndex = 0;
@@ -238,13 +293,13 @@
         <div class="card" id="card-${q.id}">
           <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:5px;">
             <div>
-              ${q.philosophy_tags.map(t => `<button class="tag" onclick="filterByTag('${t.zh}')">⚔️ ${t[currentLang]}</button>`).join('')}
+              ${q.philosophy_tags.map(tag => `<button class="tag" onclick="filterByTag('${tag.zh}')">⚔️ ${tag[currentLang]}</button>`).join('')}
               <span class="tag" style="background:#f1f5f9; color:#475569;">⭐ Dynamic Level: ${dynamicDiff}/5</span>
             </div>
             ${catName ? `<span class="tag" style="background:#e2e8f0; color:#334155;">📂 ${catName}</span>` : ''}
           </div>
           <h2 style="margin-top:12px;">${q.title[currentLang]}</h2>
-          <p><strong>${currentLang === 'zh' ? '考官真意：' : 'Intent:'}</strong> ${q.intent[currentLang]}</p>
+          <p><strong>${t.intent}</strong> ${q.intent[currentLang]}</p>
           
           <div class="btn-group">
             <button class="level-btn active" onclick="switchLevel('${q.id}', 'junior', this)">Junior</button>
@@ -253,21 +308,21 @@
           </div>
 
           <div class="os-box" id="os-${q.id}">
-            <strong>💥 ${currentLang === 'zh' ? '考官內心 OS：' : 'Hiring Manager OS:'}</strong> ${q.levels.junior.hiring_manager_os[currentLang]}
+            <strong>💥 ${t.os}</strong> ${q.levels.junior.hiring_manager_os[currentLang]}
           </div>
 
-          <p><strong>💡 ${currentLang === 'zh' ? '應答腳本：' : 'Script:'}</strong> <span id="script-${q.id}">${q.levels.junior.script[currentLang]}</span></p>
+          <p><strong>💡 ${t.script}</strong> <span id="script-${q.id}">${q.levels.junior.script[currentLang]}</span></p>
 
-          <button class="panic-btn" onclick="togglePanic('${q.id}')">🆘 ${currentLang === 'zh' ? '救命掣 (Panic Button)' : 'Panic Button'}</button>
+          <button class="panic-btn" onclick="togglePanic('${q.id}')">${t.panicBtn}</button>
           <div class="panic-box" id="panic-${q.id}">
-            <strong>⏱️ ${currentLang === 'zh' ? '10秒降落台詞：' : '10s Safe Landing Script:'}</strong><br>${q.panic_mode.safe_landing_script[currentLang]}
+            <strong>${t.panicTitle}</strong><br>${q.panic_mode.safe_landing_script[currentLang]}
           </div>
 
           ${isSingleMode ? `
             <div class="pagination-bar">
-              <button class="nav-btn" onclick="prevQuestion()" ${currentIndex === 0 ? 'disabled' : ''}>← ${currentLang === 'zh' ? '上一題' : 'Previous'}</button>
+              <button class="nav-btn" onclick="prevQuestion()" ${currentIndex === 0 ? 'disabled' : ''}>${t.prev}</button>
               <span style="font-weight:bold; color:#64748b;">${currentIndex + 1} / ${displayData.length}</span>
-              <button class="nav-btn" onclick="nextQuestion()" ${currentIndex === displayData.length - 1 ? 'disabled' : ''}>${currentLang === 'zh' ? '下一題' : 'Next'} →</button>
+              <button class="nav-btn" onclick="nextQuestion()" ${currentIndex === displayData.length - 1 ? 'disabled' : ''}>${t.next}</button>
             </div>
           ` : ''}
         </div>
@@ -294,7 +349,8 @@
 
   function switchLevel(qId, level, btn) {
     const q = questionsData.find(item => item.id === qId);
-    document.getElementById(`os-${qId}`).innerHTML = `<strong>💥 ${currentLang === 'zh' ? '考官內心 OS：' : 'Hiring Manager OS:'}</strong> ${q.levels[level].hiring_manager_os[currentLang]}`;
+    const t = uiText[currentLang];
+    document.getElementById(`os-${qId}`).innerHTML = `<strong>💥 ${t.os}</strong> ${q.levels[level].hiring_manager_os[currentLang]}`;
     document.getElementById(`script-${qId}`).innerText = q.levels[level].script[currentLang];
     
     const parent = btn.parentElement;
@@ -307,27 +363,30 @@
     box.style.display = box.style.display === 'block' ? 'none' : 'block';
   }
 
-  // 🎯 考牌 Mode
+  // Challenge Mode Modal
   function startChallengeMode() {
     if (questionsData.length === 0) return;
     const randomQ = questionsData[Math.floor(Math.random() * questionsData.length)];
     const modal = document.getElementById('challenge-modal');
     const content = document.getElementById('challenge-content');
 
+    const titleStr = currentLang === 'en' ? '🎯 Challenge Mode' : '🎯 考牌 Challenge Mode';
+    const subTitle = currentLang === 'en' ? 'Select the answer that best reflects your level of thinking:' : '請選擇你認為最合適、最能體現你思維層次的回答範例：';
+
     content.innerHTML = `
-      <h2>🎯 考牌 Challenge Mode</h2>
-      <p><strong>題目：</strong>${randomQ.title[currentLang]}</p>
-      <p>請選擇你認為最合適、最能體現你思維層次嘅回答範例：</p>
+      <h2>${titleStr}</h2>
+      <p><strong>Question:</strong> ${randomQ.title[currentLang]}</p>
+      <p>${subTitle}</p>
       
       <div style="margin: 15px 0;">
         <div style="background:#f1f5f9; padding:12px; border-radius:8px; margin-bottom:10px; cursor:pointer;" onclick="revealAnswer('${randomQ.id}', 'junior')">
-          <strong>選項 A：</strong> ${randomQ.levels.junior.script[currentLang]}
+          <strong>Option A:</strong> ${randomQ.levels.junior.script[currentLang]}
         </div>
         <div style="background:#f1f5f9; padding:12px; border-radius:8px; margin-bottom:10px; cursor:pointer;" onclick="revealAnswer('${randomQ.id}', 'senior')">
-          <strong>選項 B：</strong> ${randomQ.levels.senior.script[currentLang]}
+          <strong>Option B:</strong> ${randomQ.levels.senior.script[currentLang]}
         </div>
       </div>
-      <button class="btn btn-lang" onclick="closeChallenge()">${currentLang === 'zh' ? '關閉' : 'Cancel'}</button>
+      <button class="btn btn-lang" onclick="closeChallenge()">${currentLang === 'en' ? 'Cancel' : '關閉'}</button>
     `;
     modal.style.display = 'flex';
   }
@@ -339,26 +398,26 @@
     let resultHTML = '';
     if (chosenLevel === 'senior') {
       resultHTML = `
-        <h3 style="color:#16a34a;">🎉 選擇成功！</h3>
-        <p><strong>範例匹配度：</strong> 你選擇的選項匹配題庫中 <strong>Senior (高階範例)</strong> 的預設範本。</p>
-        <p><strong>Senior 思維核心：</strong> ${q.levels.senior.focus[currentLang]}</p>
+        <h3 style="color:#16a34a;">🎉 ${currentLang === 'en' ? 'Great Choice!' : '選擇成功！'}</h3>
+        <p>Your choice matches the <strong>Senior Level</strong> reference template.</p>
+        <p><strong>Core Focus:</strong> ${q.levels.senior.focus[currentLang]}</p>
       `;
     } else {
       resultHTML = `
-        <h3 style="color:#2563eb;">💡 選擇對比</h3>
-        <p>你選擇的選項匹配題庫中 <strong>Junior (初階範例)</strong> 的預設範本。建議對比 Senior 級別範例以獲取不同維度的思考視角：</p>
+        <h3 style="color:#2563eb;">💡 ${currentLang === 'en' ? 'Comparison' : '選擇對比'}</h3>
+        <p>Your choice matches the <strong>Junior Level</strong> reference template. Compare it with the Senior approach below:</p>
         <div style="background:#ecfdf5; border-left:4px solid #059669; padding:10px; border-radius:4px;">
-          <strong>Senior 參考範本：</strong> ${q.levels.senior.script[currentLang]}
+          <strong>Senior Reference:</strong> ${q.levels.senior.script[currentLang]}
         </div>
       `;
     }
 
     content.innerHTML = `
-      <h2>📊 範本比對結果</h2>
+      <h2>${currentLang === 'en' ? '📊 Analysis Result' : '📊 範本比對結果'}</h2>
       ${resultHTML}
       <hr style="margin:20px 0; border:none; border-top:1px solid #e2e8f0;">
-      <button class="btn btn-challenge" onclick="startChallengeMode()">再挑戰下一題</button>
-      <button class="btn btn-lang" onclick="closeChallenge()">返回主頁</button>
+      <button class="btn btn-challenge" onclick="startChallengeMode()">${currentLang === 'en' ? 'Next Question' : '再挑戰下一題'}</button>
+      <button class="btn btn-lang" onclick="closeChallenge()">${currentLang === 'en' ? 'Close' : '返回主頁'}</button>
     `;
   }
 
@@ -366,9 +425,10 @@
     document.getElementById('challenge-modal').style.display = 'none';
   }
 
-  // 銷毀資料
+  // Purge All Local Data
   async function purgeAllUserData() {
-    if (confirm('⚠️ 確定徹底銷毀所有本機數據？')) {
+    const t = uiText[currentLang];
+    if (confirm(t.purgeConfirm)) {
       localStorage.clear();
       sessionStorage.clear();
 
@@ -382,7 +442,7 @@
         await Promise.all(cacheNames.map(name => caches.delete(name)));
       }
 
-      alert('✅ 所有本機快取、資料庫及動作日誌已徹底銷毀 (Zero Data Retention Guarantee)。');
+      alert(t.purgeDone);
       location.reload();
     }
   }
