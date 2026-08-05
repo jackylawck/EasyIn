@@ -173,7 +173,10 @@
   async function loadQuestions() {
     try {
       const res = await fetch('questions.json');
-      questionsData = await res.json();
+      const fetchedData = await res.json();
+      // 支持物件 (meta + questions) 或純陣列架構
+      questionsData = fetchedData.questions ? fetchedData.questions : fetchedData;
+      
       updateStaticUI();
       populateCategories();
       renderApp();
@@ -230,6 +233,7 @@
   }
 
   function calculateDynamicDifficulty(q) {
+    if (!q.levels || !q.levels.junior || !q.levels.senior) return 3;
     const jLength = q.levels.junior.script[currentLang].length;
     const sLength = q.levels.senior.script[currentLang].length;
     const diff = Math.abs(sLength - jLength);
@@ -350,8 +354,14 @@
   function switchLevel(qId, level, btn) {
     const q = questionsData.find(item => item.id === qId);
     const t = uiText[currentLang];
-    document.getElementById(`os-${qId}`).innerHTML = `<strong>💥 ${t.os}</strong> ${q.levels[level].hiring_manager_os[currentLang]}`;
-    document.getElementById(`script-${qId}`).innerText = q.levels[level].script[currentLang];
+    
+    if (q.levels[level].script[currentLang] === "N/A") {
+      document.getElementById(`os-${qId}`).innerHTML = `<strong>💥 ${t.os}</strong> (N/A for this role level)`;
+      document.getElementById(`script-${qId}`).innerText = "N/A";
+    } else {
+      document.getElementById(`os-${qId}`).innerHTML = `<strong>💥 ${t.os}</strong> ${q.levels[level].hiring_manager_os[currentLang]}`;
+      document.getElementById(`script-${qId}`).innerText = q.levels[level].script[currentLang];
+    }
     
     const parent = btn.parentElement;
     parent.querySelectorAll('button').forEach(b => b.classList.remove('active'));
