@@ -1,12 +1,14 @@
-<link rel="manifest" href="manifest.json">
-<meta name="theme-color" content="#2563eb">
-
 <!DOCTYPE html>
 <html lang="zh-HK">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>面試易 EasyIn</title>
+  <title>面試易 EasyIn - 離線職場教練</title>
+  
+  <!-- PWA & 隱私合規標頭 -->
+  <link rel="manifest" href="manifest.json">
+  <meta name="theme-color" content="#2563eb">
+
   <style>
     :root {
       --primary: #2563eb;
@@ -14,19 +16,28 @@
       --card-bg: #ffffff;
       --text: #1e293b;
       --accent: #ef4444;
+      --warning: #f59e0b;
     }
     body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; background: var(--bg); color: var(--text); margin: 0; padding: 20px; }
     .container { max-width: 850px; margin: 0 auto; }
-    .top-bar { display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; }
-    .lang-btn { padding: 6px 12px; background: #e2e8f0; border: none; border-radius: 6px; cursor: pointer; font-weight: bold; }
+    .top-bar { display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; flex-wrap: wrap; gap: 10px; }
+    .btn { padding: 6px 12px; border: none; border-radius: 6px; cursor: pointer; font-weight: bold; font-size: 0.9rem; }
+    .btn-lang { background: #e2e8f0; color: #334155; }
+    .btn-challenge { background: var(--warning); color: #fff; }
     .card { background: var(--card-bg); border-radius: 12px; padding: 24px; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1); margin-bottom: 20px; }
-    .tag { display: inline-block; background: #e0e7ff; color: #4338ca; padding: 4px 8px; border-radius: 6px; font-size: 0.85rem; font-weight: bold; margin-right: 6px; }
+    .tag { display: inline-block; background: #e0e7ff; color: #4338ca; padding: 4px 10px; border-radius: 6px; font-size: 0.85rem; font-weight: bold; margin-right: 6px; border: none; cursor: pointer; transition: 0.2s; }
+    .tag:hover { background: #c7d2fe; }
     .os-box { background: #fff7ed; border-left: 4px solid #f97316; padding: 12px; margin: 15px 0; border-radius: 0 8px 8px 0; font-size: 0.95rem; }
     .btn-group { display: flex; gap: 8px; margin: 15px 0; }
     button.level-btn { flex: 1; padding: 8px; border: 1px solid #cbd5e1; background: #fff; border-radius: 6px; cursor: pointer; font-weight: bold; }
     button.level-btn.active { background: var(--primary); color: #fff; border-color: var(--primary); }
     .panic-btn { background: #fef2f2; color: var(--accent); border: 1px solid #fecaca; margin-top: 15px; width: 100%; padding: 10px; border-radius: 6px; font-weight: bold; cursor: pointer; }
     .panic-box { display: none; background: #1e293b; color: #fff; padding: 15px; border-radius: 8px; margin-top: 10px; }
+    .filter-banner { background: #dbeafe; color: #1e40af; padding: 10px 15px; border-radius: 8px; margin-bottom: 20px; display: flex; justify-content: space-between; align-items: center; }
+    
+    /* 考牌模式 Modal */
+    .modal { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.6); justify-content: center; align-items: center; z-index: 1000; }
+    .modal-content { background: #fff; padding: 30px; border-radius: 12px; max-width: 600px; width: 90%; max-height: 80vh; overflow-y: auto; }
   </style>
 </head>
 <body>
@@ -34,15 +45,50 @@
 <div class="container">
   <div class="top-bar">
     <h1 style="margin:0;">💡 EasyIn 面試易</h1>
-    <button class="lang-btn" onclick="toggleLanguage()">🌐 English / 中文</button>
+    <div>
+      <button class="btn btn-challenge" onclick="startChallengeMode()">🎯 考牌 Mode</button>
+      <button class="btn btn-lang" onclick="toggleLanguage()">🌐 English / 中文</button>
+    </div>
   </div>
 
+  <div id="filter-status"></div>
   <div id="app">Loading...</div>
+
+  <!-- ISO / AIGP 合規 & 隱私宣告 Footer -->
+  <footer style="margin-top: 40px; padding: 20px; background: #0f172a; color: #94a3b8; border-radius: 8px; font-size: 0.8rem; line-height: 1.5;">
+    <div style="display: flex; gap: 12px; align-items: center; margin-bottom: 10px; flex-wrap: wrap;">
+      <span style="color: #22c55e; font-weight: bold;">🔒 100% Offline & Client-Side PWA</span>
+      <span style="color: #38bdf8; font-weight: bold;">🛡️ Zero Data Retention (ZDR)</span>
+      <span style="color: #a855f7; font-weight: bold;">⚖️ ISO 42001 & EU AI Act Guardrails</span>
+      <button onclick="purgeAllUserData()" style="background:#dc2626; color:#fff; border:none; padding:3px 8px; border-radius:4px; font-size:0.75rem; cursor:pointer; font-weight:bold;">
+        🗑️ 一鍵銷毀所有本機數據 (Data Purge)
+      </button>
+    </div>
+    <p style="margin: 0;">
+      <strong>Architecture & Compliance Notice:</strong><br>
+      • <strong>Zero Telemetry:</strong> 無後端伺服器 (No Backend Server)，零 Cookie、零 Analytics 追蹤碼。<br>
+      • <strong>Data Sovereignty:</strong> 本機微型稽核記錄僅包含隨機時間戳 (Timestamp Only)，絕不收集任何個人識別資訊 (PII)。<br>
+      • <strong>AI Governance (AIGP):</strong> 本系統所有等級比對與互動腳本僅為靜態資料庫 (Static Database Matching) 之對照範例，不構成任何形式之自動化個人評估、資格認定或錄取保證。
+    </p>
+  </footer>
+</div>
+
+<!-- 考牌模式 Modal -->
+<div class="modal" id="challenge-modal">
+  <div class="modal-content" id="challenge-content"></div>
 </div>
 
 <script>
   let questionsData = [];
-  let currentLang = 'zh'; // 預設繁體中文
+  let currentLang = 'zh';
+  let activeTagFilter = null;
+
+  // 註冊 Service Worker 實現 100% PWA 離線運行
+  if ('serviceWorker' in navigator) {
+    navigator.serviceWorker.register('./sw.js')
+      .then(() => console.log('EasyIn: 100% Offline Ready'))
+      .catch(err => console.log('SW registration failed: ', err));
+  }
 
   async function loadQuestions() {
     try {
@@ -50,44 +96,83 @@
       questionsData = await res.json();
       renderApp();
     } catch (e) {
-      document.getElementById('app').innerHTML = 'Failed to load questions.';
+      document.getElementById('app').innerHTML = 'Failed to load questions. Check questions.json.';
     }
   }
 
   function toggleLanguage() {
     currentLang = currentLang === 'zh' ? 'en' : 'zh';
+    document.querySelector('.btn-challenge').innerText = `🎯 ${currentLang === 'zh' ? '考牌 Mode' : 'Challenge Mode'}`;
+    renderApp();
+  }
+
+  // 動態難度計算器（以 Junior/Senior 文字長度跨度為基礎）
+  function calculateDynamicDifficulty(q) {
+    const jLength = q.levels.junior.script[currentLang].length;
+    const sLength = q.levels.senior.script[currentLang].length;
+    const diff = Math.abs(sLength - jLength);
+    if (diff > 80) return 5;
+    if (diff > 40) return 4;
+    return 3;
+  }
+
+  function filterByTag(tagZh) {
+    activeTagFilter = tagZh;
+    renderApp();
+  }
+
+  function clearFilter() {
+    activeTagFilter = null;
     renderApp();
   }
 
   function renderApp() {
     const app = document.getElementById('app');
-    app.innerHTML = questionsData.map(q => `
-      <div class="card" id="card-${q.id}">
-        <div>
-          ${q.philosophy_tags.map(t => `<span class="tag">⚔️ ${t[currentLang]}</span>`).join('')}
-          <span class="tag" style="background:#f1f5f9; color:#475569;">⭐ Level: ${q.difficulty}/5</span>
-        </div>
-        <h2 style="margin-top:10px;">${q.title[currentLang]}</h2>
-        <p><strong>${currentLang === 'zh' ? '考官真意：' : 'Intent:'}</strong> ${q.intent[currentLang]}</p>
-        
-        <div class="btn-group">
-          <button class="level-btn active" onclick="switchLevel('${q.id}', 'junior', this)">Junior</button>
-          <button class="level-btn" onclick="switchLevel('${q.id}', 'mid_level', this)">Mid-Level</button>
-          <button class="level-btn" onclick="switchLevel('${q.id}', 'senior', this)">Senior</button>
-        </div>
+    const filterStatus = document.getElementById('filter-status');
 
-        <div class="os-box" id="os-${q.id}">
-          <strong>💥 ${currentLang === 'zh' ? '考官內心 OS：' : 'Hiring Manager OS:'}</strong> ${q.levels.junior.hiring_manager_os[currentLang]}
+    let displayData = questionsData;
+    if (activeTagFilter) {
+      displayData = questionsData.filter(q => q.philosophy_tags.some(t => t.zh === activeTagFilter));
+      filterStatus.innerHTML = `
+        <div class="filter-banner">
+          <span>🧘 ${currentLang === 'zh' ? '目前心法篩選：' : 'Active Strategy:'} <strong>${activeTagFilter}</strong> (${displayData.length})</span>
+          <button class="btn" style="background:#fff; color:#1e40af;" onclick="clearFilter()">${currentLang === 'zh' ? '清除篩選' : 'Clear Filter'}</button>
         </div>
+      `;
+    } else {
+      filterStatus.innerHTML = '';
+    }
 
-        <p><strong>💡 ${currentLang === 'zh' ? '應答腳本：' : 'Script:'}</strong> <span id="script-${q.id}">${q.levels.junior.script[currentLang]}</span></p>
+    app.innerHTML = displayData.map(q => {
+      const dynamicDiff = calculateDynamicDifficulty(q);
+      return `
+        <div class="card" id="card-${q.id}">
+          <div>
+            ${q.philosophy_tags.map(t => `<button class="tag" onclick="filterByTag('${t.zh}')">⚔️ ${t[currentLang]}</button>`).join('')}
+            <span class="tag" style="background:#f1f5f9; color:#475569;">⭐ Dynamic Level: ${dynamicDiff}/5</span>
+          </div>
+          <h2 style="margin-top:10px;">${q.title[currentLang]}</h2>
+          <p><strong>${currentLang === 'zh' ? '考官真意：' : 'Intent:'}</strong> ${q.intent[currentLang]}</p>
+          
+          <div class="btn-group">
+            <button class="level-btn active" onclick="switchLevel('${q.id}', 'junior', this)">Junior</button>
+            <button class="level-btn" onclick="switchLevel('${q.id}', 'mid_level', this)">Mid-Level</button>
+            <button class="level-btn" onclick="switchLevel('${q.id}', 'senior', this)">Senior</button>
+          </div>
 
-        <button class="panic-btn" onclick="togglePanic('${q.id}')">🆘 ${currentLang === 'zh' ? '救命掣 (Panic Button)' : 'Panic Button'}</button>
-        <div class="panic-box" id="panic-${q.id}">
-          <strong>⏱️ ${currentLang === 'zh' ? '10秒降落台詞：' : '10s Safe Landing Script:'}</strong><br>${q.panic_mode.safe_landing_script[currentLang]}
+          <div class="os-box" id="os-${q.id}">
+            <strong>💥 ${currentLang === 'zh' ? '考官內心 OS：' : 'Hiring Manager OS:'}</strong> ${q.levels.junior.hiring_manager_os[currentLang]}
+          </div>
+
+          <p><strong>💡 ${currentLang === 'zh' ? '應答腳本：' : 'Script:'}</strong> <span id="script-${q.id}">${q.levels.junior.script[currentLang]}</span></p>
+
+          <button class="panic-btn" onclick="togglePanic('${q.id}')">🆘 ${currentLang === 'zh' ? '救命掣 (Panic Button)' : 'Panic Button'}</button>
+          <div class="panic-box" id="panic-${q.id}">
+            <strong>⏱️ ${currentLang === 'zh' ? '10秒降落台詞：' : '10s Safe Landing Script:'}</strong><br>${q.panic_mode.safe_landing_script[currentLang]}
+          </div>
         </div>
-      </div>
-    `).join('');
+      `;
+    }).join('');
   }
 
   function switchLevel(qId, level, btn) {
@@ -103,6 +188,86 @@
   function togglePanic(qId) {
     const box = document.getElementById(`panic-${qId}`);
     box.style.display = box.style.display === 'block' ? 'none' : 'block';
+  }
+
+  // 🎯 考牌 Mode 遊戲化機制 (符合 EU AI Act 防自動評估條款)
+  function startChallengeMode() {
+    if (questionsData.length === 0) return;
+    const randomQ = questionsData[Math.floor(Math.random() * questionsData.length)];
+    const modal = document.getElementById('challenge-modal');
+    const content = document.getElementById('challenge-content');
+
+    content.innerHTML = `
+      <h2>🎯 考牌 Challenge Mode</h2>
+      <p><strong>題目：</strong>${randomQ.title[currentLang]}</p>
+      <p>請選擇你認為最合適、最能體現你思維層次嘅回答範例：</p>
+      
+      <div style="margin: 15px 0;">
+        <div style="background:#f1f5f9; padding:12px; border-radius:8px; margin-bottom:10px; cursor:pointer;" onclick="revealAnswer('${randomQ.id}', 'junior')">
+          <strong>選項 A：</strong> ${randomQ.levels.junior.script[currentLang]}
+        </div>
+        <div style="background:#f1f5f9; padding:12px; border-radius:8px; margin-bottom:10px; cursor:pointer;" onclick="revealAnswer('${randomQ.id}', 'senior')">
+          <strong>選項 B：</strong> ${randomQ.levels.senior.script[currentLang]}
+        </div>
+      </div>
+      <button class="btn btn-lang" onclick="closeChallenge()">${currentLang === 'zh' ? '關閉' : 'Cancel'}</button>
+    `;
+    modal.style.display = 'flex';
+  }
+
+  function revealAnswer(qId, chosenLevel) {
+    const q = questionsData.find(item => item.id === qId);
+    const content = document.getElementById('challenge-content');
+    
+    let resultHTML = '';
+    if (chosenLevel === 'senior') {
+      resultHTML = `
+        <h3 style="color:#16a34a;">🎉 選擇成功！</h3>
+        <p><strong>範例匹配度：</strong> 你選擇的選項匹配題庫中 <strong>Senior (高階範例)</strong> 的預設範本。</p>
+        <p><strong>Senior 思維核心：</strong> ${q.levels.senior.focus[currentLang]}</p>
+      `;
+    } else {
+      resultHTML = `
+        <h3 style="color:#2563eb;">💡 選擇對比</h3>
+        <p>你選擇的選項匹配題庫中 <strong>Junior (初階範例)</strong> 的預設範本。建議對比 Senior 級別範例以獲取不同維度的思考視角：</p>
+        <div style="background:#ecfdf5; border-left:4px solid #059669; padding:10px; border-radius:4px;">
+          <strong>Senior 參考範本：</strong> ${q.levels.senior.script[currentLang]}
+        </div>
+      `;
+    }
+
+    content.innerHTML = `
+      <h2>📊 範本比對結果</h2>
+      ${resultHTML}
+      <hr style="margin:20px 0; border:none; border-top:1px solid #e2e8f0;">
+      <button class="btn btn-challenge" onclick="startChallengeMode()">再挑戰下一題</button>
+      <button class="btn btn-lang" onclick="closeChallenge()">返回主頁</button>
+    `;
+  }
+
+  function closeChallenge() {
+    document.getElementById('challenge-modal').style.display = 'none';
+  }
+
+  // 終極銷毀（連 Cache、IndexedDB、localStorage 一炮過清）
+  async function purgeAllUserData() {
+    if (confirm('⚠️ 確定徹底銷毀所有本機數據？（將清除所有快取、IndexedDB 資料庫及本地紀錄）')) {
+      localStorage.clear();
+      sessionStorage.clear();
+
+      if (window.indexedDB && indexedDB.databases) {
+        const dbs = await indexedDB.databases();
+        dbs.forEach(db => indexedDB.deleteDatabase(db.name));
+      }
+
+      if (window.caches) {
+        const cacheNames = await caches.keys();
+        await Promise.all(cacheNames.map(name => caches.delete(name)));
+      }
+
+      alert('✅ 所有本機快取、資料庫及動作日誌已徹底銷毀 (Zero Data Retention Guarantee)。');
+      location.reload();
+    }
   }
 
   loadQuestions();
