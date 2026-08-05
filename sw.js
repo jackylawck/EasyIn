@@ -1,5 +1,5 @@
-// sw.js - v2 升級版
-const CACHE_VERSION = 'v2.0.0';
+// sw.js - v2.1.0 升級版
+const CACHE_VERSION = 'v2.1.0';
 const CACHE_NAME = `easyin-${CACHE_VERSION}`;
 const ASSETS = [
   './',
