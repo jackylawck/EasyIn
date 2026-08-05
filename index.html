@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="zh-HK">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>面試易 EasyIn</title>
+  <style>
+    :root {
+      --primary: #2563eb;
+      --bg: #f8fafc;
+      --card-bg: #ffffff;
+      --text: #1e293b;
+      --accent: #ef4444;
+    }
+    body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; background: var(--bg); color: var(--text); margin: 0; padding: 20px; }
+    .container { max-width: 850px; margin: 0 auto; }
+    .top-bar { display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; }
+    .lang-btn { padding: 6px 12px; background: #e2e8f0; border: none; border-radius: 6px; cursor: pointer; font-weight: bold; }
+    .card { background: var(--card-bg); border-radius: 12px; padding: 24px; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1); margin-bottom: 20px; }
+    .tag { display: inline-block; background: #e0e7ff; color: #4338ca; padding: 4px 8px; border-radius: 6px; font-size: 0.85rem; font-weight: bold; margin-right: 6px; }
+    .os-box { background: #fff7ed; border-left: 4px solid #f97316; padding: 12px; margin: 15px 0; border-radius: 0 8px 8px 0; font-size: 0.95rem; }
+    .btn-group { display: flex; gap: 8px; margin: 15px 0; }
+    button.level-btn { flex: 1; padding: 8px; border: 1px solid #cbd5e1; background: #fff; border-radius: 6px; cursor: pointer; font-weight: bold; }
+    button.level-btn.active { background: var(--primary); color: #fff; border-color: var(--primary); }
+    .panic-btn { background: #fef2f2; color: var(--accent); border: 1px solid #fecaca; margin-top: 15px; width: 100%; padding: 10px; border-radius: 6px; font-weight: bold; cursor: pointer; }
+    .panic-box { display: none; background: #1e293b; color: #fff; padding: 15px; border-radius: 8px; margin-top: 10px; }
+  </style>
+</head>
+<body>
+
+<div class="container">
+  <div class="top-bar">
+    <h1 style="margin:0;">💡 EasyIn 面試易</h1>
+    <button class="lang-btn" onclick="toggleLanguage()">🌐 English / 中文</button>
+  </div>
+
+  <div id="app">Loading...</div>
+</div>
+
+<script>
+  let questionsData = [];
+  let currentLang = 'zh'; // 預設繁體中文
+
+  async function loadQuestions() {
+    try {
+      const res = await fetch('questions.json');
+      questionsData = await res.json();
+      renderApp();
+    } catch (e) {
+      document.getElementById('app').innerHTML = 'Failed to load questions.';
+    }
+  }
+
+  function toggleLanguage() {
+    currentLang = currentLang === 'zh' ? 'en' : 'zh';
+    renderApp();
+  }
+
+  function renderApp() {
+    const app = document.getElementById('app');
+    app.innerHTML = questionsData.map(q => `
+      <div class="card" id="card-${q.id}">
+        <div>
+          ${q.philosophy_tags.map(t => `<span class="tag">⚔️ ${t[currentLang]}</span>`).join('')}
+          <span class="tag" style="background:#f1f5f9; color:#475569;">⭐ Level: ${q.difficulty}/5</span>
+        </div>
+        <h2 style="margin-top:10px;">${q.title[currentLang]}</h2>
+        <p><strong>${currentLang === 'zh' ? '考官真意：' : 'Intent:'}</strong> ${q.intent[currentLang]}</p>
+        
+        <div class="btn-group">
+          <button class="level-btn active" onclick="switchLevel('${q.id}', 'junior', this)">Junior</button>
+          <button class="level-btn" onclick="switchLevel('${q.id}', 'mid_level', this)">Mid-Level</button>
+          <button class="level-btn" onclick="switchLevel('${q.id}', 'senior', this)">Senior</button>
+        </div>
+
+        <div class="os-box" id="os-${q.id}">
+          <strong>💥 ${currentLang === 'zh' ? '考官內心 OS：' : 'Hiring Manager OS:'}</strong> ${q.levels.junior.hiring_manager_os[currentLang]}
+        </div>
+
+        <p><strong>💡 ${currentLang === 'zh' ? '應答腳本：' : 'Script:'}</strong> <span id="script-${q.id}">${q.levels.junior.script[currentLang]}</span></p>
+
+        <button class="panic-btn" onclick="togglePanic('${q.id}')">🆘 ${currentLang === 'zh' ? '救命掣 (Panic Button)' : 'Panic Button'}</button>
+        <div class="panic-box" id="panic-${q.id}">
+          <strong>⏱️ ${currentLang === 'zh' ? '10秒降落台詞：' : '10s Safe Landing Script:'}</strong><br>${q.panic_mode.safe_landing_script[currentLang]}
+        </div>
+      </div>
+    `).join('');
+  }
+
+  function switchLevel(qId, level, btn) {
+    const q = questionsData.find(item => item.id === qId);
+    document.getElementById(`os-${qId}`).innerHTML = `<strong>💥 ${currentLang === 'zh' ? '考官內心 OS：' : 'Hiring Manager OS:'}</strong> ${q.levels[level].hiring_manager_os[currentLang]}`;
+    document.getElementById(`script-${qId}`).innerText = q.levels[level].script[currentLang];
+    
+    const parent = btn.parentElement;
+    parent.querySelectorAll('button').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+  }
+
+  function togglePanic(qId) {
+    const box = document.getElementById(`panic-${qId}`);
+    box.style.display = box.style.display === 'block' ? 'none' : 'block';
+  }
+
+  loadQuestions();
+</script>
+
+</body>
+</html>
