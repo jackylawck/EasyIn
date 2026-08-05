@@ -5,7 +5,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>EasyIn - Offline Interview & Written Test Companion</title>
   
-  <!-- PWA & Privacy Compliance Header -->
   <link rel="manifest" href="manifest.json">
   <meta name="theme-color" content="#2563eb">
 
@@ -17,32 +16,45 @@
       --text: #1e293b;
       --accent: #ef4444;
       --warning: #f59e0b;
+      --success: #10b981;
     }
-    body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; background: var(--bg); color: var(--text); margin: 0; padding: 20px; }
+    body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; background: var(--bg); color: var(--text); margin: 0; padding: 20px; line-height: 1.6; }
     .container { max-width: 850px; margin: 0 auto; }
-    .top-bar { display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px; flex-wrap: wrap; gap: 10px; }
     
+    /* Top Bar & Value Proposition */
+    .top-bar { display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px; flex-wrap: wrap; gap: 10px; }
+    .value-prop { background: #eff6ff; border-left: 4px solid var(--primary); padding: 15px; border-radius: 0 8px 8px 0; margin-bottom: 20px; font-size: 0.95rem; }
+    .value-prop ul { margin: 5px 0 0; padding-left: 20px; }
+    
+    /* Cost Saver Widget */
+    .cost-saver { background: #ecfdf5; color: #047857; padding: 8px 12px; border-radius: 6px; font-weight: bold; font-size: 0.85rem; display: flex; align-items: center; gap: 5px; border: 1px solid #a7f3d0; margin-bottom: 15px; }
+
     /* Control Bar */
     .filter-bar { display: flex; gap: 10px; margin-bottom: 20px; flex-wrap: wrap; align-items: center; background: #fff; padding: 12px; border-radius: 8px; box-shadow: 0 1px 3px rgba(0,0,0,0.05); }
     .select-input { padding: 8px; border-radius: 6px; border: 1px solid #cbd5e1; font-size: 0.9rem; background: #fff; color: var(--text); font-weight: bold; }
     
-    .btn { padding: 6px 12px; border: none; border-radius: 6px; cursor: pointer; font-weight: bold; font-size: 0.9rem; }
+    .btn { padding: 8px 16px; border: none; border-radius: 6px; cursor: pointer; font-weight: bold; font-size: 0.9rem; transition: 0.2s; }
     .btn-lang { background: #e2e8f0; color: #334155; }
+    .btn-lang:hover { background: #cbd5e1; }
     .btn-challenge { background: var(--warning); color: #fff; }
+    .btn-challenge:hover { background: #d97706; }
     
     /* Card Styling */
     .card { background: var(--card-bg); border-radius: 12px; padding: 24px; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1); margin-bottom: 20px; }
-    .tag { display: inline-block; background: #e0e7ff; color: #4338ca; padding: 4px 10px; border-radius: 6px; font-size: 0.85rem; font-weight: bold; margin-right: 6px; border: none; cursor: pointer; transition: 0.2s; }
+    .tag { display: inline-block; background: #e0e7ff; color: #4338ca; padding: 4px 10px; border-radius: 6px; font-size: 0.85rem; font-weight: bold; margin-right: 6px; border: none; cursor: pointer; transition: 0.2s; margin-bottom: 5px;}
     .tag:hover { background: #c7d2fe; }
     .os-box { background: #fff7ed; border-left: 4px solid #f97316; padding: 12px; margin: 15px 0; border-radius: 0 8px 8px 0; font-size: 0.95rem; }
+    
     .btn-group { display: flex; gap: 8px; margin: 15px 0; }
-    button.level-btn { flex: 1; padding: 8px; border: 1px solid #cbd5e1; background: #fff; border-radius: 6px; cursor: pointer; font-weight: bold; }
+    button.level-btn { flex: 1; padding: 10px; border: 1px solid #cbd5e1; background: #f8fafc; border-radius: 6px; cursor: pointer; font-weight: bold; color: #475569; transition: 0.2s; }
+    button.level-btn:hover { background: #e2e8f0; }
     button.level-btn.active { background: var(--primary); color: #fff; border-color: var(--primary); }
-    .panic-btn { background: #fef2f2; color: var(--accent); border: 1px solid #fecaca; margin-top: 15px; width: 100%; padding: 10px; border-radius: 6px; font-weight: bold; cursor: pointer; }
+    
+    .panic-btn { background: #fef2f2; color: var(--accent); border: 1px solid #fecaca; margin-top: 15px; width: 100%; padding: 12px; border-radius: 6px; font-weight: bold; cursor: pointer; font-size: 1rem;}
     .panic-box { display: none; background: #1e293b; color: #fff; padding: 15px; border-radius: 8px; margin-top: 10px; }
     
     /* Navigation Bar */
-    .pagination-bar { display: flex; justify-content: space-between; align-items: center; margin-top: 15px; padding-top: 15px; border-top: 1px solid #e2e8f0; }
+    .pagination-bar { display: flex; justify-content: space-between; align-items: center; margin-top: 20px; padding-top: 15px; border-top: 1px solid #e2e8f0; }
     .nav-btn { padding: 8px 16px; background: #3b82f6; color: #fff; border: none; border-radius: 6px; cursor: pointer; font-weight: bold; }
     .nav-btn:disabled { background: #cbd5e1; cursor: not-allowed; }
 
@@ -51,17 +63,37 @@
     /* Challenge Modal */
     .modal { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.6); justify-content: center; align-items: center; z-index: 1000; }
     .modal-content { background: #fff; padding: 30px; border-radius: 12px; max-width: 600px; width: 90%; max-height: 80vh; overflow-y: auto; }
+
+    /* Roadmap Table */
+    .roadmap-table { width: 100%; border-collapse: collapse; margin-top: 15px; background: #1e293b; color: #e2e8f0; font-size: 0.8rem; border-radius: 8px; overflow: hidden;}
+    .roadmap-table th, .roadmap-table td { padding: 8px 12px; border-bottom: 1px solid #334155; text-align: left; }
+    .roadmap-table th { background: #0f172a; font-weight: bold; color: #94a3b8; }
   </style>
 </head>
 <body>
 
 <div class="container">
   <div class="top-bar">
-    <h1 style="margin:0;" id="app-title">💡 EasyIn</h1>
+    <h1 style="margin:0; font-size: 1.8rem;" id="app-title">💡 EasyIn</h1>
     <div>
       <button class="btn btn-challenge" id="btn-challenge" onclick="startChallengeMode()">🎯 Challenge Mode</button>
       <button class="btn btn-lang" id="btn-lang" onclick="toggleLanguage()">🌐 English / 中文</button>
     </div>
+  </div>
+
+  <!-- Value Proposition -->
+  <div class="value-prop" id="value-prop">
+    <strong>Your Pocket Interview Coach</strong>
+    <ul>
+      <li><strong>🧠 Decode Trick Questions:</strong> 40 real business scenarios + "Hiring Manager OS".</li>
+      <li><strong>🛡️ Stress Management:</strong> "10s Panic Button" for a graceful landing when your mind goes blank.</li>
+      <li><strong>📈 Mindset Upgrade:</strong> Frameworks from Junior to Senior level.</li>
+    </ul>
+  </div>
+
+  <!-- Cost Saver Widget -->
+  <div class="cost-saver" id="cost-saver">
+    ⏱️ You've trained for 0 mins. Equivalent to saving HK$0 in interview coaching fees!
   </div>
 
   <!-- Filter & Control Bar -->
@@ -82,22 +114,33 @@
   <div id="filter-status"></div>
   <div id="app">Loading...</div>
 
-  <!-- ISO / Privacy Compliance Footer -->
+  <!-- ISO / Privacy Compliance & Roadmap Footer -->
   <footer style="margin-top: 40px; padding: 20px; background: #0f172a; color: #94a3b8; border-radius: 8px; font-size: 0.8rem; line-height: 1.5;">
-    <div style="display: flex; gap: 12px; align-items: center; margin-bottom: 10px; flex-wrap: wrap;">
-      <span style="color: #22c55e; font-weight: bold;">🔒 100% Offline & Client-Side PWA</span>
-      <span style="color: #38bdf8; font-weight: bold;">🛡️ Zero Data Retention (ZDR)</span>
-      <span style="color: #a855f7; font-weight: bold;">📄 Static Rule-Based Architecture</span>
-      <button onclick="purgeAllUserData()" id="btn-purge" style="background:#dc2626; color:#fff; border:none; padding:3px 8px; border-radius:4px; font-size:0.75rem; cursor:pointer; font-weight:bold;">
-        🗑️ Purge All Local Data (ZDR)
+    <div style="display: flex; gap: 12px; align-items: center; margin-bottom: 15px; flex-wrap: wrap;">
+      <span style="color: #22c55e; font-weight: bold;">🔒 100% Offline PWA</span>
+      <span style="color: #38bdf8; font-weight: bold;">🛡️ Zero Data Retention</span>
+      <span style="color: #a855f7; font-weight: bold;">📄 Static Rule-Based</span>
+      <button onclick="purgeAllUserData()" id="btn-purge" style="background:#dc2626; color:#fff; border:none; padding:4px 10px; border-radius:4px; font-size:0.75rem; cursor:pointer; font-weight:bold;">
+        🗑️ Purge Local Data
       </button>
     </div>
-    <p style="margin: 0;" id="footer-notice">
-      <strong>Architecture & Privacy Compliance Statement:</strong><br>
-      • <strong>Deterministic Architecture:</strong> Static reference tool (Non-AI / Rule-based System) with zero automated decision-making.<br>
-      • <strong>Zero Telemetry:</strong> No backend server, zero cookies, zero third-party analytics tracking code.<br>
-      • <strong>Privacy-by-Design:</strong> Fully compliant with GDPR data minimization and right-to-be-forgotten principles.
-    </p>
+    
+    <div id="footer-notice" style="margin-bottom: 20px;">
+      <strong>Architecture & Compliance:</strong><br>
+      • <strong>Deterministic Architecture:</strong> Static reference tool (Non-AI), zero automated decision-making.<br>
+      • <strong>Zero Telemetry:</strong> No backend server, zero cookies, zero analytics.<br>
+      • <strong>Privacy-by-Design:</strong> GDPR data minimization compliant.
+    </div>
+
+    <div>
+      <strong id="roadmap-title">🚀 Product Roadmap</strong>
+      <table class="roadmap-table">
+        <tr><th id="th-phase">Phase</th><th id="th-feature">Feature</th><th id="th-status">Status</th></tr>
+        <tr><td>v1.0 (Current)</td><td id="td-v1">40 Core Questions + 3 Levels + Panic Button</td><td style="color:#22c55e;">✅ Free</td></tr>
+        <tr><td>v2.0 (Planned)</td><td id="td-v2">AI CV Analysis + Personalized Tips</td><td style="color:#f59e0b;">🚧 In Development</td></tr>
+        <tr><td>v3.0 (Concept)</td><td id="td-v3">Voice Mock Interview (Record & Self-Review)</td><td style="color:#38bdf8;">💡 Research</td></tr>
+      </table>
+    </div>
   </footer>
 </div>
 
@@ -108,7 +151,8 @@
 
 <script>
   let questionsData = [];
-  let currentLang = 'en'; // Default to English
+  let metaData = {};
+  let currentLang = 'en'; 
   let activeTagFilter = null;
   let activeCategoryFilter = 'ALL';
   
@@ -121,6 +165,8 @@
       title: "💡 EasyIn",
       btnLang: "🌐 English / 中文",
       challengeBtn: "🎯 Challenge Mode",
+      valueProp: "<strong>Your Pocket Interview Coach</strong><ul><li><strong>🧠 Decode Trick Questions:</strong> 40 real business scenarios + 'Hiring Manager OS'.</li><li><strong>🛡️ Stress Management:</strong> '10s Panic Button' for a graceful landing.</li><li><strong>📈 Mindset Upgrade:</strong> Frameworks from Junior to Senior level.</li></ul>",
+      costSaver: "⏱️ You've trained for {min} mins. Equivalent to saving <strong>HK${cost}</strong> in interview coaching fees!",
       categoryLabel: "📂 Category: ",
       allCategories: "All Categories",
       singleModeLabel: "🎴 Single Question Mode: ",
@@ -133,16 +179,23 @@
       next: "Next →",
       activeStrategy: "Active Strategy: ",
       clearFilter: "Clear Filter",
-      noQuestions: "No questions found for the selected category or strategy.",
-      purgeBtn: "🗑️ Purge All Local Data (ZDR)",
-      footerNotice: "<strong>Architecture & Privacy Compliance Statement:</strong><br>• <strong>Deterministic Architecture:</strong> Static reference tool (Non-AI / Rule-based System) with zero automated decision-making.<br>• <strong>Zero Telemetry:</strong> No backend server, zero cookies, zero third-party analytics tracking code.<br>• <strong>Privacy-by-Design:</strong> Fully compliant with GDPR data minimization and right-to-be-forgotten principles.",
-      purgeConfirm: "⚠️ Permanently purge all local data? (This will clear caches and local logs)",
-      purgeDone: "✅ All local caches and logs have been permanently purged."
+      noQuestions: "No questions found.",
+      purgeBtn: "🗑️ Purge Local Data",
+      footerNotice: "<strong>Architecture & Compliance:</strong><br>• <strong>Deterministic Architecture:</strong> Static reference tool (Non-AI), zero automated decision-making.<br>• <strong>Zero Telemetry:</strong> No backend server, zero cookies, zero analytics.<br>• <strong>Privacy-by-Design:</strong> GDPR data minimization compliant.",
+      purgeConfirm: "⚠️ Permanently purge all local data?",
+      purgeDone: "✅ All local data purged.",
+      roadmapTitle: "🚀 Product Roadmap",
+      thPhase: "Phase", thFeature: "Feature", thStatus: "Status",
+      tdV1: "40 Core Questions + 3 Levels + Panic Button",
+      tdV2: "AI CV Analysis + Personalized Tips",
+      tdV3: "Voice Mock Interview (Record & Self-Review)"
     },
     zh: {
       title: "💡 EasyIn 面試易",
       btnLang: "🌐 English / 中文",
       challengeBtn: "🎯 考牌 Mode",
+      valueProp: "<strong>你隨身嘅面試教練</strong><ul><li><strong>🧠 拆解刁鑽題目：</strong> 40 條商業場景 +「考官內心 OS」，踢爆真正意圖。</li><li><strong>🛡️ 情緒管理：</strong>「10秒救命掣」幫你喺腦海空白時優雅降落。</li><li><strong>📈 思維升級：</strong> 提供 Junior 至 Senior 三級框架，睇住自己進步。</li></ul>",
+      costSaver: "⏱️ 你已經用 EasyIn 準備咗 {min} 分鐘，相等於節省咗 <strong>HK${cost}</strong> 嘅面試班費用！",
       categoryLabel: "📂 種類 (Category): ",
       allCategories: "所有種類 (All Categories)",
       singleModeLabel: "🎴 逐題刷題模式: ",
@@ -155,18 +208,40 @@
       next: "下一題 →",
       activeStrategy: "目前心法篩選：",
       clearFilter: "清除篩選",
-      noQuestions: "沒有找到相關種類或心法的題目。",
-      purgeBtn: "🗑️ 一鍵銷毀所有本機數據 (Data Purge)",
-      footerNotice: "<strong>架構與隱私合規聲明：</strong><br>• <strong>確定性架構：</strong> 本系統為 100% 靜態檢索工具（Non-AI / Rule-based），不涉及自動化個人評估或演算法決策。<br>• <strong>零數據追蹤：</strong> 無後端伺服器 (No Backend Server)，零 Cookie、零第三方 Analytics 追蹤碼。<br>• <strong>隱私即設計：</strong> 完全符合 GDPR「數據極小化」與「被遺忘權」原則。",
-      purgeConfirm: "⚠️ 確定徹底銷毀所有本機數據？（將清除所有快取與本地紀錄）",
-      purgeDone: "✅ 所有本機快取及動作日誌已徹底銷毀。"
+      noQuestions: "沒有找到相關題目。",
+      purgeBtn: "🗑️ 一鍵銷毀數據",
+      footerNotice: "<strong>架構與隱私合規聲明：</strong><br>• <strong>確定性架構：</strong> 100% 靜態檢索（Non-AI），無自動化決策。<br>• <strong>零數據追蹤：</strong> 無伺服器、零 Cookie、零 Analytics。<br>• <strong>隱私即設計：</strong> 完全符合 GDPR 數據極小化原則。",
+      purgeConfirm: "⚠️ 確定徹底銷毀所有本機數據？",
+      purgeDone: "✅ 數據已徹底銷毀。",
+      roadmapTitle: "🚀 產品發展路線圖 (Roadmap)",
+      thPhase: "階段", thFeature: "功能", thStatus: "狀態",
+      tdV1: "40 條題庫 + 三級框架 + 救命掣",
+      tdV2: "CV 智能分析 + 個人化答題建議",
+      tdV3: "語音模擬面試（錄音 + 自評 Checklist）"
     }
   };
+
+  // Cost Saver Tracker
+  let sessionStartTime = Date.now();
+  let accumulatedTimeMs = parseInt(localStorage.getItem('easyin_time_spent')) || 0;
+  
+  function updateCostSaver() {
+    const totalMs = accumulatedTimeMs + (Date.now() - sessionStartTime);
+    const totalMins = Math.floor(totalMs / 60000);
+    // 假設市面面試班收費 HK$200 / 小時 -> 約 HK$3.3 / 分鐘
+    const savedCost = Math.floor(totalMins * 3.3); 
+    
+    let text = uiText[currentLang].costSaver;
+    text = text.replace('{min}', totalMins).replace('{cost}', savedCost);
+    document.getElementById('cost-saver').innerHTML = text;
+    
+    localStorage.setItem('easyin_time_spent', totalMs);
+  }
+  setInterval(updateCostSaver, 60000); // 每分鐘更新一次
 
   // Register Service Worker
   if ('serviceWorker' in navigator) {
     navigator.serviceWorker.register('./sw.js')
-      .then(() => console.log('EasyIn: 100% Offline Ready'))
       .catch(err => console.log('SW registration failed: ', err));
   }
 
@@ -174,12 +249,13 @@
     try {
       const res = await fetch('questions.json');
       const fetchedData = await res.json();
-      // 支持物件 (meta + questions) 或純陣列架構
-      questionsData = fetchedData.questions ? fetchedData.questions : fetchedData;
+      questionsData = fetchedData.questions || fetchedData;
+      metaData = fetchedData.meta || {};
       
       updateStaticUI();
       populateCategories();
       renderApp();
+      updateCostSaver(); // 初次載入更新
     } catch (e) {
       document.getElementById('app').innerHTML = 'Failed to load questions. Check questions.json.';
     }
@@ -189,25 +265,40 @@
     const t = uiText[currentLang];
     document.getElementById('app-title').innerText = t.title;
     document.getElementById('btn-challenge').innerText = t.challengeBtn;
+    document.getElementById('value-prop').innerHTML = t.valueProp;
     document.getElementById('label-category').innerText = t.categoryLabel;
     document.getElementById('label-single-mode').innerText = t.singleModeLabel;
     document.getElementById('btn-purge').innerText = t.purgeBtn;
     document.getElementById('footer-notice').innerHTML = t.footerNotice;
+    
+    document.getElementById('roadmap-title').innerText = t.roadmapTitle;
+    document.getElementById('th-phase').innerText = t.thPhase;
+    document.getElementById('th-feature').innerText = t.thFeature;
+    document.getElementById('th-status').innerText = t.thStatus;
+    document.getElementById('td-v1').innerText = t.tdV1;
+    document.getElementById('td-v2').innerText = t.tdV2;
+    document.getElementById('td-v3').innerText = t.tdV3;
+    
+    updateCostSaver();
   }
 
   function populateCategories() {
     const select = document.getElementById('category-select');
-    const categories = new Set();
     const t = uiText[currentLang];
     
-    questionsData.forEach(q => {
-      if (q.category && q.category[currentLang]) {
-        categories.add(q.category[currentLang]);
-      }
-    });
+    let categories = [];
+    if(metaData.categories) {
+       categories = metaData.categories;
+    } else {
+       // Fallback 如果沒有 meta
+       const catSet = new Set();
+       questionsData.forEach(q => { if (q.category && q.category[currentLang]) catSet.add(q.category[currentLang]); });
+       categories = Array.from(catSet);
+    }
 
     select.innerHTML = `<option value="ALL">${t.allCategories}</option>`;
     categories.forEach(cat => {
+      // 簡單處理：如果 meta.categories 是純字串陣列
       select.innerHTML += `<option value="${cat}">${cat}</option>`;
     });
     select.value = activeCategoryFilter;
@@ -234,8 +325,8 @@
 
   function calculateDynamicDifficulty(q) {
     if (!q.levels || !q.levels.junior || !q.levels.senior) return 3;
-    const jLength = q.levels.junior.script[currentLang].length;
-    const sLength = q.levels.senior.script[currentLang].length;
+    const jLength = q.levels.junior.script[currentLang] ? q.levels.junior.script[currentLang].length : 0;
+    const sLength = q.levels.senior.script[currentLang] ? q.levels.senior.script[currentLang].length : 0;
     const diff = Math.abs(sLength - jLength);
     if (diff > 80) return 5;
     if (diff > 40) return 4;
@@ -257,7 +348,8 @@
   function getFilteredData() {
     return questionsData.filter(q => {
       const matchTag = activeTagFilter ? q.philosophy_tags.some(t => t.zh === activeTagFilter) : true;
-      const matchCat = activeCategoryFilter !== 'ALL' ? (q.category && q.category[currentLang] === activeCategoryFilter) : true;
+      // 簡化比對邏輯，支援中英混雜的 Category 字串
+      const matchCat = activeCategoryFilter !== 'ALL' ? (q.category && (activeCategoryFilter.includes(q.category[currentLang]) || q.category[currentLang].includes(activeCategoryFilter))) : true;
       return matchTag && matchCat;
     });
   }
@@ -293,6 +385,33 @@
     app.innerHTML = renderList.map(q => {
       const dynamicDiff = calculateDynamicDifficulty(q);
       const catName = q.category ? q.category[currentLang] : '';
+      
+      // 動態生成按鈕 (基於 target_levels)
+      const targets = q.target_levels || ["junior", "mid_level", "senior"];
+      let buttonsHTML = '';
+      let defaultLevel = '';
+      
+      if (targets.includes("junior")) {
+        buttonsHTML += `<button class="level-btn" id="btn-${q.id}-junior" onclick="switchLevel('${q.id}', 'junior')">Junior</button>`;
+        if(!defaultLevel) defaultLevel = 'junior';
+      }
+      if (targets.includes("mid_level")) {
+        buttonsHTML += `<button class="level-btn" id="btn-${q.id}-mid_level" onclick="switchLevel('${q.id}', 'mid_level')">Mid-Level</button>`;
+        if(!defaultLevel) defaultLevel = 'mid_level';
+      }
+      if (targets.includes("senior")) {
+        buttonsHTML += `<button class="level-btn" id="btn-${q.id}-senior" onclick="switchLevel('${q.id}', 'senior')">Senior</button>`;
+        if(!defaultLevel) defaultLevel = 'senior';
+      }
+
+      // 如果有 Panic Mode，顯示按鈕
+      const panicHTML = q.panic_mode ? `
+          <button class="panic-btn" onclick="togglePanic('${q.id}')">${t.panicBtn}</button>
+          <div class="panic-box" id="panic-${q.id}">
+            <strong>${t.panicTitle}</strong><br>${q.panic_mode.safe_landing_script[currentLang]}
+          </div>
+      ` : '';
+
       return `
         <div class="card" id="card-${q.id}">
           <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:5px;">
@@ -306,21 +425,13 @@
           <p><strong>${t.intent}</strong> ${q.intent[currentLang]}</p>
           
           <div class="btn-group">
-            <button class="level-btn active" onclick="switchLevel('${q.id}', 'junior', this)">Junior</button>
-            <button class="level-btn" onclick="switchLevel('${q.id}', 'mid_level', this)">Mid-Level</button>
-            <button class="level-btn" onclick="switchLevel('${q.id}', 'senior', this)">Senior</button>
+            ${buttonsHTML}
           </div>
 
-          <div class="os-box" id="os-${q.id}">
-            <strong>💥 ${t.os}</strong> ${q.levels.junior.hiring_manager_os[currentLang]}
-          </div>
+          <div class="os-box" id="os-${q.id}"></div>
+          <p><strong>💡 ${t.script}</strong> <span id="script-${q.id}"></span></p>
 
-          <p><strong>💡 ${t.script}</strong> <span id="script-${q.id}">${q.levels.junior.script[currentLang]}</span></p>
-
-          <button class="panic-btn" onclick="togglePanic('${q.id}')">${t.panicBtn}</button>
-          <div class="panic-box" id="panic-${q.id}">
-            <strong>${t.panicTitle}</strong><br>${q.panic_mode.safe_landing_script[currentLang]}
-          </div>
+          ${panicHTML}
 
           ${isSingleMode ? `
             <div class="pagination-bar">
@@ -332,6 +443,12 @@
         </div>
       `;
     }).join('');
+
+    // 渲染完卡片後，手動觸發預設 Level 的顯示
+    renderList.forEach(q => {
+      const targets = q.target_levels || ["junior", "mid_level", "senior"];
+      switchLevel(q.id, targets[0]); // 預設點擊第一個可用的 Level
+    });
   }
 
   function prevQuestion() {
@@ -351,21 +468,23 @@
     }
   }
 
-  function switchLevel(qId, level, btn) {
+  function switchLevel(qId, level) {
     const q = questionsData.find(item => item.id === qId);
     const t = uiText[currentLang];
     
-    if (q.levels[level].script[currentLang] === "N/A") {
-      document.getElementById(`os-${qId}`).innerHTML = `<strong>💥 ${t.os}</strong> (N/A for this role level)`;
-      document.getElementById(`script-${qId}`).innerText = "N/A";
-    } else {
-      document.getElementById(`os-${qId}`).innerHTML = `<strong>💥 ${t.os}</strong> ${q.levels[level].hiring_manager_os[currentLang]}`;
-      document.getElementById(`script-${qId}`).innerText = q.levels[level].script[currentLang];
-    }
+    // 更新文字
+    document.getElementById(`os-${qId}`).innerHTML = `<strong>💥 ${t.os}</strong> ${q.levels[level].hiring_manager_os[currentLang]}`;
+    document.getElementById(`script-${qId}`).innerText = q.levels[level].script[currentLang];
     
-    const parent = btn.parentElement;
-    parent.querySelectorAll('button').forEach(b => b.classList.remove('active'));
-    btn.classList.add('active');
+    // 更新按鈕 Active 狀態
+    const targets = q.target_levels || ["junior", "mid_level", "senior"];
+    targets.forEach(lvl => {
+      const btn = document.getElementById(`btn-${qId}-${lvl}`);
+      if(btn) {
+        if(lvl === level) btn.classList.add('active');
+        else btn.classList.remove('active');
+      }
+    });
   }
 
   function togglePanic(qId) {
@@ -383,17 +502,22 @@
     const titleStr = currentLang === 'en' ? '🎯 Challenge Mode' : '🎯 考牌 Challenge Mode';
     const subTitle = currentLang === 'en' ? 'Select the answer that best reflects your level of thinking:' : '請選擇你認為最合適、最能體現你思維層次的回答範例：';
 
+    // 確保有 Junior 級別才用作對比，如果只有 Mid/Senior，則改用 Mid/Senior 對比
+    const levelsAvailable = randomQ.target_levels || ["junior", "mid_level", "senior"];
+    let optA_Level = levelsAvailable.includes("junior") ? "junior" : "mid_level";
+    let optB_Level = "senior";
+
     content.innerHTML = `
       <h2>${titleStr}</h2>
       <p><strong>Question:</strong> ${randomQ.title[currentLang]}</p>
       <p>${subTitle}</p>
       
       <div style="margin: 15px 0;">
-        <div style="background:#f1f5f9; padding:12px; border-radius:8px; margin-bottom:10px; cursor:pointer;" onclick="revealAnswer('${randomQ.id}', 'junior')">
-          <strong>Option A:</strong> ${randomQ.levels.junior.script[currentLang]}
+        <div style="background:#f1f5f9; padding:12px; border-radius:8px; margin-bottom:10px; cursor:pointer;" onclick="revealAnswer('${randomQ.id}', '${optA_Level}')">
+          <strong>Option A:</strong> ${randomQ.levels[optA_Level].script[currentLang]}
         </div>
-        <div style="background:#f1f5f9; padding:12px; border-radius:8px; margin-bottom:10px; cursor:pointer;" onclick="revealAnswer('${randomQ.id}', 'senior')">
-          <strong>Option B:</strong> ${randomQ.levels.senior.script[currentLang]}
+        <div style="background:#f1f5f9; padding:12px; border-radius:8px; margin-bottom:10px; cursor:pointer;" onclick="revealAnswer('${randomQ.id}', '${optB_Level}')">
+          <strong>Option B:</strong> ${randomQ.levels[optB_Level].script[currentLang]}
         </div>
       </div>
       <button class="btn btn-lang" onclick="closeChallenge()">${currentLang === 'en' ? 'Cancel' : '關閉'}</button>
@@ -408,15 +532,15 @@
     let resultHTML = '';
     if (chosenLevel === 'senior') {
       resultHTML = `
-        <h3 style="color:#16a34a;">🎉 ${currentLang === 'en' ? 'Great Choice!' : '選擇成功！'}</h3>
+        <h3 style="color:#10b981;">🎉 ${currentLang === 'en' ? 'Great Choice!' : '選擇成功！'}</h3>
         <p>Your choice matches the <strong>Senior Level</strong> reference template.</p>
         <p><strong>Core Focus:</strong> ${q.levels.senior.focus[currentLang]}</p>
       `;
     } else {
       resultHTML = `
         <h3 style="color:#2563eb;">💡 ${currentLang === 'en' ? 'Comparison' : '選擇對比'}</h3>
-        <p>Your choice matches the <strong>Junior Level</strong> reference template. Compare it with the Senior approach below:</p>
-        <div style="background:#ecfdf5; border-left:4px solid #059669; padding:10px; border-radius:4px;">
+        <p>Your choice matches a lower-level reference template. Compare it with the Senior approach below:</p>
+        <div style="background:#ecfdf5; border-left:4px solid #10b981; padding:10px; border-radius:4px;">
           <strong>Senior Reference:</strong> ${q.levels.senior.script[currentLang]}
         </div>
       `;
@@ -435,7 +559,6 @@
     document.getElementById('challenge-modal').style.display = 'none';
   }
 
-  // Purge All Local Data
   async function purgeAllUserData() {
     const t = uiText[currentLang];
     if (confirm(t.purgeConfirm)) {
