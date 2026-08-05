@@ -875,6 +875,291 @@
           "zh": "除了親自輔導該名員工，我會退一步審視這是否暴露出我們部門 Onboarding 流程的缺陷。我會推動建立標準化的知識庫 (Wiki) 與『學長姐制度 (Buddy System)』，確保未來的每一位新人都能更平滑地融入團隊。",
           "en": "Beyond coaching the individual, I will step back to assess if this exposes a flaw in our department's onboarding process. I will push to establish a standardized Wiki and a Buddy System to ensure every future new hire integrates smoothly into the team."
         }
+{
+    "id": "q_016",
+    "type": "interview",
+    "category": { "zh": "向上管理與期望控制", "en": "Upward Management & Expectation Control" },
+    "difficulty": 5,
+    "target_levels": ["junior", "mid_level", "senior"],
+    "philosophy_tags": [{ "zh": "孫子兵法", "en": "Strategic Empathy" }],
+    "title": {
+      "zh": "一位非常有影響力的高層（或大客戶）要求你繞過標準流程「特事特辦」，這會帶來潛在合規風險，你會如何應對？",
+      "en": "A highly influential executive (or VIP client) asks you to bypass standard procedures for a 'special favor', which carries compliance risks. How do you respond?"
+    },
+    "intent": {
+      "zh": "考驗在極端壓力下的原則底線、合規意識（Compliance）以及圓滑的拒絕藝術。",
+      "en": "Tests integrity under pressure, compliance awareness, and the art of saying no diplomatically."
+    },
+    "panic_mode": {
+      "timer": 10,
+      "safe_landing_script": {
+        "zh": "應對特權要求的核心是『把風險具象化』，而非直接說不。請給我幾秒鐘整理溝通策略...",
+        "en": "The core of handling VIP requests is 'visualizing the risk' rather than a flat no. Give me a few seconds to structure my communication strategy..."
+      }
+    },
+    "levels": {
+      "junior": {
+        "hiring_manager_os": {
+          "zh": "「我希望你不會因為對方職級高就盲目違規，懂得尋求直屬主管的保護。」",
+          "en": "\"I hope you don't break rules blindly just because of their rank. Know when to seek your manager's protection.\""
+        },
+        "focus": { "zh": "堅守底線與適當上報", "en": "Holding the Line & Escalation" },
+        "script": {
+          "zh": "我會禮貌地向該高層說明現行流程是為了保護公司及專案的安全。如果對方堅持，我會表示需要先向直屬主管請示與備案，確保所有操作都在合規的授權下進行。",
+          "en": "I would politely explain to the executive that the standard process exists to protect the company and the project. If they insist, I will state that I must seek approval and document it with my direct manager to ensure compliance."
+        }
+      },
+      "mid_level": {
+        "hiring_manager_os": {
+          "zh": "「你需要有能力在不激怒對方的前提下，將『個人拒絕』轉化為『制度風險』。」",
+          "en": "\"You need the ability to transform a 'personal refusal' into a 'systemic risk assessment' without angering them.\""
+        },
+        "focus": { "zh": "風險轉移與提供合規捷徑", "en": "Risk Transference & Providing Compliant Shortcuts" },
+        "script": {
+          "zh": "我會先肯定對方需求的急迫性，然後將焦點轉移到風險上：『如果不走標準流程，可能會引發後續的合規稽核問題』。同時，我會主動提供一個『在現有框架內最快的加急方案』，既幫他解決問題，又守住底線。",
+          "en": "I will first acknowledge the urgency of their request, then shift the focus to the risk: 'Bypassing the process might trigger compliance audit issues later.' Simultaneously, I will offer the 'fastest expedited option within the existing framework' to solve their problem while maintaining boundaries."
+        }
+      },
+      "senior": {
+        "hiring_manager_os": {
+          "zh": "「高階主管應該洞察到流程本身是否已經僵化，並從根本上解決『為什麼高層需要繞過流程』的問題。」",
+          "en": "\"Senior leaders should discern if the process itself is too rigid and solve the root cause of 'why executives feel the need to bypass it'.\""
+        },
+        "focus": { "zh": "識別系統瓶頸與流程再造", "en": "Identifying Bottlenecks & Process Reengineering" },
+        "script": {
+          "zh": "當下我會與法務或合規部門緊急評估特例授權的可行性以解決眼前危機。但事後，我會將這視為一個『系統性警訊』——如果連高層都覺得流程太慢，代表我們的標準作業程序（SOP）已經成為商業瓶頸。我會牽頭發起流程優化專案，建立合規的『快速通道（Fast-track）』機制。",
+          "en": "Immediately, I would urgently consult Legal/Compliance to assess the feasibility of an exceptional authorization. However, post-incident, I treat this as a 'systemic red flag'—if executives feel the process is too slow, our SOP is a business bottleneck. I would lead a process reengineering initiative to establish a compliant 'Fast-track' mechanism."
+        }
+      }
+    }
+  },
+  {
+    "id": "q_017",
+    "type": "interview",
+    "category": { "zh": "專案交付與質量", "en": "Project Delivery & Quality" },
+    "difficulty": 4,
+    "target_levels": ["junior", "mid_level", "senior"],
+    "philosophy_tags": [{ "zh": "第一性原理", "en": "First Principles" }],
+    "title": {
+      "zh": "專案死線逼近，但你發現如果按時交付，產品品質將大打折扣（Technical Debt）。你會選擇延遲交付，還是先上線再說？",
+      "en": "The project deadline is looming. You realize that delivering on time means sacrificing quality (creating Technical Debt). Do you delay the launch or ship it as is?"
+    },
+    "intent": {
+      "zh": "考驗在壓力下的取捨（Trade-offs）能力、對「技術債」的認知及商業大局觀。",
+      "en": "Tests trade-off abilities under pressure, understanding of 'technical debt', and business acumen."
+    },
+    "panic_mode": {
+      "timer": 10,
+      "safe_landing_script": {
+        "zh": "這不是非黑即白的選擇。請給我十秒鐘，我會根據『品質問題是否致命』來給出我的決策矩陣...",
+        "en": "This is not a black-and-white choice. Give me 10 seconds to outline my decision matrix based on whether the quality issue is critical..."
+      }
+    },
+    "levels": {
+      "junior": {
+        "hiring_manager_os": {
+          "zh": "「我希望你不要自作主張。把品質的真實情況透明地告訴我，讓我來做商業決定。」",
+          "en": "\"Don't make this call alone. Transparently report the quality reality to me so I can make the business decision.\""
+        },
+        "focus": { "zh": "透明化風險與尋求決策", "en": "Transparentizing Risk & Seeking Decision" },
+        "script": {
+          "zh": "我會立刻整理出目前產品已知的瑕疵清單，並標註哪些會影響核心功能、哪些只是外觀問題。我會將這份清單提交給主管與產品經理，讓團隊基於商業考量共同決定是否如期上線。",
+          "en": "I will immediately compile a list of known defects, highlighting which impact core functionality and which are merely cosmetic. I will present this to my manager and the PM so the team can collectively decide whether to launch based on business considerations."
+        }
+      },
+      "mid_level": {
+        "hiring_manager_os": {
+          "zh": "「你需要具備敏捷（Agile）思維，懂得將完美的產品降級為『最小可行性產品（MVP）』。」",
+          "en": "\"You need an Agile mindset, knowing how to downgrade a perfect product into a Minimum Viable Product (MVP).\""
+        },
+        "focus": { "zh": "MVP 思維與技術債管理", "en": "MVP Mindset & Technical Debt Management" },
+        "script": {
+          "zh": "我會區分『核心價值』與『邊緣體驗』。如果瑕疵不影響核心業務運作（例如交易或資安），我建議按時上線以搶佔市場先機，並將修復工作列為上線後的首要 Sprint（技術債償還）。如果涉及致命錯誤，則堅決建議延期。",
+          "en": "I differentiate between 'core value' and 'edge experience'. If the flaws don't impact critical operations (like transactions or security), I recommend launching on time to seize the market, while scheduling the fixes in the immediate post-launch Sprint (paying off technical debt). If it's a fatal flaw, I firmly recommend a delay."
+        }
+      },
+      "senior": {
+        "hiring_manager_os": {
+          "zh": "「除了處理眼前的災難，我期望你能制定完整的上線後營運與補救戰略。」",
+          "en": "\"Beyond handling the immediate crisis, I expect you to formulate a complete post-launch operational and mitigation strategy.\""
+        },
+        "focus": { "zh": "市場預期管理與營運緩解", "en": "Market Expectation Management & Operational Mitigation" },
+        "script": {
+          "zh": "這是『Time-to-Market』與『品質』的戰略博弈。若選擇如期上線，我會與營銷部門協調，將此次發佈定義為『Beta 測試版』以降低市場期望值；同時安排客服團隊就已知問題準備回應腳本，並指揮工程團隊進入 War Room 進行熱修復（Hotfix）。",
+          "en": "This is a strategic trade-off between Time-to-Market and Quality. If we launch on time, I will coordinate with Marketing to position this as a 'Beta Release' to lower market expectations. Simultaneously, I will arm Customer Service with response scripts for known issues and direct the engineering team into a War Room for immediate hotfixes."
+        }
+      }
+    }
+  },
+  {
+    "id": "q_018",
+    "type": "interview",
+    "category": { "zh": "數據驅動決策", "en": "Data-Driven Decision Making" },
+    "difficulty": 4,
+    "target_levels": ["junior", "mid_level", "senior"],
+    "philosophy_tags": [{ "zh": "成長型思維", "en": "Growth Mindset" }],
+    "title": {
+      "zh": "你經過詳盡的數據分析後，得出了一個結論，但你的上司卻基於他多年的「直覺」持相反意見。你會如何說服他？",
+      "en": "After thorough data analysis, you reach a conclusion, but your manager disagrees based on their years of 'gut feeling'. How do you persuade them?"
+    },
+    "intent": {
+      "zh": "考驗向上溝通的藝術、對數據盲點的反思能力以及影響力（Influence without Authority）。",
+      "en": "Tests the art of upward communication, ability to reflect on data blind spots, and influence without authority."
+    },
+    "panic_mode": {
+      "timer": 10,
+      "safe_landing_script": {
+        "zh": "直覺往往是未被量化的經驗。請給我幾秒鐘，我會分享如何將數據與前輩的經驗結合...",
+        "en": "Gut feeling is often unquantified experience. Give me a few seconds to share how I combine data with a veteran's experience..."
+      }
+    },
+    "levels": {
+      "junior": {
+        "hiring_manager_os": {
+          "zh": "「不要盲目相信數據，也不要盲目盲從。我希望你具備查證精神。」",
+          "en": "\"Don't blindly trust data, nor blindly submit. I want to see your investigative spirit.\""
+        },
+        "focus": { "zh": "雙向驗證與虛心請教", "en": "Two-way Verification & Humble Inquiry" },
+        "script": {
+          "zh": "我會先虛心請教上司直覺背後的考量，因為經驗往往包含數據未涵蓋的市場變數。接著，我會重新檢查自己的數據來源與分析模型是否存在盲點。如果確認數據無誤，我會將兩者並列，讓上司做最終決策。",
+          "en": "I will humbly ask my manager about the rationale behind their gut feeling, as experience often captures market variables missing in the data. Next, I will double-check my data sources and models for blind spots. If the data is solid, I will present both side-by-side for them to make the final decision."
+        }
+      },
+      "mid_level": {
+        "hiring_manager_os": {
+          "zh": "「用具象化的商業案例或小規模測試來證明你的觀點，而不是在會議桌上死爭。」",
+          "en": "\"Prove your point with concrete business cases or small-scale tests, rather than arguing stubbornly at the meeting table.\""
+        },
+        "focus": { "zh": "提出假設與 A/B 測試", "en": "Hypothesis Building & A/B Testing" },
+        "script": {
+          "zh": "我不會直接否定上司的直覺。我會提議將雙方的觀點視為兩個『假設』，並建議在投入大量資源前，先進行為期兩週的 A/B 測試或小規模試點。讓市場的真實反饋來決定最終方向，這能有效化解對立。",
+          "en": "I won't directly reject my manager's intuition. I will propose treating both viewpoints as 'hypotheses' and suggest running a two-week A/B test or a small pilot before committing major resources. Letting real market feedback decide the direction effectively diffuses the confrontation."
+        }
+      },
+      "senior": {
+        "hiring_manager_os": {
+          "zh": "「高階管理者需要具備『將高層的直覺量化為數據指標』的能力。」",
+          "en": "\"Senior leaders must possess the ability to 'quantify executive intuition into data metrics'.\""
+        },
+        "focus": { "zh": "量化直覺與建立決策框架", "en": "Quantifying Intuition & Building Decision Frameworks" },
+        "script": {
+          "zh": "高層的直覺通常是高度壓縮的商業洞察。我會引導他將直覺拆解：『您擔憂的風險，是否能對應到我們漏看的某個用戶流失率或獲客成本指標？』透過將他的『經驗』轉化為新的『數據追蹤維度』，我們能建立一個更全面的決策模型，達成真正的共識。",
+          "en": "Executive intuition is often highly compressed business insight. I will guide them to unpack it: 'Can the risk you're sensing be mapped to a churn rate or CAC metric we missed?' By translating their 'experience' into new 'data tracking dimensions', we build a more holistic decision model and reach a true consensus."
+        }
+      }
+    }
+  },
+  {
+    "id": "q_019",
+    "type": "interview",
+    "category": { "zh": "解決未知問題", "en": "Navigating Ambiguity" },
+    "difficulty": 4,
+    "target_levels": ["junior", "mid_level", "senior"],
+    "philosophy_tags": [{ "zh": "第一性原理", "en": "First Principles" }],
+    "title": {
+      "zh": "你被指派接手一個前人留下、完全沒有文檔（Documentation）或交接紀錄的專案。你會如何開展工作？",
+      "en": "You are assigned to take over a legacy project with absolutely no documentation or handover notes from your predecessor. How do you start?"
+    },
+    "intent": {
+      "zh": "考驗在高度模糊與混亂環境中的破局能力、系統思考以及韌性。",
+      "en": "Tests problem-solving skills in highly ambiguous environments, systems thinking, and resilience."
+    },
+    "panic_mode": {
+      "timer": 10,
+      "safe_landing_script": {
+        "zh": "面對『黑盒』專案，最重要的是『從輸出推導輸入』。請給我幾秒鐘，我會分享我的拆解步驟...",
+        "en": "When facing a 'black box' project, the key is reverse-engineering from output to input. Give me a few seconds to share my breakdown steps..."
+      }
+    },
+    "levels": {
+      "junior": {
+        "hiring_manager_os": {
+          "zh": "「我不想聽到你抱怨前人。我希望看到你主動尋找資源、拼湊全貌的行動力。」",
+          "en": "\"I don't want to hear complaints about the predecessor. I want to see your initiative in finding resources and piecing the puzzle together.\""
+        },
+        "focus": { "zh": "盤點現狀與建立聯繫", "en": "Auditing Current State & Building Connections" },
+        "script": {
+          "zh": "我不會抱怨現狀。我會先盤點目前能拿到的所有權限與原始碼，接著主動拜訪曾參與過該專案的其他部門同事（如 QA、客服或 PM），透過訪談將零碎的資訊拼湊起來，並開始建立第一版基礎文檔。",
+          "en": "I won't complain about the situation. I will first audit all accessible permissions and source code. Then, I will proactively interview colleagues from other departments (like QA, CS, or PM) who were tangentially involved, piecing together the fragmented info to draft the very first baseline documentation."
+        }
+      },
+      "mid_level": {
+        "hiring_manager_os": {
+          "zh": "「除了問人，你需要具備『逆向工程（Reverse Engineering）』的能力，讓系統自己說話。」",
+          "en": "\"Besides asking people, you need 'Reverse Engineering' skills to let the system speak for itself.\""
+        },
+        "focus": { "zh": "逆向工程與核心路徑梳理", "en": "Reverse Engineering & Critical Path Mapping" },
+        "script": {
+          "zh": "我會採取『逆向工程』策略：從最終用戶能看到的核心功能出發，逐步往回推導資料流與架構。同時，我會在關鍵節點加上日誌監控（Logging），讓系統運作時自己暴露出邏輯。這能在不影響線上運作的前提下，安全地繪製出系統架構圖。",
+          "en": "I adopt a 'reverse engineering' strategy: starting from the core user-facing features and tracing the data flow and architecture backwards. Simultaneously, I will add logging to critical nodes, letting the running system reveal its own logic. This safely maps the architecture without disrupting live operations."
+        }
+      },
+      "senior": {
+        "hiring_manager_os": {
+          "zh": "「接手爛攤子是建立新秩序的最佳時機。你應該藉此機會重新定義該專案的商業價值。」",
+          "en": "\"Taking over a mess is the best time to establish new order. You should use this opportunity to redefine the project's business value.\""
+        },
+        "focus": { "zh": "價值重塑與技術防腐", "en": "Value Reformation & Anti-corruption Layers" },
+        "script": {
+          "zh": "接手無文檔專案是重新梳理商業邏輯的契機。我會先向 Stakeholders 確認該專案目前的『核心商業價值』是否依然成立。如果是，我會引入『防腐層（Anti-corruption Layer）』設計，將舊系統封裝，逐步用清晰的新架構進行微服務替換，徹底消除未來的技術風險。",
+          "en": "Taking over an undocumented project is an opportunity to untangle business logic. I will first confirm with stakeholders if the project's 'core business value' still stands. If so, I will introduce an 'Anti-corruption Layer', encapsulating the legacy system and gradually migrating it to a clean, well-documented microservice architecture to permanently eliminate future technical risks."
+        }
+  },
+  {
+    "id": "q_020",
+    "type": "interview",
+    "category": { "zh": "領導力與授權", "en": "Leadership & Delegation" },
+    "difficulty": 3,
+    "target_levels": ["mid_level", "senior"],
+    "philosophy_tags": [{ "zh": "利他之心", "en": "Empowerment" }],
+    "title": {
+      "zh": "你目前的工作量已經超載，但你的下屬經驗尚淺，你擔心交給他們會搞砸。你會如何處理？",
+      "en": "You are currently overloaded with work, but your subordinates are inexperienced. You fear delegating to them will result in failure. How do you handle this?"
+    },
+    "intent": {
+      "zh": "考驗領導者的授權智慧、風險控管以及培養團隊（Mentorship）的意願。",
+      "en": "Tests a leader's wisdom in delegation, risk control, and willingness to mentor the team."
+    },
+    "panic_mode": {
+      "timer": 10,
+      "safe_landing_script": {
+        "zh": "不願授權是管理者的通病。請容許我分享我的『循序漸進授權法』...",
+        "en": "Reluctance to delegate is a common managerial pitfall. Allow me to share my 'progressive delegation' approach..."
+      }
+    },
+    "levels": {
+      "junior": {
+        "hiring_manager_os": {
+          "zh": "（此題主要針對有管理潛力的候選人，Junior 職級較少遇到）",
+          "en": "(This question targets candidates with management potential; rarely asked at the Junior level.)"
+        },
+        "focus": { "zh": "N/A", "en": "N/A" },
+        "script": {
+          "zh": "雖然我目前還沒有直接帶人的經驗，但如果我處於這個位置，我會先挑選容錯率較高的任務交給團隊，並在關鍵節點設定檢查機制，確保他們有機會學習又不至於影響大局。",
+          "en": "Although I don't have direct management experience yet, if I were in this position, I would start by delegating tasks with a higher tolerance for error. I'd set up checkpoints at critical stages to ensure they learn without jeopardizing the big picture."
+        }
+      },
+      "mid_level": {
+        "hiring_manager_os": {
+          "zh": "「如果你什麼都要自己做，你就永遠無法晉升。我需要看到你建立『容錯機制』的能力。」",
+          "en": "\"If you do everything yourself, you can never be promoted. I need to see your ability to build 'error-tolerant mechanisms'.\""
+        },
+        "focus": { "zh": "拆解任務與設立檢查點", "en": "Task Decomposition & Setting Checkpoints" },
+        "script": {
+          "zh": "『自己做比較快』是團隊成長的最大阻礙。我會將大型專案拆解為多個小模塊，將風險較低的部分授權給下屬。重點是我會設立明確的審查里程碑（Checkpoints），例如每天 15 分鐘的 Sync，確保能在錯誤擴大前及時糾正，讓他們在安全網內成長。",
+          "en": "'Doing it myself is faster' is the biggest blocker to team growth. I will break large projects into smaller modules and delegate lower-risk parts. Crucially, I will establish clear review checkpoints, like a 15-minute daily sync, to correct course before errors compound, allowing them to grow within a safety net."
+        }
+      },
+      "senior": {
+        "hiring_manager_os": {
+          "zh": "「卓越的領導者不是創造追隨者，而是創造更多的領導者。你能否將犯錯轉化為團隊的 SOP？」",
+          "en": "\"Great leaders don't create followers; they create more leaders. Can you turn their mistakes into team SOPs?\""
+        },
+        "focus": { "zh": "賦能與建立系統性知識庫", "en": "Empowerment & Building Systemic Knowledge" },
+        "script": {
+          "zh": "我必須接受『授權初期的效率下降』，這是培養梯隊的必經投資。我會採用『我做你看、我們一起做、你做我看』的教練模式。當下屬犯錯時，我不會責備，而是引導他們自行找出根本原因，並將解決方案寫入部門的 SOP，從根本上提升團隊的自動運作能力。",
+          "en": "I must accept the 'initial efficiency dip of delegation' as a necessary investment in pipeline building. I use the 'I do you watch, we do together, you do I watch' coaching model. When they fail, I don't blame; I guide them to find the root cause and document the solution into our departmental SOPs, fundamentally elevating the team's autonomous capability."
+        }
       }
     }
   }
