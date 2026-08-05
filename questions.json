@@ -1469,5 +1469,311 @@
         }
       }
     }
+  },
+  {
+    "id": "q_026",
+    "type": "interview",
+    "category": { "zh": "壓力管理與福祉", "en": "Stress Management & Well-being" },
+    "difficulty": 4,
+    "target_levels": ["junior", "mid_level", "senior"],
+    "philosophy_tags": [
+      { "zh": "同理心", "en": "Empathy" },
+      { "zh": "第一性原理", "en": "First Principles" }
+    ],
+    "title": {
+      "zh": "當你意識到自己或團隊正處於職業倦怠（Burnout）的邊緣，你會如何處理？",
+      "en": "How do you handle a situation where you or your team are on the verge of burnout?"
+    },
+    "intent": {
+      "zh": "考驗自我覺察力、邊界設定（Boundary Setting）以及可持續的績效管理能力。",
+      "en": "Tests self-awareness, boundary setting, and sustainable performance management."
+    },
+    "panic_mode": {
+      "timer": 10,
+      "safe_landing_script": {
+        "zh": "承認疲憊並非軟弱，而是專業風險控管。請給我十秒鐘梳理我應對倦怠的策略...",
+        "en": "Acknowledging exhaustion isn't weakness; it's professional risk management. Give me 10 seconds to outline my burnout strategy..."
+      }
+    },
+    "levels": {
+      "junior": {
+        "hiring_manager_os": {
+          "zh": "「我希望你懂得主動溝通，而不是默默承受直到徹底崩潰辭職。」",
+          "en": "\"I want you to communicate proactively, not suffer in silence until you unexpectedly quit.\""
+        },
+        "focus": { "zh": "自我覺察與主動求助", "en": "Self-Awareness & Proactive Escalation" },
+        "script": {
+          "zh": "我會監測自己的效率與情緒指標。當發現出現倦怠跡象時，我會主動與主管進行一對一溝通，客觀展示我目前的工作負載，並請教如何重新調整任務的優先順序，確保能在健康的前提下維持產出品質。",
+          "en": "I monitor my own efficiency and mood. When I notice signs of burnout, I proactively schedule a 1-on-1 with my manager to objectively review my workload and seek guidance on reprioritizing tasks, ensuring I can maintain quality output healthily."
+        }
+      },
+      "mid_level": {
+        "hiring_manager_os": {
+          "zh": "「作為中堅力量，你需要具備資源重組的能力，保護你的團隊免受不合理的壓榨。」",
+          "en": "\"As a core pillar, you must be able to restructure resources to protect your team from unreasonable squeeze.\""
+        },
+        "focus": { "zh": "工作量重分配與心理安全", "en": "Workload Redistribution & Psychological Safety" },
+        "script": {
+          "zh": "倦怠通常是因為『資源與期望不匹配』。我會先暫停非緊急專案，與團隊進行坦誠對話，了解他們的壓力源。接著，我會帶著數據向上管理，爭取延長死線或增加資源，並在團隊內部強制執行『斷網休息』政策，重建心理安全感。",
+          "en": "Burnout usually stems from a mismatch between resources and expectations. I would pause non-urgent projects and have a candid dialogue with the team to identify stressors. Then, I manage up with data to negotiate extended deadlines or additional resources, while enforcing a 'disconnect to recharge' policy internally."
+        }
+      },
+      "senior": {
+        "hiring_manager_os": {
+          "zh": "「高階主管必須從制度面解決問題：是我們的文化太有毒，還是流程太低效？」",
+          "en": "\"Senior leaders must solve this systemically: Is our culture toxic, or are our processes inefficient?\""
+        },
+        "focus": { "zh": "系統性改革與文化重塑", "en": "Systemic Reform & Cultural Reshaping" },
+        "script": {
+          "zh": "團隊大面積倦怠是管理體系的失職。我會從根本上檢視部門的 KPI 設計與流程效率，消除無意義的會議與重複勞動。更重要的是，我會以身作則展現『健康邊界』，將員工福祉與人才留任率納入管理層的考核指標，從文化層面徹底解決問題。",
+          "en": "Widespread team burnout is a failure of the management system. I will systemically audit our KPI designs and process efficiencies to eliminate pointless meetings and redundant work. More importantly, I will role-model 'healthy boundaries' and integrate employee wellbeing and retention rates into management metrics to fix the culture at its root."
+        }
+      }
+    }
+  },
+  {
+    "id": "q_027",
+    "type": "interview",
+    "category": { "zh": "職場倫理與誠信", "en": "Workplace Ethics & Integrity" },
+    "difficulty": 5,
+    "target_levels": ["junior", "mid_level", "senior"],
+    "philosophy_tags": [
+      { "zh": "第一性原理", "en": "First Principles" },
+      { "zh": "利他之心", "en": "Integrity" }
+    ],
+    "title": {
+      "zh": "如果你偶然發現上司或公司的某個決策存在嚴重的道德或合規（Compliance）瑕疵，你會怎麼做？",
+      "en": "What would you do if you discovered a severe ethical or compliance flaw in a decision made by your manager or the company?"
+    },
+    "intent": {
+      "zh": "這是一道壓力測試題，考驗道德勇氣、風險意識以及處理敏感問題的政治智慧。",
+      "en": "A stress-test question evaluating moral courage, risk awareness, and political tact in handling sensitive issues."
+    },
+    "panic_mode": {
+      "timer": 10,
+      "safe_landing_script": {
+        "zh": "處理合規問題必須『基於事實，而非假設』。請給我幾秒鐘，我會分享如何謹慎且合規地處理...",
+        "en": "Handling compliance issues must be 'based on facts, not assumptions'. Give me a few seconds to explain how I handle this carefully..."
+      }
+    },
+    "levels": {
+      "junior": {
+        "hiring_manager_os": {
+          "zh": "「我需要知道你不會盲目包庇，但也不會未經查證就四處散播謠言。」",
+          "en": "\"I need to know you won't blindly cover it up, nor spread rumors without verification.\""
+        },
+        "focus": { "zh": "事實查核與尋求指引", "en": "Fact-Checking & Seeking Guidance" },
+        "script": {
+          "zh": "我不會急於下定論，而是先仔細查核公司政策與事實證據。如果疑慮依然存在，我會私下、客觀地向上司請教該決策的背景（假設他可能疏忽了）。若確認違規且上司拒絕修正，我會根據公司的吹哨人（Whistleblower）政策向 HR 或法務部尋求指引。",
+          "en": "I won't jump to conclusions, but first carefully verify facts against company policies. If concerns persist, I will privately and objectively ask my manager for context (assuming oversight). If compliance is breached and they refuse to amend it, I will follow the company's whistleblower policy and consult HR or Legal."
+        }
+      },
+      "mid_level": {
+        "hiring_manager_os": {
+          "zh": "「你需要有能力將『道德譴責』轉化為『商業風險提示』，說服決策者懸崖勒馬。」",
+          "en": "\"You must translate 'moral condemnation' into 'business risk warnings' to persuade decision-makers to pivot.\""
+        },
+        "focus": { "zh": "風險量化與提供合規方案", "en": "Risk Quantification & Compliant Alternatives" },
+        "script": {
+          "zh": "我會將道德問題轉化為商業風險。我會整理一份備忘錄，列出該決策可能引發的法律訴訟、罰款及品牌公關災難，並私下向決策者匯報。同時，我會準備一個『達成相同商業目的，但完全合規』的替代方案，給予對方台階下與修正的機會。",
+          "en": "I translate ethical issues into business risks. I would draft a memo outlining potential legal liabilities, fines, and brand PR disasters, presenting it privately to the decision-maker. Crucially, I will provide a fully compliant alternative that achieves the same business goal, offering them a graceful way to pivot."
+        }
+      },
+      "senior": {
+        "hiring_manager_os": {
+          "zh": "「高管的職責是保護公司的長期聲譽，即便這意味著要挑戰更高的權威。」",
+          "en": "\"An executive's duty is to protect the company's long-term reputation, even if it means challenging higher authorities.\""
+        },
+        "focus": { "zh": "守護公司底線與建立治理機制", "en": "Safeguarding the Bottom Line & Corporate Governance" },
+        "script": {
+          "zh": "誠信是不可談判的底線。若發現重大瑕疵，我會立即要求中止相關行動，並會同法務總監進行內部審計。若牽涉高層舞弊，我會毫不猶豫地越級向董事會或審計委員會報告。事後，我會推動完善內部控制與合規培訓，確保這類系統性漏洞被徹底封死。",
+          "en": "Integrity is non-negotiable. I would immediately halt the action and initiate an internal audit with the Legal Director. If it involves executive misconduct, I will not hesitate to escalate to the Board of Directors or Audit Committee. Afterwards, I will drive the enhancement of internal controls and compliance training to permanently close such systemic loopholes."
+        }
+      }
+    }
+  },
+  {
+    "id": "q_028",
+    "type": "interview",
+    "category": { "zh": "向上溝通與反饋", "en": "Managing Up & Upward Feedback" },
+    "difficulty": 4,
+    "target_levels": ["junior", "mid_level", "senior"],
+    "philosophy_tags": [
+      { "zh": "同理心", "en": "Empathy" },
+      { "zh": "成長型思維", "en": "Growth Mindset" }
+    ],
+    "title": {
+      "zh": "你曾否向你的上司提出過建設性的『負面反饋』？當時的具體情況與結果是什麼？",
+      "en": "Have you ever given constructive negative feedback to your manager? What was the situation and outcome?"
+    },
+    "intent": {
+      "zh": "考驗膽識、溝通技巧 (Tact)，以及如何在不損害權威的情況下推動進步。",
+      "en": "Tests tact, courage, and constructive communication without undermining authority."
+    },
+    "panic_mode": {
+      "timer": 10,
+      "safe_landing_script": {
+        "zh": "向上反饋的核心是『出於共同利益』。請容許我分享一次我如何用數據幫助主管避開盲點的經歷...",
+        "en": "The core of upward feedback is 'acting out of mutual interest'. Allow me to share a time I used data to help my manager avoid a blind spot..."
+      }
+    },
+    "levels": {
+      "junior": {
+        "hiring_manager_os": {
+          "zh": "「不要用指責的語氣，試著用『我訊息 (I-statement)』表達主管的行為如何影響你的工作效率。」",
+          "en": "\"Avoid an accusatory tone. Use 'I-statements' to express how their behavior impacts your efficiency.\""
+        },
+        "focus": { "zh": "表達影響與尋求協作", "en": "Expressing Impact & Seeking Collaboration" },
+        "script": {
+          "zh": "有次主管經常在下班前臨時派發急件，導致出錯率增加。我私下約他討論，沒有指責，而是說：『為了確保我能維持高質量的產出，想請教我們能否在每天下午兩點前對齊當日的急件？』主管意識到了這個問題，隨後我們優化了派單流程。",
+          "en": "My manager frequently assigned urgent tasks right before closing, increasing error rates. I spoke with him privately, avoiding blame, and said: 'To ensure I maintain high-quality output, could we align on urgent tasks by 2 PM daily?' He realized the issue, and we subsequently optimized the workflow."
+        }
+      },
+      "mid_level": {
+        "hiring_manager_os": {
+          "zh": "「我期待你能指出我的管理盲點，並直接提供解決方案讓我選擇。」",
+          "en": "\"I expect you to point out my managerial blind spots and provide direct solutions for me to choose from.\""
+        },
+        "focus": { "zh": "聚焦專案目標與提供方案", "en": "Focusing on Project Goals & Providing Solutions" },
+        "script": {
+          "zh": "主管曾微觀管理（Micromanage）一個專案，拖慢了進度。我與他進行了一對一溝通，將焦點放在『專案目標』上：『我注意到目前的審批流程影響了交付速度。為減輕您的負擔，我建議將次要決策授權給我，我每週五給您一頁紙的總結報告。』這成功爭取了信任與空間。",
+          "en": "My manager was micromanaging a project, slowing progress. I had a 1-on-1, focusing on the 'project goals': 'I noticed our approval process is impacting delivery speed. To lighten your load, I suggest delegating secondary decisions to me, and I will provide a one-pager summary every Friday.' This successfully won me trust and space."
+        }
+      },
+      "senior": {
+        "hiring_manager_os": {
+          "zh": "「作為高管的副手或平級，你必須有能力挑戰我的戰略決策，防止公司走偏。」",
+          "en": "\"As an executive peer or deputy, you must be able to challenge my strategic decisions to keep the company on track.\""
+        },
+        "focus": { "zh": "戰略盲點對齊與高管互信", "en": "Strategic Blind Spots & Executive Trust" },
+        "script": {
+          "zh": "高層有次堅持推動一項未經驗證的產品線。我基於市場數據與 ROI 模型，在私下會議中坦白表達了我的反對意見：『這個決策可能嚴重稀釋我們的核心資源。』雖然過程有激烈辯論，但我成功說服他先做小規模試點，最終避免了巨大的沉沒成本，這也加深了我們之間的戰略互信。",
+          "en": "Our executive once insisted on pushing an unvalidated product line. Based on market data and ROI models, I candidly voiced my opposition in a private meeting: 'This decision risks severely diluting our core resources.' Despite a vigorous debate, I persuaded them to run a pilot first, preventing a massive sunk cost and deepening our strategic mutual trust."
+        }
+      }
+    }
+  },
+  {
+    "id": "q_029",
+    "type": "interview",
+    "category": { "zh": "人才留任與動機", "en": "Talent Retention & Motivation" },
+    "difficulty": 4,
+    "target_levels": ["junior", "mid_level", "senior"],
+    "philosophy_tags": [
+      { "zh": "同理心", "en": "Empathy" },
+      { "zh": "成長型思維", "en": "Growth Mindset" }
+    ],
+    "title": {
+      "zh": "團隊中的一位明星員工（Star Employee）突然績效下滑、失去動力。你會如何介入？",
+      "en": "A star employee in your team suddenly experiences a drop in performance and loses motivation. How do you intervene?"
+    },
+    "intent": {
+      "zh": "考驗教練技巧（Coaching）、同理心，以及分辨內在動機與外在壓力的能力。",
+      "en": "Tests coaching skills, empathy, and the ability to distinguish between intrinsic motivation and extrinsic stress."
+    },
+    "panic_mode": {
+      "timer": 10,
+      "safe_landing_script": {
+        "zh": "績效下滑通常是『結果』，而非『原因』。請給我十秒鐘分享我的診斷與輔導步驟...",
+        "en": "A performance drop is a symptom, not the root cause. Give me 10 seconds to share my diagnostic and coaching steps..."
+      }
+    },
+    "levels": {
+      "junior": {
+        "hiring_manager_os": {
+          "zh": "（針對同儕協作）「雖然你不是主管，但我想看看你是否具備團隊互助的敏銳度。」",
+          "en": "(Targeting Peer Support) \"Although not a manager, I want to see if you have the acumen for team mutual support.\""
+        },
+        "focus": { "zh": "同儕支持與傾聽", "en": "Peer Support & Active Listening" },
+        "script": {
+          "zh": "作為同事，我會敏銳地察覺他的變化，並主動約他吃個便飯。我不會刺探隱私，而是表達關心，讓他知道如果需要分擔工作或傾訴，我隨時都在。有時候，一個充滿同理心的傾聽者就能幫助同儕走出低潮。",
+          "en": "As a peer, I'd notice the change and invite them for a casual lunch. I won't pry, but simply express care and let them know I'm available to help share the load or just listen. Sometimes, an empathetic ear is enough to help a colleague navigate a slump."
+        }
+      },
+      "mid_level": {
+        "hiring_manager_os": {
+          "zh": "「你需要找出病因。是因為遇到天花板、家庭變故，還是覺得未被賞識？」",
+          "en": "\"You need to find the root cause. Have they hit a ceiling, faced personal issues, or felt underappreciated?\""
+        },
+        "focus": { "zh": "深度訪談與重新對齊目標", "en": "Deep 1-on-1s & Re-aligning Goals" },
+        "script": {
+          "zh": "我會安排一次深度的 1-on-1。首先肯定他過去的卓越貢獻，然後坦誠表達我的觀察。我會引導他說出真實原因：如果是遇到職業瓶頸，我會為他設計新的挑戰（Job Crafting）；如果是私人壓力，我會主動提供彈性工時，給予他喘息與恢復的空間。",
+          "en": "I'd schedule a deep 1-on-1. I'll start by affirming their past stellar contributions, then candidly share my observations. I guide them to reveal the root cause: if it's a career bottleneck, I utilize 'Job Crafting' to design new challenges; if it's personal stress, I offer flexible hours to give them space to recover."
+        }
+      },
+      "senior": {
+        "hiring_manager_os": {
+          "zh": "「明星員工的流失是巨大的商業損失。你要檢視公司的薪酬、升遷與文化結構是否出了問題。」",
+          "en": "\"Losing a star employee is a massive business loss. You must examine if the company's comp, promo, or culture structures are failing.\""
+        },
+        "focus": { "zh": "人才盤點與結構性留才", "en": "Talent Audit & Structural Retention" },
+        "script": {
+          "zh": "除了個人輔導，我會將此視為『結構性流失風險』的預警。我會檢視公司的激勵機制是否失效，或者部門是否過度依賴少數英雄（Key-man Risk）。為留住頂尖人才，我會為他量身打造接班人計畫與領導力軌道；同時優化整體薪酬結構，確保卓越付出能獲得相對應的戰略回報。",
+          "en": "Beyond personal coaching, I treat this as a warning of 'structural retention risk'. I evaluate if our incentive mechanisms are failing or if we have excessive Key-man Risk. To retain top talent, I would tailor a leadership track and succession plan for them, while optimizing the overall compensation structure to ensure stellar efforts yield strategic returns."
+        }
+      }
+    }
+  },
+  {
+    "id": "q_030",
+    "type": "interview",
+    "category": { "zh": "多元共融與跨文化", "en": "DEI & Cross-Cultural Collaboration" },
+    "difficulty": 3,
+    "target_levels": ["junior", "mid_level", "senior"],
+    "philosophy_tags": [
+      { "zh": "同理心", "en": "Empathy" },
+      { "zh": "第一性原理", "en": "First Principles" }
+    ],
+    "title": {
+      "zh": "請分享一次你與背景、工作文化完全不同的人合作的經驗。遇到摩擦時你如何解決？",
+      "en": "Share an experience working with someone from a completely different background or work culture. How did you resolve friction?"
+    },
+    "intent": {
+      "zh": "考驗多元共融意識（DEI）、適應力以及跨部門/跨國協作時的溝通彈性。",
+      "en": "Tests Diversity, Equity & Inclusion (DEI) awareness, adaptability, and communication flexibility in cross-functional/global collaboration."
+    },
+    "panic_mode": {
+      "timer": 10,
+      "safe_landing_script": {
+        "zh": "跨文化溝通的核心是『好奇心大於評判（Curiosity over Judgment）』。請給我幾秒鐘梳理我的溝通策略...",
+        "en": "The core of cross-cultural communication is 'Curiosity over Judgment'. Give me a few seconds to organize my communication strategy..."
+      }
+    },
+    "levels": {
+      "junior": {
+        "hiring_manager_os": {
+          "zh": "「我希望看到你具備包容心，不會因為對方做事方式不同就產生排斥。」",
+          "en": "\"I want to see inclusivity. You shouldn't reject someone just because their working style differs.\""
+        },
+        "focus": { "zh": "尊重差異與釐清溝通方式", "en": "Respecting Differences & Clarifying Communication" },
+        "script": {
+          "zh": "我曾與海外團隊合作，他們習慣直言不諱的批評，這起初讓我感到不適。但我意識到這是文化差異而非針對個人。我主動與他們探討雙方的溝通風格，並約定在回饋時先說明背景，這極大減少了誤解，合作也變得順暢。",
+          "en": "I worked with an overseas team accustomed to blunt criticism, which initially felt jarring. I realized it was a cultural difference, not personal. I proactively discussed our communication styles with them and agreed to provide context before feedback, drastically reducing misunderstandings and smoothing collaboration."
+        }
+      },
+      "mid_level": {
+        "hiring_manager_os": {
+          "zh": "「你需要成為橋樑，將不同背景的人凝聚在一起，建立屬於你們團隊的共同語言。」",
+          "en": "\"You need to be the bridge, uniting people from diverse backgrounds and establishing a shared team language.\""
+        },
+        "focus": { "zh": "建立共識與團隊規範", "en": "Building Consensus & Team Norms" },
+        "script": {
+          "zh": "跨國或跨界合作經常因預設期望不同而產生摩擦。我不會強迫對方接受我的方式，而是發起一個『團隊章程（Team Charter）』會議。我們共同定義了響應時間、會議規則與決策流程，用『新規則』取代了各自的『舊習慣』，建立了高效的協作共識。",
+          "en": "Cross-cultural or cross-domain collaborations often clash due to differing default expectations. Instead of forcing my way, I initiated a 'Team Charter' meeting. We co-defined response times, meeting rules, and decision processes. Replacing our 'old habits' with 'new rules' established a highly efficient collaborative consensus."
+        }
+      },
+      "senior": {
+        "hiring_manager_os": {
+          "zh": "「真正的多元共融不是消除差異，而是利用差異來激發創新（Leverage Diversity for Innovation）。」",
+          "en": "\"True DEI isn't about erasing differences, but leveraging diversity for innovation.\""
+        },
+        "focus": { "zh": "利用多元化優勢推動創新", "en": "Leveraging Diversity to Drive Innovation" },
+        "script": {
+          "zh": "我曾帶領一個極度多元的跨國團隊。摩擦必然存在，但我將這種衝突視為創新的催化劑。當設計與工程團隊因文化與專業思維發生激烈爭執時，我沒有壓制反對聲音，而是引導雙方從完全不同的視角審視產品。最終，這種多元碰撞讓我們發現了一個未被開發的在地化市場需求，這正是 DEI 帶來的真實商業價值。",
+          "en": "I led a highly diverse, multi-national team. Friction is inevitable, but I treat it as a catalyst for innovation. When design and engineering clashed fiercely due to cultural and professional mindsets, I didn't suppress the dissent. I guided them to examine the product from completely opposing angles. Ultimately, this diverse collision helped us uncover an untapped localized market need—this is the true business value of DEI."
+        }
+      }
+    }
   }
+  
 ]
