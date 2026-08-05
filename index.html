@@ -20,10 +20,17 @@
     }
     body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; background: var(--bg); color: var(--text); margin: 0; padding: 20px; }
     .container { max-width: 850px; margin: 0 auto; }
-    .top-bar { display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; flex-wrap: wrap; gap: 10px; }
+    .top-bar { display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px; flex-wrap: wrap; gap: 10px; }
+    
+    /* 篩選與模式控制列 */
+    .filter-bar { display: flex; gap: 10px; margin-bottom: 20px; flex-wrap: wrap; align-items: center; background: #fff; padding: 12px; border-radius: 8px; box-shadow: 0 1px 3px rgba(0,0,0,0.05); }
+    .select-input { padding: 8px; border-radius: 6px; border: 1px solid #cbd5e1; font-size: 0.9rem; background: #fff; color: var(--text); font-weight: bold; }
+    
     .btn { padding: 6px 12px; border: none; border-radius: 6px; cursor: pointer; font-weight: bold; font-size: 0.9rem; }
     .btn-lang { background: #e2e8f0; color: #334155; }
     .btn-challenge { background: var(--warning); color: #fff; }
+    
+    /* 卡片樣式 */
     .card { background: var(--card-bg); border-radius: 12px; padding: 24px; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1); margin-bottom: 20px; }
     .tag { display: inline-block; background: #e0e7ff; color: #4338ca; padding: 4px 10px; border-radius: 6px; font-size: 0.85rem; font-weight: bold; margin-right: 6px; border: none; cursor: pointer; transition: 0.2s; }
     .tag:hover { background: #c7d2fe; }
@@ -33,6 +40,12 @@
     button.level-btn.active { background: var(--primary); color: #fff; border-color: var(--primary); }
     .panic-btn { background: #fef2f2; color: var(--accent); border: 1px solid #fecaca; margin-top: 15px; width: 100%; padding: 10px; border-radius: 6px; font-weight: bold; cursor: pointer; }
     .panic-box { display: none; background: #1e293b; color: #fff; padding: 15px; border-radius: 8px; margin-top: 10px; }
+    
+    /* 單題切換導航控制 */
+    .pagination-bar { display: flex; justify-content: space-between; align-items: center; margin-top: 15px; padding-top: 15px; border-top: 1px solid #e2e8f0; }
+    .nav-btn { padding: 8px 16px; background: #3b82f6; color: #fff; border: none; border-radius: 6px; cursor: pointer; font-weight: bold; }
+    .nav-btn:disabled { background: #cbd5e1; cursor: not-allowed; }
+
     .filter-banner { background: #dbeafe; color: #1e40af; padding: 10px 15px; border-radius: 8px; margin-bottom: 20px; display: flex; justify-content: space-between; align-items: center; }
     
     /* 考牌模式 Modal */
@@ -48,6 +61,21 @@
     <div>
       <button class="btn btn-challenge" onclick="startChallengeMode()">🎯 考牌 Mode</button>
       <button class="btn btn-lang" onclick="toggleLanguage()">🌐 English / 中文</button>
+    </div>
+  </div>
+
+  <!-- 種類選單與顯示模式控制條 -->
+  <div class="filter-bar">
+    <div>
+      <label style="font-size:0.85rem; font-weight:bold; color:#64748b;">📂 種類 (Category): </label>
+      <select id="category-select" class="select-input" onchange="onCategoryChange(this.value)">
+        <option value="ALL">所有種類 (All Categories)</option>
+      </select>
+    </div>
+
+    <div style="margin-left: auto; display: flex; align-items: center; gap: 8px;">
+      <label style="font-size:0.85rem; font-weight:bold; color:#64748b;">🎴 逐題刷題模式: </label>
+      <input type="checkbox" id="single-mode-toggle" checked onchange="toggleSingleMode(this.checked)" style="width: 18px; height: 18px; cursor: pointer;">
     </div>
   </div>
 
@@ -82,6 +110,11 @@
   let questionsData = [];
   let currentLang = 'zh';
   let activeTagFilter = null;
+  let activeCategoryFilter = 'ALL';
+  
+  // 逐題模式控制參數
+  let isSingleMode = true;
+  let currentIndex = 0;
 
   // 註冊 Service Worker 實現 100% PWA 離線運行
   if ('serviceWorker' in navigator) {
@@ -94,19 +127,51 @@
     try {
       const res = await fetch('questions.json');
       questionsData = await res.json();
+      populateCategories();
       renderApp();
     } catch (e) {
       document.getElementById('app').innerHTML = 'Failed to load questions. Check questions.json.';
     }
   }
 
+  // 自動提煉 JSON 內的所有種類 (Category) 動態填充下拉選單
+  function populateCategories() {
+    const select = document.getElementById('category-select');
+    const categories = new Set();
+    
+    questionsData.forEach(q => {
+      if (q.category && q.category[currentLang]) {
+        categories.add(q.category[currentLang]);
+      }
+    });
+
+    select.innerHTML = `<option value="ALL">${currentLang === 'zh' ? '所有種類 (All Categories)' : 'All Categories'}</option>`;
+    categories.forEach(cat => {
+      select.innerHTML += `<option value="${cat}">${cat}</option>`;
+    });
+    select.value = activeCategoryFilter;
+  }
+
   function toggleLanguage() {
     currentLang = currentLang === 'zh' ? 'en' : 'zh';
     document.querySelector('.btn-challenge').innerText = `🎯 ${currentLang === 'zh' ? '考牌 Mode' : 'Challenge Mode'}`;
+    populateCategories();
     renderApp();
   }
 
-  // 動態難度計算器（以 Junior/Senior 文字長度跨度為基礎）
+  function onCategoryChange(catValue) {
+    activeCategoryFilter = catValue;
+    currentIndex = 0; // 重置到第一頁
+    renderApp();
+  }
+
+  function toggleSingleMode(checked) {
+    isSingleMode = checked;
+    currentIndex = 0;
+    renderApp();
+  }
+
+  // 動態難度計算器
   function calculateDynamicDifficulty(q) {
     const jLength = q.levels.junior.script[currentLang].length;
     const sLength = q.levels.senior.script[currentLang].length;
@@ -118,40 +183,67 @@
 
   function filterByTag(tagZh) {
     activeTagFilter = tagZh;
+    currentIndex = 0;
     renderApp();
   }
 
   function clearFilter() {
     activeTagFilter = null;
+    currentIndex = 0;
     renderApp();
+  }
+
+  // 取得經 Filter 過後的題目資料
+  function getFilteredData() {
+    return questionsData.filter(q => {
+      const matchTag = activeTagFilter ? q.philosophy_tags.some(t => t.zh === activeTagFilter) : true;
+      const matchCat = activeCategoryFilter !== 'ALL' ? (q.category && q.category[currentLang] === activeCategoryFilter) : true;
+      return matchTag && matchCat;
+    });
   }
 
   function renderApp() {
     const app = document.getElementById('app');
     const filterStatus = document.getElementById('filter-status');
+    const displayData = getFilteredData();
 
-    let displayData = questionsData;
+    // 處理 Banner 提示
     if (activeTagFilter) {
-      displayData = questionsData.filter(q => q.philosophy_tags.some(t => t.zh === activeTagFilter));
       filterStatus.innerHTML = `
         <div class="filter-banner">
           <span>🧘 ${currentLang === 'zh' ? '目前心法篩選：' : 'Active Strategy:'} <strong>${activeTagFilter}</strong> (${displayData.length})</span>
-          <button class="btn" style="background:#fff; color:#1e40af;" onclick="clearFilter()">${currentLang === 'zh' ? '清除篩選' : 'Clear Filter'}</button>
+          <button class="btn" style="background:#fff; color:#1e40af;" onclick="clearFilter()">${currentLang === 'zh' ? '清除心法篩選' : 'Clear Strategy'}</button>
         </div>
       `;
     } else {
       filterStatus.innerHTML = '';
     }
 
-    app.innerHTML = displayData.map(q => {
+    if (displayData.length === 0) {
+      app.innerHTML = `<div class="card"><p>${currentLang === 'zh' ? '沒有找到相關種類或心法的題目。' : 'No questions found for the selected category/strategy.'}</p></div>`;
+      return;
+    }
+
+    // 判斷是「單題模式」還是「列表模式」
+    let renderList = displayData;
+    if (isSingleMode) {
+      if (currentIndex >= displayData.length) currentIndex = 0;
+      renderList = [displayData[currentIndex]];
+    }
+
+    app.innerHTML = renderList.map(q => {
       const dynamicDiff = calculateDynamicDifficulty(q);
+      const catName = q.category ? q.category[currentLang] : '';
       return `
         <div class="card" id="card-${q.id}">
-          <div>
-            ${q.philosophy_tags.map(t => `<button class="tag" onclick="filterByTag('${t.zh}')">⚔️ ${t[currentLang]}</button>`).join('')}
-            <span class="tag" style="background:#f1f5f9; color:#475569;">⭐ Dynamic Level: ${dynamicDiff}/5</span>
+          <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:5px;">
+            <div>
+              ${q.philosophy_tags.map(t => `<button class="tag" onclick="filterByTag('${t.zh}')">⚔️ ${t[currentLang]}</button>`).join('')}
+              <span class="tag" style="background:#f1f5f9; color:#475569;">⭐ Dynamic Level: ${dynamicDiff}/5</span>
+            </div>
+            ${catName ? `<span class="tag" style="background:#e2e8f0; color:#334155;">📂 ${catName}</span>` : ''}
           </div>
-          <h2 style="margin-top:10px;">${q.title[currentLang]}</h2>
+          <h2 style="margin-top:12px;">${q.title[currentLang]}</h2>
           <p><strong>${currentLang === 'zh' ? '考官真意：' : 'Intent:'}</strong> ${q.intent[currentLang]}</p>
           
           <div class="btn-group">
@@ -170,9 +262,34 @@
           <div class="panic-box" id="panic-${q.id}">
             <strong>⏱️ ${currentLang === 'zh' ? '10秒降落台詞：' : '10s Safe Landing Script:'}</strong><br>${q.panic_mode.safe_landing_script[currentLang]}
           </div>
+
+          ${isSingleMode ? `
+            <div class="pagination-bar">
+              <button class="nav-btn" onclick="prevQuestion()" ${currentIndex === 0 ? 'disabled' : ''}>← ${currentLang === 'zh' ? '上一題' : 'Previous'}</button>
+              <span style="font-weight:bold; color:#64748b;">${currentIndex + 1} / ${displayData.length}</span>
+              <button class="nav-btn" onclick="nextQuestion()" ${currentIndex === displayData.length - 1 ? 'disabled' : ''}>${currentLang === 'zh' ? '下一題' : 'Next'} →</button>
+            </div>
+          ` : ''}
         </div>
       `;
     }).join('');
+  }
+
+  function prevQuestion() {
+    if (currentIndex > 0) {
+      currentIndex--;
+      renderApp();
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+  }
+
+  function nextQuestion() {
+    const displayData = getFilteredData();
+    if (currentIndex < displayData.length - 1) {
+      currentIndex++;
+      renderApp();
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
   }
 
   function switchLevel(qId, level, btn) {
@@ -190,7 +307,7 @@
     box.style.display = box.style.display === 'block' ? 'none' : 'block';
   }
 
-  // 🎯 考牌 Mode 遊戲化機制 (符合 EU AI Act 防自動評估條款)
+  // 🎯 考牌 Mode
   function startChallengeMode() {
     if (questionsData.length === 0) return;
     const randomQ = questionsData[Math.floor(Math.random() * questionsData.length)];
@@ -249,9 +366,9 @@
     document.getElementById('challenge-modal').style.display = 'none';
   }
 
-  // 終極銷毀（連 Cache、IndexedDB、localStorage 一炮過清）
+  // 銷毀資料
   async function purgeAllUserData() {
-    if (confirm('⚠️ 確定徹底銷毀所有本機數據？（將清除所有快取、IndexedDB 資料庫及本地紀錄）')) {
+    if (confirm('⚠️ 確定徹底銷毀所有本機數據？')) {
       localStorage.clear();
       sessionStorage.clear();
 
