@@ -4,11 +4,15 @@
   <meta charset="UTF-8">
   
   <!-- SEO Primary Meta Tags (Dynamic defaults to English) -->
-  <title id="seo-title">EasyIn - Offline Interview Companion by Jacky Law 羅子淇 | 面試易</title>
-  <meta name="title" id="seo-meta-title" content="EasyIn - Offline Interview Companion by Jacky Law 羅子淇 | 面試易">
-  <meta name="description" id="seo-meta-desc" content="Created by Jacky Law (羅子淇). Your pocket interview coach featuring 40 real business scenarios, Hiring Manager OS, Junior-to-Senior frameworks & 10s Panic Button. 100% offline PWA.">
-  <meta name="keywords" content="EasyIn, 面試易, 羅子淇, Jacky Law, interview prep, hiring manager os, job interview scenarios, interview coach, 面試技巧, 見工問題, 考官OS, 離線面試題庫">
-  <meta name="author" content="Jacky Law 羅子淇">
+  <title id="seo-title">EasyIn - Offline Interview Companion | 面試易</title>
+  <meta name="title" id="seo-meta-title" content="EasyIn - Offline Interview Companion | 面試易">
+  <meta name="description" id="seo-meta-desc" content="Your pocket interview coach featuring 40 real business scenarios, Hiring Manager OS, Junior-to-Senior frameworks & 10s Panic Button. 100% offline PWA.">
+  <meta name="keywords" content="EasyIn, 面試易, interview prep, hiring manager os, job interview scenarios, interview coach, 面試技巧, 見工問題, 考官OS, 離線面試題庫">
+  
+  <!-- Creator Credit (Internal Code & Search Engines Only) -->
+  <!-- Developer / Creator: Jacky Law (羅子淇) - https://jackylawck.github.io/jackylawck -->
+  <meta name="author" content="Jacky Law 羅子淇 (https://jackylawck.github.io/jackylawck)">
+  
   <meta name="robots" content="index, follow">
   <link rel="canonical" href="https://jackylawck.github.io/EasyIn/">
 
@@ -18,7 +22,7 @@
   <!-- Open Graph / WhatsApp / LinkedIn Sharing Meta Tags -->
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://jackylawck.github.io/EasyIn/">
-  <meta property="og:title" content="EasyIn 面試易 - 隨身面試教練 (by 羅子淇 Jacky Law)">
+  <meta property="og:title" content="EasyIn 面試易 - 隨身面試教練">
   <meta property="og:description" content="40 條商業實戰題庫 + 考官內心 OS + Junior → Senior 三級應答框架與 10 秒救命掣。100% 免費、離線可用、極致隱私保護。">
   <meta property="og:image" content="https://jackylawck.github.io/EasyIn/EasyInicon-512.png">
   <meta property="og:site_name" content="EasyIn 面試易">
@@ -27,7 +31,7 @@
   <!-- Twitter Card Meta Tags -->
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:url" content="https://jackylawck.github.io/EasyIn/">
-  <meta name="twitter:title" content="EasyIn 面試易 by 羅子淇 Jacky Law - 100% 離線免費面試教練">
+  <meta name="twitter:title" content="EasyIn 面試易 - 100% 離線免費面試教練">
   <meta name="twitter:description" content="40 條實戰商業題庫 + 考官內心 OS + 10 秒救命掣。助你掌握大將之風，輕鬆破解刁鑽面試題。">
   <meta name="twitter:image" content="https://jackylawck.github.io/EasyIn/EasyInicon-512.png">
 
@@ -40,7 +44,7 @@
   <link rel="manifest" href="manifest.json">
   <meta name="theme-color" content="#2563eb">
 
-  <!-- Google Structured Data (JSON-LD) with Creator Profile -->
+  <!-- Google Structured Data (JSON-LD) with Internal Creator Attribution -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -59,7 +63,8 @@
     },
     "creator": {
       "@type": "Person",
-      "name": "Jacky Law (羅子淇)"
+      "name": "Jacky Law (羅子淇)",
+      "url": "https://jackylawck.github.io/jackylawck"
     },
     "offers": {
       "@type": "Offer",
@@ -121,10 +126,6 @@
     /* Challenge Modal */
     .modal { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.6); justify-content: center; align-items: center; z-index: 1000; }
     .modal-content { background: #fff; padding: 30px; border-radius: 12px; max-width: 600px; width: 90%; max-height: 80vh; overflow-y: auto; }
-    
-    /* Footer Links */
-    .author-link { color: #38bdf8; text-decoration: none; font-weight: bold; }
-    .author-link:hover { text-decoration: underline; }
   </style>
 </head>
 <body>
@@ -166,7 +167,7 @@
   <div id="filter-status"></div>
   <div id="app">Loading...</div>
 
-  <!-- ISO / Privacy Compliance Footer with Creator Link -->
+  <!-- ISO / Privacy Compliance Footer (Clean UI) -->
   <footer style="margin-top: 40px; padding: 20px; background: #0f172a; color: #94a3b8; border-radius: 8px; font-size: 0.8rem; line-height: 1.5;">
     <div style="display: flex; gap: 12px; align-items: center; margin-bottom: 15px; flex-wrap: wrap;">
       <span style="color: #22c55e; font-weight: bold;">🔒 100% Offline PWA</span>
@@ -177,16 +178,11 @@
       </button>
     </div>
     
-    <div id="footer-notice" style="margin-bottom: 12px;">
+    <div id="footer-notice">
       <strong>Architecture & Compliance:</strong><br>
       • <strong>Deterministic Architecture:</strong> Static reference tool (Non-AI), zero automated decision-making.<br>
       • <strong>Zero Telemetry:</strong> No backend server, zero cookies, zero analytics.<br>
       • <strong>Privacy-by-Design:</strong> GDPR data minimization compliant.
-    </div>
-
-    <div style="border-top: 1px solid #334155; padding-top: 10px; color: #cbd5e1; display: flex; justify-content: space-between; flex-wrap: wrap; gap: 10px;">
-      <span>Designed & Developed by <a href="https://jackylawck.github.io/jackylawck" target="_blank" rel="noopener noreferrer" class="author-link">Jacky Law (羅子淇)</a></span>
-      <span>© EasyIn 面試易 • Open Source Project</span>
     </div>
   </footer>
 </div>
@@ -209,8 +205,8 @@
   // Dictionary for UI & Dynamic SEO Translations
   const uiText = {
     en: {
-      seoTitle: "EasyIn - Offline Interview Companion by Jacky Law 羅子淇 | 面試易",
-      seoDesc: "Created by Jacky Law (羅子淇). Your pocket interview coach featuring 40 real business scenarios, Hiring Manager OS, Junior-to-Senior frameworks & 10s Panic Button. 100% offline PWA.",
+      seoTitle: "EasyIn - Offline Interview & Written Test Companion | 面試易",
+      seoDesc: "Your pocket interview coach featuring 40 real business scenarios, Hiring Manager OS, Junior-to-Senior frameworks & 10s Panic Button. 100% offline PWA.",
       title: "💡 EasyIn",
       btnLang: "🌐 English / 中文",
       challengeBtn: "🎯 Challenge Mode",
@@ -232,8 +228,8 @@
       footerNotice: "<strong>Architecture & Compliance:</strong><br>• <strong>Deterministic Architecture:</strong> Static reference tool (Non-AI), zero automated decision-making.<br>• <strong>Zero Telemetry:</strong> No backend server, zero cookies, zero analytics.<br>• <strong>Privacy-by-Design:</strong> GDPR data minimization compliant."
     },
     zh: {
-      seoTitle: "EasyIn 面試易 (by 羅子淇 Jacky Law) - 100%離線免費面試題庫 & 筆試攻略",
-      seoDesc: "創作者：羅子淇 (Jacky Law)。面試易 EasyIn 是你隨身的面試教練。收錄 40 條真實商業場景題庫、獨家「考官內心 OS」、Junior 至 Senior 三級應答框架及 10 秒救命掣。100% 本機運行、零數據追蹤。",
+      seoTitle: "EasyIn 面試易 - 100%離線免費面試題庫 & 筆試攻略",
+      seoDesc: "面試易 EasyIn 是你隨身的面試教練。收錄 40 條真實商業場景題庫、獨家「考官內心 OS」、Junior 至 Senior 三級應答框架及 10 秒救命掣。100% 本機運行、零數據追蹤。",
       title: "💡 EasyIn 面試易",
       btnLang: "🌐 English / 中文",
       challengeBtn: "🎯 考牌 Mode",
