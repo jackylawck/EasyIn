@@ -6,7 +6,7 @@
   <!-- SEO Primary Meta Tags (Dynamic defaults to English) -->
   <title id="seo-title">EasyIn - Offline Interview Companion by Jacky Law 羅子淇 | 面試易</title>
   <meta name="title" id="seo-meta-title" content="EasyIn - Offline Interview Companion by Jacky Law 羅子淇 | 面試易">
-  <meta name="description" id="seo-meta-desc" content="Created by Jacky Law (羅子淇). Your pocket interview coach featuring 40 real business scenarios, Hiring Manager OS, Junior-to-Senior frameworks & 10s Panic Button. 100% offline, privacy-first PWA.">
+  <meta name="description" id="seo-meta-desc" content="Created by Jacky Law (羅子淇). Your pocket interview coach featuring 40 real business scenarios, Hiring Manager OS, Junior-to-Senior frameworks & 10s Panic Button. 100% offline PWA.">
   <meta name="keywords" content="EasyIn, 面試易, 羅子淇, Jacky Law, interview prep, hiring manager os, job interview scenarios, interview coach, 面試技巧, 見工問題, 考官OS, 離線面試題庫">
   <meta name="author" content="Jacky Law 羅子淇">
   <meta name="robots" content="index, follow">
@@ -55,7 +55,7 @@
     "author": {
       "@type": "Person",
       "name": "Jacky Law (羅子淇)",
-      "url": "https://github.com/jackylawck"
+      "url": "https://jackylawck.github.io/jackylawck"
     },
     "creator": {
       "@type": "Person",
@@ -121,6 +121,10 @@
     /* Challenge Modal */
     .modal { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.6); justify-content: center; align-items: center; z-index: 1000; }
     .modal-content { background: #fff; padding: 30px; border-radius: 12px; max-width: 600px; width: 90%; max-height: 80vh; overflow-y: auto; }
+    
+    /* Footer Links */
+    .author-link { color: #38bdf8; text-decoration: none; font-weight: bold; }
+    .author-link:hover { text-decoration: underline; }
   </style>
 </head>
 <body>
@@ -162,7 +166,7 @@
   <div id="filter-status"></div>
   <div id="app">Loading...</div>
 
-  <!-- ISO / Privacy Compliance Footer with Creator Attribution -->
+  <!-- ISO / Privacy Compliance Footer with Creator Link -->
   <footer style="margin-top: 40px; padding: 20px; background: #0f172a; color: #94a3b8; border-radius: 8px; font-size: 0.8rem; line-height: 1.5;">
     <div style="display: flex; gap: 12px; align-items: center; margin-bottom: 15px; flex-wrap: wrap;">
       <span style="color: #22c55e; font-weight: bold;">🔒 100% Offline PWA</span>
@@ -181,7 +185,7 @@
     </div>
 
     <div style="border-top: 1px solid #334155; padding-top: 10px; color: #cbd5e1; display: flex; justify-content: space-between; flex-wrap: wrap; gap: 10px;">
-      <span>Designed & Developed by <strong>Jacky Law (羅子淇)</strong></span>
+      <span>Designed & Developed by <a href="https://jackylawck.github.io/jackylawck" target="_blank" rel="noopener noreferrer" class="author-link">Jacky Law (羅子淇)</a></span>
       <span>© EasyIn 面試易 • Open Source Project</span>
     </div>
   </footer>
@@ -225,9 +229,7 @@
       clearFilter: "Clear Filter",
       noQuestions: "No questions found.",
       purgeBtn: "🗑️ Purge Local Data",
-      footerNotice: "<strong>Architecture & Compliance:</strong><br>• <strong>Deterministic Architecture:</strong> Static reference tool (Non-AI), zero automated decision-making.<br>• <strong>Zero Telemetry:</strong> No backend server, zero cookies, zero analytics.<br>• <strong>Privacy-by-Design:</strong> GDPR data minimization compliant.",
-      purgeConfirm: "⚠️ Permanently purge all local data?",
-      purgeDone: "✅ All local data purged."
+      footerNotice: "<strong>Architecture & Compliance:</strong><br>• <strong>Deterministic Architecture:</strong> Static reference tool (Non-AI), zero automated decision-making.<br>• <strong>Zero Telemetry:</strong> No backend server, zero cookies, zero analytics.<br>• <strong>Privacy-by-Design:</strong> GDPR data minimization compliant."
     },
     zh: {
       seoTitle: "EasyIn 面試易 (by 羅子淇 Jacky Law) - 100%離線免費面試題庫 & 筆試攻略",
@@ -250,9 +252,7 @@
       clearFilter: "清除篩選",
       noQuestions: "沒有找到相關題目。",
       purgeBtn: "🗑️ 一鍵銷毀數據",
-      footerNotice: "<strong>架構與隱私合規聲明：</strong><br>• <strong>確定性架構：</strong> 100% 靜態檢索（Non-AI），無自動化決策。<br>• <strong>零數據追蹤：</strong> 無伺服器、零 Cookie、零 Analytics。<br>• <strong>隱私即設計：</strong> 完全符合 GDPR 數據極小化原則。",
-      purgeConfirm: "⚠️ 確定徹底銷毀所有本機數據？",
-      purgeDone: "✅ 數據已徹底銷毀。"
+      footerNotice: "<strong>架構與隱私合規聲明：</strong><br>• <strong>確定性架構：</strong> 100% 靜態檢索（Non-AI），無自動化決策。<br>• <strong>零數據追蹤：</strong> 無伺服器、零 Cookie、零 Analytics。<br>• <strong>隱私即設計：</strong> 完全符合 GDPR 數據極小化原則。"
     }
   };
 
@@ -280,7 +280,7 @@
   function updateStaticUI() {
     const t = uiText[currentLang];
     
-    // 實時更新網頁標題與 SEO Meta（含創作者資訊）
+    // 實時更新網頁標題與 SEO Meta
     document.title = t.seoTitle;
     document.getElementById('seo-meta-title').setAttribute('content', t.seoTitle);
     document.getElementById('seo-meta-desc').setAttribute('content', t.seoDesc);
